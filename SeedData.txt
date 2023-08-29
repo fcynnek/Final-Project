@@ -1,0 +1,100 @@
+Canine Parvovirus (Parvo) | Vomiting, diarrhea (often bloody), lethargy, loss of appetite | Parvovirus Vaccine Side Effects: Mild fever, lethargy, swelling at injection site, allergic reactions
+Canine Distemper | Fever, nasal discharge, coughing, lethargy, loss of appetite | Distemper Vaccine Side Effects: Mild fever, lethargy, sneezing, nasal discharge, allergic reactions
+Canine Infectious Tracheobronchitis (Kennel Cough) | Coughing, sneezing, nasal discharge | Vaccine Side Effects: Mild coughing, nasal discharge, lethargy
+Canine Leptospirosis | Fever, vomiting, diarrhea, muscle pain, jaundice, kidney failure | Leptospirosis Vaccine Side Effects: Mild fever, lethargy, swelling at injection site, allergic reactions
+Canine Rabies | Behavioral changes, aggression, excessive salivation, paralysis | Vaccine Side Effects: Mild fever, lethargy, swelling at injection site, allergic reactions
+Feline Leukemia Virus (FeLV) | Lethargy, weight loss, anemia, immune suppression | FeLV Vaccine Side Effects: Mild fever, lethargy, swelling at injection site, allergic reactions
+Feline Immunodeficiency Virus (FIV) | Recurrent infections, weight loss, dental issues | Vaccine Side Effects: Generally well-tolerated, mild swelling at injection site
+Feline Upper Respiratory Infection (URI) | Sneezing, nasal discharge, coughing, fever | Vaccines Side Effects: Mild sneezing, nasal discharge, lethargy
+Feline Panleukopenia (Feline Distemper) | Vomiting, diarrhea, lethargy, fever | Feline Distemper Vaccine Side Effects: Mild fever, lethargy, swelling at injection site, allergic reactions
+Feline Calicivirus | Oral ulcers, sneezing, nasal discharge, limping | Vaccine Side Effects: Mild fever, sneezing, nasal discharge, lethargy
+Feline Herpesvirus (Feline Viral Rhinotracheitis) | Sneezing, nasal discharge, eye ulcers | Vaccine Side Effects: Mild fever, sneezing, nasal discharge, lethargy
+Heartworm Disease | Coughing, exercise intolerance, weight loss | Heartworm Preventatives Side Effects: Mild digestive upset, allergic reactions
+Lyme Disease | Fever, lameness, swollen joints, lethargy | Lyme Vaccine Side Effects: Mild swelling at injection site, lethargy, allergic reactions
+Ehrlichiosis | Fever, lethargy, loss of appetite, bruising, lameness | Tick Preventatives Side Effects: Mild digestive upset, allergic reactions
+Anaplasmosis | Fever, lethargy, joint pain, vomiting, diarrhea | Tick Preventatives Side Effects: Mild digestive upset, allergic reactions
+Giardiasis | Diarrhea, vomiting, weight loss | Metronidazole Side Effects: Mild digestive upset, neurological symptoms in high doses
+Roundworm Infection | Potbellied appearance, vomiting, diarrhea, coughing | Deworming Medications Side Effects: Mild digestive upset, diarrhea, vomiting
+Hookworm Infection | Anemia, bloody diarrhea, weight loss | Deworming Medications Side Effects: Mild digestive upset, diarrhea, vomiting
+Tapeworm Infection | Anal irritation, "rice-like" segments in feces | Deworming Medications Side Effects: Mild digestive upset, diarrhea, vomiting
+Coccidiosis | Diarrhea (sometimes bloody), lethargy, dehydration | Sulfadimethoxine Side Effects: Digestive upset, allergic reactions
+Feline Lower Urinary Tract Disease (FLUTD) | Straining to urinate, blood in urine, frequent licking of genitals | Prescription Diets Side Effects: Generally well-tolerated, dietary adjustments may be needed
+Canine Hip Dysplasia | Difficulty rising, hind limb lameness, decreased activity | Joint Supplements Side Effects: Generally well-tolerated, may cause digestive upset in some cases
+Canine Osteoarthritis | Stiffness, reluctance to move, lameness, decreased activity | NSAIDs Side Effects: Digestive upset, liver/kidney issues (with prolonged use), allergic reactions
+Feline Diabetes | Increased thirst, increased urination, weight loss | Insulin Therapy Side Effects: Hypoglycemia (low blood sugar), allergic reactions
+Canine Diabetes | Increased thirst, increased urination, weight loss | Insulin Therapy Side Effects: Hypoglycemia (low blood sugar), allergic reactions
+Canine Cushing's Disease | Increased thirst, increased appetite, potbellied appearance | Medication Side Effects: Increased drinking/urination, panting, digestive upset
+Feline Hyperthyroidism | Weight loss, increased appetite, restlessness | Methimazole Side Effects: Digestive upset, lethargy, anemia (rare)
+Canine Hypothyroidism | Weight gain, lethargy, hair loss | Thyroid Hormone Replacement Side Effects: Generally well-tolerated, overdose may cause hyperactivity
+Canine Addison's Disease | Weakness, vomiting, diarrhea, collapse | Medication Side Effects: Digestive upset, increased drinking/urination
+Canine Pancreatitis | Vomiting, abdominal pain, lethargy, loss of appetite | Medication Side Effects: Digestive upset, allergic reactions
+Feline Pancreatitis | Vomiting, abdominal pain, lethargy, loss of appetite | Medication Side Effects: Digestive upset, allergic reactions
+Canine Inflammatory Bowel Disease (IBD) | Vomiting, diarrhea, weight loss, lethargy | Medication Side Effects: Digestive upset, allergic reactions
+Feline Inflammatory Bowel Disease (IBD) | Vomiting, diarrhea, weight loss, lethargy | Medication Side Effects: Digestive upset, allergic reactions
+Canine Allergies | Itching, redness, skin infections | Antihistamines Side Effects: Mild drowsiness, dry mouth
+Feline Allergies | Itching, redness, skin infections | Antihistamines Side Effects: Mild drowsiness, dry mouth
+Canine Ear Infections | Ear scratching, head shaking, odor, discharge | Ear Medications Side Effects: Local irritation, increased ear discharge
+Feline Ear Infections | Ear scratching, head shaking, odor, discharge | Ear Medications Side Effects: Local irritation, increased ear discharge
+Canine Dental Disease | Bad breath, tartar buildup, gum inflammation | Dental Cleaning Side Effects: Anesthesia risks, oral pain (temporary)
+Feline Dental Disease | Bad breath, tartar buildup, gum inflammation | Dental Cleaning Side Effects: Anesthesia risks, oral pain (temporary)
+Canine Conjunctivitis | Eye redness, discharge, squinting | Eye Medications Side Effects: Local irritation, increased eye discharge
+Feline Conjunctivitis | Eye redness, discharge, squinting | Eye Medications Side Effects: Local irritation, increased eye discharge
+Canine Pyoderma (Skin Infections) | Skin redness, pustules, hair loss | Antibiotics Side Effects: Digestive upset, allergic reactions
+Feline Acne | Blackheads, pustules, chin swelling | Topical Treatments Side Effects: Local irritation, increased redness
+Canine Seborrhea | Greasy skin, scaling, odor | Medicated Shampoos Side Effects: Skin dryness, irritation, allergic reactions
+Feline Dermatitis | Itching, redness, hair loss | Topical Treatments Side Effects: Local irritation, increased redness
+Canine Otitis Externa (Ear Infections) | Ear scratching, head shaking, odor, discharge | Ear Medications Side Effects: Local irritation, increased ear discharge
+Feline Otitis Externa (Ear Infections) | Ear scratching, head shaking, odor, discharge | Ear Medications Side Effects: Local irritation, increased ear discharge
+Canine Kennel Nose (Nasodigital Hyperkeratosis) | Thickened, dry, crusty nose | Topical Treatments Side Effects: Local irritation, increased redness
+Canine Mast Cell Tumors | Skin lumps, redness, itching, ulceration | Surgical Removal Side Effects: Anesthesia risks, wound infection
+Feline Mammary Tumors | Mammary lumps, swelling, discharge | Surgical Removal Side Effects: Anesthesia risks, wound infection
+Canine Osteosarcoma | Bone pain, lameness, swelling | Surgical Removal Side Effects: Anesthesia risks, wound infection
+Feline Lymphoma | Lethargy, weight loss, vomiting, diarrhea | Chemotherapy Side Effects: Nausea, vomiting, decreased appetite
+Canine Hemangiosarcoma | Abdominal distension, weakness, collapse | Chemotherapy Side Effects: Nausea, vomiting, decreased appetite
+Feline Fibrosarcoma | Skin lumps, swelling, ulceration | Surgical Removal Side Effects: Anesthesia risks, wound infection
+Canine Lymphoma | Enlarged lymph nodes, lethargy, weight loss | Chemotherapy Side Effects: Nausea, vomiting, decreased appetite
+Feline Sarcoma | Skin lumps, swelling, ulceration | Surgical Removal Side Effects: Anesthesia risks, wound infection
+Canine Melanoma | Skin lumps, dark pigmentation, ulceration | Surgical Removal Side Effects: Anesthesia risks, wound infection
+Feline Squamous Cell Carcinoma | Skin lumps, ulceration, difficulty eating | Surgical Removal Side Effects: Anesthesia risks, wound infection
+Canine Bladder Stones | Urinary accidents, straining to urinate, blood in urine | Prescription Diets Side Effects: Generally well-tolerated, dietary adjustments may be needed
+Feline Bladder Stones | Urinary accidents, straining to urinate, blood in urine | Prescription Diets Side Effects: Generally well-tolerated, dietary adjustments may be needed
+Canine Kidney Disease | Increased thirst, increased urination, lethargy, vomiting | Fluid Therapy Side Effects: Fluid overload, electrolyte imbalances
+Feline Kidney Disease | Increased thirst, increased urination, lethargy, vomiting | Fluid Therapy Side Effects: Fluid overload, electrolyte imbalances
+Canine Liver Disease | Jaundice, vomiting, diarrhea, lethargy | Supportive Care Side Effects: Nausea, vomiting, loss of appetite
+Feline Liver Disease | Jaundice, vomiting, diarrhea, lethargy | Supportive Care Side Effects: Nausea, vomiting, loss of appetite
+Canine Heart Disease | Coughing, difficulty breathing, exercise intolerance | Cardiac Medications Side Effects: Digestive upset, increased thirst, lethargy
+Feline Heart Disease | Difficulty breathing, lethargy, hind limb paralysis | Cardiac Medications Side Effects: Digestive upset, increased thirst, lethargy
+Canine Dilated Cardiomyopathy | Coughing, difficulty breathing, exercise intolerance | Cardiac Medications Side Effects: Digestive upset, increased thirst, lethargy
+Feline Hypertrophic Cardiomyopathy | Difficulty breathing, lethargy, hind limb paralysis | Cardiac Medications Side Effects: Digestive upset, increased thirst, lethargy
+Canine Gastroenteritis | Vomiting, diarrhea, lethargy, loss of appetite | Medication Side Effects: Digestive upset, allergic reactions
+Feline Gastroenteritis | Vomiting, diarrhea, lethargy, loss of appetite | Medication Side Effects: Digestive upset, allergic reactions
+Canine Parainfluenza | Coughing, nasal discharge | Vaccine Side Effects: Mild coughing, nasal discharge, lethargy
+Feline Parainfluenza | Sneezing, nasal discharge | Vaccine Side Effects: Mild sneezing, nasal discharge, lethargy
+Canine Pneumonia | Coughing, difficulty breathing, nasal discharge | Antibiotics Side Effects: Digestive upset, allergic reactions
+Feline Pneumonia | Coughing, difficulty breathing, nasal discharge | Antibiotics Side Effects: Digestive upset, allergic reactions
+Canine Bordetella | Coughing, nasal discharge | Vaccine Side Effects: Mild coughing, nasal discharge, lethargy
+Feline Bordetella | Sneezing, nasal discharge | Vaccine Side Effects: Mild sneezing, nasal discharge, lethargy
+Canine Chlamydiosis | Sneezing, nasal discharge, conjunctivitis | Antibiotics Side Effects: Digestive upset, allergic reactions
+Feline Chlamydiosis | Sneezing, nasal discharge, conjunctivitis | Antibiotics Side Effects: Digestive upset, allergic reactions
+Canine Anaplasmosis | Fever, lethargy, joint pain, vomiting | Tick Preventatives Side Effects: Mild digestive upset, allergic reactions
+Feline Anaplasmosis | Fever, lethargy, joint pain, vomiting | Tick Preventatives Side Effects: Mild digestive upset, allergic reactions
+Canine Babesiosis | Fever, weakness, pale gums, jaundice | Antiprotozoal Medications Side Effects: Digestive upset, allergic reactions
+Feline Babesiosis | Fever, weakness, pale gums, jaundice | Antiprotozoal Medications Side Effects: Digestive upset, allergic reactions
+Canine Blastomycosis | Coughing, difficulty breathing, lethargy | Antifungal Medications Side Effects: Digestive upset, liver/kidney issues (with prolonged use)
+Feline Blastomycosis | Coughing, difficulty breathing, lethargy | Antifungal Medications Side Effects: Digestive upset, liver/kidney issues (with prolonged use)
+Canine Cryptococcosis | Nasal discharge, sneezing, neurological signs | Antifungal Medications Side Effects: Digestive upset, liver/kidney issues (with prolonged use)
+Feline Cryptococcosis | Nasal discharge, sneezing, neurological signs | Antifungal Medications Side Effects: Digestive upset, liver/kidney issues (with prolonged use)
+Canine Coccidioidomycosis | Coughing, difficulty breathing, lethargy | Antifungal Medications Side Effects: Digestive upset, liver/kidney issues (with prolonged use)
+Feline Coccidioidomycosis | Coughing, difficulty breathing, lethargy | Antifungal Medications Side Effects: Digestive upset, liver/kidney issues (with prolonged use)
+Canine Histoplasmosis | Coughing, difficulty breathing, lethargy | Antifungal Medications Side Effects: Digestive upset, liver/kidney issues (with prolonged use)
+Feline Histoplasmosis | Coughing, difficulty breathing, lethargy | Antifungal Medications Side Effects: Digestive upset, liver/kidney issues (with prolonged use)
+Canine Leishmaniasis | Skin lesions, weight loss, lethargy | Antiprotozoal Medications Side Effects: Digestive upset, kidney/liver issues
+Feline Leishmaniasis | Skin lesions, weight loss, lethargy | Antiprotozoal Medications Side Effects: Digestive upset, kidney/liver issues
+Canine Mycoplasma Infections | Coughing, sneezing, nasal discharge | Antibiotics Side Effects: Digestive upset, allergic reactions
+Feline Mycoplasma Infections | Sneezing, nasal discharge, conjunctivitis | Antibiotics Side Effects: Digestive upset, allergic reactions
+Canine Rocky Mountain Spotted Fever | Fever, lethargy, joint pain, vomiting | Tick Preventatives Side Effects: Mild digestive upset, allergic reactions
+Feline Rocky Mountain Spotted Fever | Fever, lethargy, joint pain, vomiting | Tick Preventatives Side Effects: Mild digestive upset, allergic reactions
+Canine Valley Fever | Coughing, difficulty breathing, lethargy | Antifungal Medications Side Effects: Digestive upset, liver/kidney issues (with prolonged use)
+Feline Valley Fever | Coughing, difficulty breathing, lethargy | Antifungal Medications Side Effects: Digestive upset, liver/kidney issues (with prolonged use)
+Canine Brucellosis | Reproductive issues, testicular swelling (in males), miscarriages (in females) | Antibiotics Side Effects: Digestive upset, allergic reactions
+Feline Bartonellosis | Fever, lethargy, swollen lymph nodes | Antibiotics Side Effects: Digestive upset, allergic reactions
