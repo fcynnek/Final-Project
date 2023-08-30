@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.fcynnek.finalproject</groupId>
-	<artifactId>petmanagement</artifactId>
+	<artifactId>PetManagement</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>Pet Management System</name>
 	<description>Final Project for Coders Campus Bootcamp</description>
