@@ -46,8 +46,10 @@ public class SeedService {
 				Medication medication = new Medication();
 				
 				String line = meds[(meds.length - 1)];
-				medication.setIllness(line.substring(0, line.indexOf("|")));
-				medication.setDescription(line.indexOf("|") + 1, )
+				String[] values = line.split("|");
+				medication.setIllness(values[0]);
+				medication.setDescription(values[1]);
+				medication.setSideEffects(values[2]);
 			}
 		}
 	}
