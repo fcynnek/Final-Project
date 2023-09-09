@@ -12,6 +12,7 @@ header {
     text-align: center;
 }
 
+/* Navigation bar styles */
 nav {
     background-color: #444;
     padding: 10px;
@@ -24,13 +25,26 @@ nav a {
     margin: 0 10px;
 }
 
+/* Main content styles */
 main {
     padding: 20px;
 }
 
+/* Footer styles */
 footer {
     background-color: #333;
     color: white;
     padding: 10px;
     text-align: center;
+}
+
+/* Centered image styles */
+.about-image-container {
+    text-align: center;
+}
+
+.about-image {
+    max-width: 100%;
+    height: auto;
+    display: inline-block;
 }

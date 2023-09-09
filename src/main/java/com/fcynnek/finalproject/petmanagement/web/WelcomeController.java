@@ -15,4 +15,14 @@ public class WelcomeController {
 	public String getLogin () {
 		return "login";
 	}
+	
+	@GetMapping("/about")
+	public String getAbout () {
+		return "about";
+	}
+	
+	@GetMapping("/vision")
+	public String getVision () {
+		return "vision";
+	}
 }
