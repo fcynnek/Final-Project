@@ -11,7 +11,7 @@ public class WelcomeController {
 		return "index";
 	}
 	
-	@GetMapping("/login")
+	@GetMapping("/register")
 	public String getLogin () {
 		return "login";
 	}
@@ -24,5 +24,10 @@ public class WelcomeController {
 	@GetMapping("/vision")
 	public String getVision () {
 		return "vision";
+	}
+	
+	@GetMapping("/dashboard")
+	public String getDashboard () {
+		return "dashboard";
 	}
 }
