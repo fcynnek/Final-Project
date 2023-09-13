@@ -44,7 +44,27 @@ footer {
 }
 
 .about-image {
-    max-width: 100%;
+    max-width: 75%;
     height: auto;
     display: inline-block;
+    text-align: center;
+}
+
+.about-image-wrapper {
+    text-align: center;
+}
+
+.vision-image-container {
+    text-align: center;
+}
+
+.vision-image {
+    max-width: 75%;
+    height: auto;
+    display: inline-block;
+    text-align: center;
+}
+
+.vision-image-wrapper {
+    text-align: center;
 }
