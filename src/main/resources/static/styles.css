@@ -3,6 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background: #ededed;
 }
 
 header {
@@ -12,9 +13,18 @@ header {
     text-align: center;
 }
 
+.cont {
+    overflow: hidden;
+    position: relative;
+    width: 900px; 
+    height: 550px; 
+    margin: 0 auto 100px;
+    background: #fff;
+}
+
 /* Navigation bar styles */
 nav {
-    background-color: #444;
+    background-color: #7a95d4 ;
     padding: 10px;
     text-align: center;
 }
