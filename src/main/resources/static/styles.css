@@ -3,7 +3,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background: #ededed;
+    background: #7a95d4;
 }
 
 header {
@@ -16,9 +16,9 @@ header {
 .cont {
     overflow: hidden;
     position: relative;
-    width: 900px; 
-    height: 550px; 
-    margin: 0 auto 100px;
+    width: 1280px; 
+    /* height: 550px;  */
+    margin: 0 auto auto;
     background: #7a95d4;
 }
 
@@ -42,7 +42,7 @@ main {
 
 /* Footer styles */
 footer {
-    background-color: #d4af7a;
+    background-color: #7a95d4;
     color: white;
     padding: 10px;
     text-align: center;
