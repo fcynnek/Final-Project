@@ -30,4 +30,14 @@ public class WelcomeController {
 	public String getDashboard () {
 		return "dashboard";
 	}
+	
+	@GetMapping("/test")
+	public String getTest () {
+		return "test";
+	}
+	
+	@GetMapping("/error")
+	public String getError () {
+		return "error";
+	}
 }
