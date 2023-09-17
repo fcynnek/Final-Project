@@ -8,7 +8,7 @@ public class WelcomeController {
 
 	@GetMapping("/")
 	public String getWelcome () {
-		return "index";
+		return "index2";
 	}
 	
 	@GetMapping("/register")
@@ -38,6 +38,6 @@ public class WelcomeController {
 	
 	@GetMapping("/error")
 	public String getError () {
-		return "error";
+		return "error2";
 	}
 }
