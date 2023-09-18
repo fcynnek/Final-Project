@@ -38,6 +38,11 @@ public class WelcomeController {
 	
 	@GetMapping("/error")
 	public String getError () {
+		return "error";
+	}
+
+	@GetMapping("/error2")
+	public String getError2 () {
 		return "error2";
 	}
 }

@@ -1,53 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="test.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>PET-ME: Homepage</title>
 </head>
-<body>
-    <!-- index.html  -->
-    <div id="hamburger" class="hamburglar is-open">
 
-        <div class="burger-icon">
-          <div class="burger-container">
-            <span class="burger-bun-top"></span>
-            <span class="burger-filling"></span>
-            <span class="burger-bun-bot"></span>
-          </div>
+<body>
+    <header>
+        <h1>PET-ME: A NEW PET HEALTH MANAGEMENT SYSTEM</h1>
+    </header>
+
+    <nav>
+        <a href="/about">About</a>
+        <a href="/vision">Vision</a>
+        <a href="/register">Login / Register</a>
+    </nav>
+    <div class="cont">
+    <main>
+        <h2>Welcome to PET-ME</h2>
+        <p>The main purpose of the application is to provide the information about the pets to the user. 
+            The application provides the details of the user’s pets, pet’s reminder, and also about the Allergy, 
+            medication detail, health care information, vet information.</p>
+    </main>
+    <!-- Bootstrap Carousel -->
+    <div id="imageCarousel" class="carousel slide" data-bs-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-bs-target="#imageCarousel" data-bs-slide-to="0" class="active"></li>
+            <li data-bs-target="#imageCarousel" data-bs-slide-to="1"></li>
+            <!-- Add more indicators as needed -->
+        </ol>
+
+        <!-- Slides -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="/../images/Carousel_StockImage3.jpg" class="d-block w-75 mx-auto" alt="Image 1">
+            </div>
+            <div class="carousel-item">
+                <img src="/../images/Carousel_StockImage4.jpg" class="d-block w-75 mx-auto" alt="Image 2">
+            </div>
+            <!-- Add more slides as needed -->
         </div>
-        
-        <!-- svg ring containter -->
-        <div class="burger-ring">
-          <svg class="svg-ring">
-            <path class="path" fill="none" stroke="#fff"
-             stroke-miterlimit="10" stroke-width="4" d="M 34
-              2 C 16.3 2 2 16.3 2 34 s 14.3 32 32 32 s 32 -14.3
-               32 -32 S 51.7 2 34 2" />
-          </svg>
-        </div>
-        <!-- the masked path that animates the fill to the ring -->
-        
-        <svg width="0" height="0">
-           <mask id="mask">
-        <path xmlns="http://www.w3.org/2000/svg" fill="none" 
-        stroke="#ff0000" stroke-miterlimit="10" stroke-width="4"
-         d="M 34 2 c 11.6 0 21.8 6.2 27.4 15.5 c 2.9 4.8 5 16.5
-          -9.4 16.5 h -4" />
-           </mask>
-         </svg>
-        <div class="path-burger">
-          <div class="animate-path">
-            <div class="path-rotation"></div>
-          </div>
-        </div>
-          
-      </div>
-    
-    <h4>AndiiCodes</h4>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-        <script src="test.js"></script>
+
+        <!-- Controls -->
+        <a class="carousel-control-prev" href="#imageCarousel" role="button" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#imageCarousel" role="button" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </a>
+    </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 Kenny Cheng-Fung. All rights reserved.</p>
+    </footer>
 </body>
+
 </html>
