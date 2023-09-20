@@ -45,4 +45,6 @@ public class WelcomeController {
 	public String getError2 () {
 		return "error2";
 	}
+
+	// https://sweetalert2.github.io/#examples
 }
