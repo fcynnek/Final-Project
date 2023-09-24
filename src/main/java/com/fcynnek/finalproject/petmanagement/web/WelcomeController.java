@@ -21,10 +21,10 @@ public class WelcomeController {
 		return "about";
 	}
 	
-	@GetMapping("/vision")
-	public String getVision () {
-		return "vision";
-	}
+//	@GetMapping("/vision")
+//	public String getVision () {
+//		return "vision";
+//	}
 	
 	@GetMapping("/dashboard")
 	public String getDashboard () {
