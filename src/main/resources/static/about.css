@@ -48,15 +48,27 @@ body {
   background-color: rgba(0, 0, 0, 0.95);
 }
 
-#marketing {
-  background-image: url(https://images.unsplash.com/photo-1522205987242-8e22924ab42a?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=c0f679eb8f15705d46ea90008f39642b&auto=format&fit=crop&w=500&q=60);
+#about {
+  background-image: url("/images/About_StockImage1.jpeg");
 }
 
 
-#technology {
-  background-image: url(https://images.unsplash.com/photo-1530893609608-32a9af3aa95c?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=fe6b92f88f55824e64a1bae15f5bf52a&auto=format&fit=crop&w=500&q=60);
+#mission {
+  background-image: url("/images/About_StockImage2.jpeg");
 }
 
-#advertising {
-  background-image: url(https://images.unsplash.com/photo-1517799094725-e3453440724e?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=353f3663a9fae75773d2942aeb37c2c8&auto=format&fit=crop&w=500&q=60);
+#commitment {
+  background-image: url("/images/About_StockImage3.jpeg");
+}
+
+#benefits {
+  background-image: url("/images/About_StockImage4.jpeg");
+}
+
+#future {
+  background-image: url("/images/About_StockImage5.jpeg");
+}
+
+#contact {
+  background-image: url("/images/About_StockImage6.jpeg");
 }
