@@ -20,7 +20,10 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import com.fcynnek.finalproject.petmanagement.domain.Role;
 import com.fcynnek.finalproject.petmanagement.service.UserService;
+
+
 @Configuration
 @EnableWebSecurity
 @EnableMethodSecurity
@@ -38,16 +41,30 @@ public class SecurityConfig {
         http.csrf(AbstractHttpConfigurer::disable)
 //        .authorizeHttpRequests(request -> request.requestMatchers("**").permitAll().anyRequest().authenticated())
                 .authorizeHttpRequests(request ->
-                                request.requestMatchers("/api/v1/auth/**").permitAll()
+                                request.requestMatchers("/").permitAll()
                                         .requestMatchers("/admin/**").hasRole(Role.ADMIN.name())
                                         .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
-                                        .requestMatchers("/products").authenticated()
+                                        .requestMatchers("/dashboard").authenticated()
                                         .anyRequest().permitAll()
                                         	/*
                                         	 * remove the h2 db from line 42
                                         	 * then change application.properties to mysql
                                         	 * then change line 44 to .authenticated() or hasRole()
                                         	 */
+//                .requestMatchers()
+//                .antMatchers("/api/v1/auth/**")
+//                .antMatchers("/admin/**")
+//                .antMatchers("/h2-console/**")
+//                .antMatchers("/dashboard")
+//                .and()
+//                .authorizeRequests()
+//                    .antMatchers("/api/v1/auth/**").permitAll()
+//                    .antMatchers("/admin/**").hasRole(Role.ADMIN.name())
+//                    .antMatchers("/h2-console/**").permitAll()
+//                    .antMatchers("/dashboard").authenticated()
+//                    .anyRequest().permitAll()
+
+                    
                         )
                 .headers(header -> header.frameOptions(frameOption -> frameOption.disable()))
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
