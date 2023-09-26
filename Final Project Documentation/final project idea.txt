@@ -1,0 +1,14 @@
+final project idea resources
+
+https://github.com/public-apis/public-apis#animals
+
+Dataset:
+https://library.up.ac.za/c.php?g=1085098&p=7950806
+
+search key: animal disease open source
+https://data.apps.fao.org/catalog/dataset/animal-diseases
+https://www.kaggle.com/datasets/maryam18/animal-disease-classification
+https://www.kaggle.com/datasets/cdc/nndss-rabies-animal-to-rubella-congenital
+
+info:
+https://www.woah.org/en/what-we-do/animal-health-and-welfare/disease-data-collection/
