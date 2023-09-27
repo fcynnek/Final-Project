@@ -11,17 +11,18 @@ import com.fcynnek.finalproject.petmanagement.dao.response.JwtAuthenticationResp
 import com.fcynnek.finalproject.petmanagement.domain.Authority;
 import com.fcynnek.finalproject.petmanagement.domain.Role;
 import com.fcynnek.finalproject.petmanagement.domain.User;
+import com.fcynnek.finalproject.petmanagement.repository.UserRepository;
 import com.fcynnek.finalproject.petmanagement.service.RefreshTokenService;
 
 @Service
 public class AuthenticationServiceImpl implements AuthenticationService {
-    private final com.fcynnek.finalproject.petmanagement.repository.UserRepository userRepository;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
-    private final com.fcynnek.finalproject.petmanagement.service.RefreshTokenService refreshTokenService;
+    private final RefreshTokenService refreshTokenService;
     
-    public AuthenticationServiceImpl(com.fcynnek.finalproject.petmanagement.repository.UserRepository userRepository, PasswordEncoder passwordEncoder,
+    public AuthenticationServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder,
             JwtService jwtService, AuthenticationManager authenticationManager, RefreshTokenService refreshTokenService) {
         super();
         this.userRepository = userRepository;

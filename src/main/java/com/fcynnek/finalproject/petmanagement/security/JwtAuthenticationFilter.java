@@ -12,6 +12,7 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.fcynnek.finalproject.petmanagement.service.UserService;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -21,9 +22,9 @@ import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     private final JwtService jwtService;
-    private final com.fcynnek.finalproject.petmanagement.service.UserService userService;
+    private final UserService userService;
     
-    public JwtAuthenticationFilter(JwtService jwtService, com.fcynnek.finalproject.petmanagement.service.UserService userService) {
+    public JwtAuthenticationFilter(JwtService jwtService, UserService userService) {
         super();
         this.jwtService = jwtService;
         this.userService = userService;
