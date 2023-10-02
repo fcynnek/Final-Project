@@ -43,7 +43,7 @@ public class SecurityConfig {
                 .authorizeHttpRequests(request ->
                                 request.requestMatchers("/").permitAll()
 //                                        .requestMatchers("/admin/**").hasRole(Role.ADMIN.name())
-                                        .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
+//                                        .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
                                         .requestMatchers("/dashboard").authenticated()
                                         .anyRequest().permitAll()
                                         	/*
