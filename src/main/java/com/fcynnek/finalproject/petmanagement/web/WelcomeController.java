@@ -6,15 +6,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class WelcomeController {
 
-	@GetMapping("/")
+	@GetMapping("/home")
 	public String getWelcome () {
 		return "index";
 	}
 	
-	@GetMapping("/register")
-	public String getLogin () {
-		return "login";
-	}
+//	@GetMapping("/register")
+//	public String getLogin () {
+//		return "login";
+//	}
 	
 	@GetMapping("/about")
 	public String getAbout () {
