@@ -37,6 +37,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.servlet.util.matcher.MvcRequestMatcher;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
@@ -63,21 +64,18 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf(AbstractHttpConfigurer::disable)
 //        .authorizeHttpRequests(request -> request.requestMatchers("**").permitAll().anyRequest().authenticated())
-//          .authorizeHttpRequests(request -> request
-        		  .authorizeHttpRequests(authorize -> authorize
+          .authorizeHttpRequests(request -> request
+
 //                                		.requestMatchers("/api/v1/auth/**").permitAll()
-                                        .requestMatchers("/admin/**").hasRole(Role.ADMIN.name())
-                                        .requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
-                                        .requestMatchers("/home").permitAll()
-                                        .requestMatchers("/about").permitAll()
-                                        .requestMatchers("/register").permitAll()
-                                        .requestMatchers("/products").authenticated()
-                                        .requestMatchers("/success").authenticated()
-//                                        .antMatchers("/admin/**").hasRole(Role.ADMIN.name())
-//                                        .mvcMatchers("/h2-console/**").permitAll()
-//                                        .mvcMatchers("/home", "/about", "/register").permitAll()
-//                                        .antMatchers("/products", "/success").authenticated()
-                                        .anyRequest().permitAll()
+        		  	.requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
+	                .requestMatchers(AntPathRequestMatcher.antMatcher("/admin/**")).hasRole(Role.ADMIN.name())
+	                .requestMatchers(AntPathRequestMatcher.antMatcher("/home")).permitAll()
+	                .requestMatchers(AntPathRequestMatcher.antMatcher("/about")).permitAll()
+	                .requestMatchers(AntPathRequestMatcher.antMatcher("/register")).permitAll()
+	                .requestMatchers(AntPathRequestMatcher.antMatcher("/products")).authenticated()
+	                .requestMatchers(AntPathRequestMatcher.antMatcher("/success")).authenticated()
+
+	                .anyRequest().permitAll()
                         )
                 .headers(header -> header.frameOptions(frameOption -> frameOption.disable()))
 //                .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
