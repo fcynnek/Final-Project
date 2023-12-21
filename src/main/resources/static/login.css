@@ -50,6 +50,7 @@
     background: #fff;
     transition: transform 1.2s ease-in-out;
   }
+
   .cont.s--signup .sub-cont {
     transform: translate3d(-640px, 0, 0);
   }
@@ -75,6 +76,7 @@
     height: 100%;
     padding-top: 360px;
   }
+
   .img:before {
     content: "";
     position: absolute;
@@ -86,6 +88,7 @@
     background-size: cover;
     transition: transform 1.2s ease-in-out;
   }
+
   .img:after {
     content: "";
     position: absolute;
@@ -95,9 +98,11 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
   }
+
   .cont.s--signup .img:before {
     transform: translate3d(640px, 0, 0);
   }
+
   .img__text {
     z-index: 2;
     position: absolute;
@@ -109,23 +114,29 @@
     color: #fff;
     transition: transform 1.2s ease-in-out;
   }
+
   .img__text h2 {
     margin-bottom: 10px;
     font-weight: normal;
   }
+
   .img__text p {
     font-size: 14px;
     line-height: 1.5;
   }
+
   .cont.s--signup .img__text.m--up {
     transform: translateX(520px);
   }
+
   .img__text.m--in {
     transform: translateX(-520px);
   }
+
   .cont.s--signup .img__text.m--in {
     transform: translateX(0);
   }
+
   .img__btn {
     overflow: hidden;
     z-index: 2;
@@ -139,6 +150,7 @@
     font-size: 15px;
     cursor: pointer;
   }
+
   .img__btn:after {
     content: "";
     z-index: 2;
@@ -150,6 +162,7 @@
     border: 2px solid #fff;
     border-radius: 30px;
   }
+
   .img__btn span {
     position: absolute;
     left: 0;
@@ -161,12 +174,15 @@
     height: 100%;
     transition: transform 1.2s;
   }
+
   .img__btn span.m--in {
     transform: translateY(-72px);
   }
+
   .cont.s--signup .img__btn span.m--in {
     transform: translateY(0);
   }
+
   .cont.s--signup .img__btn span.m--up {
     transform: translateY(72px);
   }
@@ -183,6 +199,7 @@
     margin: 25px auto 0;
     text-align: center;
   }
+
   label span {
     font-size: 12px;
     color: #cfcfcf;
@@ -217,6 +234,7 @@
     border: 2px solid #d3dae9;
     color: #8fa1c7;
   }
+
   .home-btn span {
     font-weight: bold;
     color: #455a81;
@@ -225,6 +243,7 @@
   .sign-in {
     transition-timing-function: ease-out;
   }
+
   .cont.s--signup .sign-in {
     transition-timing-function: ease-in-out;
     transition-duration: 1.2s;
@@ -234,6 +253,7 @@
   .sign-up {
     transform: translate3d(-900px, 0, 0);
   }
+  
   .cont.s--signup .sign-up {
     transform: translate3d(0, 0, 0);
   }
