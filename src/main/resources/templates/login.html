@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -8,29 +8,46 @@
   <title>PET-ME: Login</title>
   <link rel="stylesheet" href="login.css">
 
+  <script src="https://kit.fontawesome.com/5e7463fc0b.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-  <p class="tip">PET-ME: A NEW PET HEALTH MANAGEMENT SYSTEM</p>
+  <nav class="navbar">
+    <div class="logo">
+      <i class="fa-solid fa-shield-dog"></i>
+      <a href="/"> PET-ME </a>
+      <i class="fa-solid fa-shield-cat"></i>
+    </div>
+    <div class="menu">
+      <a href="/home">Home</a>
+      <a href="/about">About</a>
+      <a href="/vision">Vision</a>
+      <a href="#">contact</a>
+      <a href="#">blogs</a>
+    </div>
+
+
+    <div class="menu-btn">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </nav>
 
   <!-- Login form  -->
   <div class="cont">
     <div class="form sign-in">
       <h2>Welcome back,</h2>
-      <form th:object="${user}" th:action="@{/signin}" method="post" enctype="application/x-www-form-urlencoded" id="loginForm">
+      <form th:object="${user}" th:action="@{/signin}" method="post" enctype="application/x-www-form-urlencoded"
+        id="loginForm">
 
         <label for="email"><b>Email</b></label>
         <input type="text" th:field="*{email}" name="email" class="required" required>
-    
+
         <label for="password"><b>Password</b></label>
         <input type="password" th:field="*{password}" name="password" class="required" required>
-    
-      </label>
-      <p class="forgot-pass">Forgot password?</p>
-        <button type="button" class="submit">Sign In</button>
+
+        <p class="forgot-pass">Forgot password?</p>
+        <button type="submit" class="submit">Sign In</button>
       </form>
-      
-      <a href="/"><button type="button" class="home-btn">Return <span>Home</span></button></a>
     </div>
 
     <!-- Slider  -->
@@ -56,32 +73,41 @@
         <form th:object="${user}" th:action="@{/register}" method="post" enctype="application/x-www-form-urlencoded"
           id="registrationForm">
           <label for="firstName"><b>First Name</b></label>
-          <input type="text" th:field="*{firstName}" name="firstName" class="required"
-            required>
+          <input type="text" th:field="*{firstName}" name="firstName" class="required" required>
 
           <label for="lastName"><b>Last Name</b></label>
-          <input type="text" th:field="*{lastName}" name="lastName" class="required"
-            required>
+          <input type="text" th:field="*{lastName}" name="lastName" class="required" required>
 
           <label for="email"><b>Email</b></label>
-          <input type="text" th:field="*{email}" name="email" class="required" required>
+          <input type="text" th:field="*{email}" name="registrationEmail" class="required" required>
 
           <label for="password"><b>Password</b></label>
-          <input type="password" th:field="*{password}" name="password" id="password"
-            class="required" required>
+          <input type="password" th:field="*{password}" name="registrationPassword" id="registrationPassword" class="required" required>
 
           <label for="confirmPassword"><b>Confirm Password</b></label>
-          <input type="password" name="confirmPassword" id="confirmPassword"
-            class="required" required>
+          <input type="password" name="confirmPassword" id="confirmPassword" class="required" required>
           <div id="passwordMatchMessage" style="color: red; text-align: center;"></div>
           <br>
-          <button type="submit" class="home-btn">REGISTER</button>
+          <button type="submit" class="submit">REGISTER</button>
         </form>
       </div>
+      <script src="login.js"></script>
     </div>
   </div>
 
-  <script src="login.js"></script>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="logo">
+        <i class="fa-solid fa-shield-dog"></i>
+        <div class="copyright">
+          &copy; Kenny Cheng-Fung. All rights reserved.
+        </div>
+        <i class="fa-solid fa-shield-cat"></i>
+      </div>
+
+    </div>
+  </footer>
 </body>
 
 </html>

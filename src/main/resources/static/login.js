@@ -3,11 +3,14 @@ document.querySelector('.img__btn').addEventListener('click', function () {
 });
 
 document.getElementById('registrationForm').addEventListener('submit', function (event) {
-  var password = document.getElementById('password').value;
+  var registrationPassword = document.getElementById('registrationPassword').value;
   var confirmPassword = document.getElementById('confirmPassword').value;
   var passwordMatchMessage = document.getElementById('passwordMatchMessage');
 
-  if (password !== confirmPassword) {
+  console.log('registrationPassword:', password);
+  console.log('Confirm Password:', confirmPassword);
+
+  if (registrationPassword !== confirmPassword) {
     passwordMatchMessage.textContent = 'Passwords do not match!';
     // alert('Passwords do not match!');
     event.preventDefault(); // Prevent form submission
