@@ -25,6 +25,9 @@ section {
   height: 100%;
   width: 100%;
   position: relative;
+  background-image: url('/images/Home_StockImage.jpeg');
+  background-size: cover; 
+  background-position: center;
 }
 
 .hero:after {
@@ -53,7 +56,7 @@ section {
   z-index: 3;
 }
 
-/* Navbar Style */
+/* Navbar Styling */
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
 
 *,
@@ -160,3 +163,4 @@ button {
     display: block;
   }
 }
+
