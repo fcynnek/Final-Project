@@ -164,3 +164,57 @@ button {
   }
 }
 
+.menu.show-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 90px; /* Adjust as needed */
+  right: 20px; /* Adjust as needed */
+  background-color: hsl(0, 0%, 10%);
+  z-index: 1;
+}
+
+.menu.show-menu a {
+  color: white;
+  padding: 8px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.menu.show-menu a:hover {
+  color: #0aa5ff;
+}
+
+
+/* Footer Styling */
+.footer {
+  background-color: hsl(0, 0%, 10%);
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-top: auto;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer .logo {
+  display: flex;
+  gap: 12px;
+}
+
+.footer .logo i {
+  color: #0aa5ff;
+  font-size: 25px;
+}
+
+.footer .copyright {
+  font-size: 14px;
+  margin-top: 10px;
+}
