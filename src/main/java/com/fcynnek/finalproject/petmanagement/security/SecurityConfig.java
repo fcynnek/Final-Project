@@ -72,6 +72,7 @@ public class SecurityConfig {
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/images/**")).permitAll()
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/home")).permitAll()
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/about")).permitAll()
+	                .requestMatchers(AntPathRequestMatcher.antMatcher("/vision")).permitAll()
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/register")).permitAll()
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/authenticated")).authenticated()
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/success")).authenticated()

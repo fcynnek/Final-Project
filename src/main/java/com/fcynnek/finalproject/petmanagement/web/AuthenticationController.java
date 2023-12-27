@@ -66,7 +66,7 @@ public class AuthenticationController {
 		return "user_actions";
 	}
     
-
+    
     @PostMapping("/signin")
     public ResponseEntity<JwtAuthenticationResponse> signin(@RequestBody SignInRequest request, @RequestBody User user) {
     	Optional<User> existingUser = userService.findUserByEmail(user.getEmail());
