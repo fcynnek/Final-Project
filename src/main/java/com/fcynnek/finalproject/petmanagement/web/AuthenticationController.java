@@ -58,6 +58,14 @@ public class AuthenticationController {
     	return "login";
     }
     
+    @GetMapping("/authenticated")
+	public String getUserActions (Model model, User user) {
+    	Optional<User> authenticatedUser = userService.findUserByEmail(user.getEmail());
+    	model.addAttribute("user", authenticatedUser);
+    	
+		return "user_actions";
+	}
+    
 
     @PostMapping("/signin")
     public ResponseEntity<JwtAuthenticationResponse> signin(@RequestBody SignInRequest request, @RequestBody User user) {

@@ -73,7 +73,7 @@ public class SecurityConfig {
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/home")).permitAll()
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/about")).permitAll()
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/register")).permitAll()
-	                
+	                .requestMatchers(AntPathRequestMatcher.antMatcher("/authenticated")).authenticated()
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/success")).authenticated()
 
 	                .anyRequest().permitAll()
@@ -108,7 +108,7 @@ public class SecurityConfig {
 //					    	
 					    	response.addCookie(accessTokenCookie);
 							response.addCookie(refreshTokenCookie);
-					    	response.sendRedirect("/success");
+					    	response.sendRedirect("/authenticated");
 						}
 					})
 		        	.failureHandler(new AuthenticationFailureHandler() {

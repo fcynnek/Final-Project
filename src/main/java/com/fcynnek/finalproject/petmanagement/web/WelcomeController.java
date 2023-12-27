@@ -11,11 +11,6 @@ public class WelcomeController {
 		return "index";
 	}
 	
-//	@GetMapping("/register")
-//	public String getLogin () {
-//		return "login";
-//	}
-	
 	@GetMapping("/about")
 	public String getAbout () {
 		return "about";
