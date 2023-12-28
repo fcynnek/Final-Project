@@ -1,4 +1,3 @@
-/* index.css  */
 * {
   box-sizing: border-box;
 }
@@ -48,29 +47,33 @@ body {
   background-color: rgba(0, 0, 0, 0.95);
 }
 
-#about {
-  background-image: url("/images/About_StockImage1.jpeg");
+#profile {
+  background-image: url("/images/About_StockImage.jpeg");
 }
 
 
-#mission {
-  background-image: url("/images/About_StockImage2.jpeg");
+#pet {
+  background-image: url("/images/Mission_StockImage.jpeg");
 }
+
 
 #commitment {
   background-image: url("/images/About_StockImage3.jpeg");
 }
 
+
 #benefits {
-  background-image: url("/images/About_StockImage4.jpeg");
+  background-image: url("/images/Benefits_StockImage.jpeg");
 }
+
 
 #future {
   background-image: url("/images/About_StockImage5.jpeg");
 }
 
+
 #contact {
-  background-image: url("/images/About_StockImage6.jpeg");
+  background-image: url("/images/Contact_StockImage.jpeg");
 }
 
 /* Navbar Styling */
