@@ -16,10 +16,20 @@ public class WelcomeController {
 		return "about";
 	}
 	
-//	@GetMapping("/vision")
-//	public String getVision () {
-//		return "vision";
-//	}
+	@GetMapping("/mission")
+	public String getMission () {
+		return "mission";
+	}
+	
+	@GetMapping("/benefits")
+	public String getBenefits () {
+		return "benefits";
+	}
+	
+	@GetMapping("/contact")
+	public String getContact () {
+		return "contact";
+	}
 	
 	@GetMapping("/dashboard")
 	public String getDashboard () {
