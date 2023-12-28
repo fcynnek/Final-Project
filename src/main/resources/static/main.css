@@ -175,8 +175,8 @@ button {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 90px; /* Adjust as needed */
-  right: 20px; /* Adjust as needed */
+  top: 90px; 
+  right: 20px; 
   background-color: hsl(0, 0%, 10%);
   z-index: 1;
 }
