@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;800&display=swap');
 
 body {
-  background:#ddd;
-  font-family:"Raleway";
+  /* background:#ddd; */
+  font-family:"Ubuntu";
+  background: url("/images/Dashboard_StockImage.jpg") center/cover no-repeat fixed;
 }
 .tabs {
   position:absolute;

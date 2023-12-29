@@ -6,104 +6,54 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PET-ME: Admin Dashboard</title>
-  <link rel="stylesheet" href="user_dashboard.css">
-
-  <script src="https://kit.fontawesome.com/5e7463fc0b.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="admin_dashboard.css">
 </head>
 
 <body>
-  <!-- Logo Navbar -->
-  <nav class="navbar">
-    <div class="logo">
-      <i class="fa-solid fa-shield-dog"></i>
-      <span>Welcome back to PET-ME:
-        <div th:if="${user.isPresent()}">
-          <span th:text="${user.get().email}"></span>
-        </div>
-      </span>
-      <i class="fa-solid fa-shield-cat"></i>
-    </div>
-    <div class="menu">
-      <a href="/home">Home</a>
-      <a href="/about">About</a>
-      <a href="/vision">Vision</a>
-      <a href="#">contact</a>
-      <a href="#">blogs</a>
-    </div>
-    <button class="log-in" id="loginButton"><a href="">Button</a></button>
-
-    <div class="menu-btn">
-      <i class="fa-solid fa-bars"></i>
-    </div>
-  </nav>
-
-  <div class="container">
-    <div id="profile" class="section">
-      <div class="content">
-        <h1>Profile</h1>
-        <p>Here you can edit your profile information</p>
+  <div class="tabs">
+    <div class="tab-header">
+      <div class="active">
+        <i class="fa fa-code"></i> Code
       </div>
-      <div class="overlay"></div>
-    </div>
-
-    <div id="pet" class="section">
-      <div class="content">
-        <h1>Your Pet's Profile</h1>
-        <p>Here you can update your pet's profile</p>
+      <div>
+        <i class="fa fa-pencil-square-o"></i> About
       </div>
-      <div class="overlay"></div>
-    </div>
-
-    <div id="medication" class="section">
-      <div class="content">
-        <h1><a href="/medication">Your Pet's Medications</a></h1>
-        <p>Here you can manage and learn more about your pet's medications</p>
+      <div>
+        <i class="fa fa-bar-chart"></i> Services
       </div>
-      <div class="overlay"></div>
+      <div>
+        <i class="fa fa-envelope-o"></i> Contact
+      </div>
+    </div>
+    <div class="tab-indicator"></div>
+    <div class="tab-body">
+      <div class="active">
+        <h2>This is code section</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error neque saepe commodi blanditiis fugiat nisi
+          aliquam ratione porro quibusdam in, eveniet accusantium cumque. Dolore officia reprehenderit perferendis quod
+          libero omnis.</p>
+      </div>
+      <div>
+        <h2>This is about section</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi minus exercitationem vero, id autem fugit
+          assumenda a molestiae numquam at, quisquam cumque. Labore eligendi perspiciatis quia incidunt quaerat ut
+          ducimus?</p>
+      </div>
+      <div>
+        <h2>This is services section</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi minus exercitationem vero, id autem fugit
+          assumenda a molestiae numquam at, quisquam cumque. Labore eligendi perspiciatis quia incidunt quaerat ut
+          ducimus?</p>
+      </div>
+      <div>
+        <h2>This is contact section</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi minus exercitationem vero, id autem fugit
+          assumenda a molestiae numquam at, quisquam cumque. Labore eligendi perspiciatis quia incidunt quaerat ut
+          ducimus?</p>
+      </div>
     </div>
   </div>
-
-  <div class="container">
-    <div id="benefits" class="section">
-      <div class="content">
-        <h1>Benefits of using PET-ME</h1>
-        <p>content here</p>
-      </div>
-      <div class="overlay"></div>
-    </div>
-    
-    <div id="future" class="section">
-      <div class="content">
-        <h1>Future Plans</h1>
-      </div>
-      <div class="overlay"></div>
-    </div>
-    <div id="contact" class="section">
-      <div class="content">
-        <h1>Contact Us</h1>
-        <p>Questions or suggestions? We're here for you! Reach out to us at <a href="mailto:kchengfung@gmail.com">this
-            email</a> and let's collaborate to ensure the best for your beloved pets.</p>
-        <p>Thank you for choosing Pet-Me as your trusted pet care partner!</p>
-      </div>
-      <div class="overlay"></div>
-    </div>
-  </div>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div class="logo">
-        <i class="fa-solid fa-shield-dog"></i>
-        <div class="copyright">
-          &copy; Kenny Cheng-Fung. All rights reserved.
-        </div>
-        <i class="fa-solid fa-shield-cat"></i>
-      </div>
-
-    </div>
-  </footer>
-
-  <script src="button_switch.js"></script>
+  <script src="admin_dashboard.js"></script>
 </body>
 
 </html>
