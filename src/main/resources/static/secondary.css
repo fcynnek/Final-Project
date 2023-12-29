@@ -32,16 +32,27 @@ body {
   font-family: 'Ubuntu', sans-serif;
 }
 
+.medication-body {
+  margin: 0;
+  padding: 0;
+  background: url("/images/Medication_StockImage.jpeg") center/cover no-repeat fixed;
+  font-family: 'Ubuntu', sans-serif;
+}
+
 .content {
   text-align: center;
   padding: 50px;
 }
 
 .content-box {
-  background-color: rgba(245, 245, 245, 0.8); /* Semi-translucent light background color */
-  padding: 20px; /* Adjust the padding as needed */
-  border-radius: 10px; /* Add rounded corners if desired */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
+  background-color: rgba(245, 245, 245, 0.8);
+  /* Semi-translucent light background color */
+  padding: 20px;
+  /* Adjust the padding as needed */
+  border-radius: 10px;
+  /* Add rounded corners if desired */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Optional: Add a subtle box shadow */
 }
 
 .content h1 {
@@ -56,6 +67,36 @@ body {
 
 .content p {
   font-size: 18px;
+}
+
+/* Need to enable mail server for this */
+.contact-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-form label {
+  margin-bottom: 8px;
+}
+
+.contact-form input,
+textarea {
+    margin-bottom: 16px;
+    padding: 8px;
+}
+
+.contact-form button {
+  padding: 10px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 /* Wrapper for the page content (excluding footer) */
@@ -156,6 +197,21 @@ button {
   color: white;
 }
 
+.log-out {
+  font-weight: 500;
+  padding: 12px 22px;
+  background-color: transparent;
+  color: #999999;
+  border-radius: 10px;
+  border: 2px solid #0aa5ff;
+  transition: 0.2s;
+}
+
+.log-out:hover {
+  background-color: #0aa5ff;
+  color: white;
+}
+
 .menu-btn {
   font-size: 32px;
   color: white;
@@ -177,8 +233,8 @@ button {
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 90px; 
-  right: 20px; 
+  top: 90px;
+  right: 20px;
   background-color: hsl(0, 0%, 10%);
   z-index: 1;
 }
