@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PET-ME: User Actions</title>
-  <link rel="stylesheet" href="user_actions.css">
+  <title>PET-ME: User Dashboard</title>
+  <link rel="stylesheet" href="user_dashboard.css">
 
   <script src="https://kit.fontawesome.com/5e7463fc0b.js" crossorigin="anonymous"></script>
 </head>
@@ -16,21 +16,17 @@
   <nav class="navbar">
     <div class="logo">
       <i class="fa-solid fa-shield-dog"></i>
-      <span>Welcome back to PET-ME:
-        <div th:if="${user.isPresent()}">
-          <span th:text="${user.get().email}"></span>
-        </div>
-      </span>
+      <a href="/"> PET-ME </a>
       <i class="fa-solid fa-shield-cat"></i>
     </div>
     <div class="menu">
       <a href="/home">Home</a>
       <a href="/about">About</a>
       <a href="/vision">Vision</a>
-      <a href="#">contact</a>
+      <a href="/contact">Contact</a>
       <a href="#">blogs</a>
     </div>
-    <button class="log-out"><a href="/logout">Logout</a></button>
+    <button class="log-in" id="loginButton"><a href="">Button</a></button>
 
     <div class="menu-btn">
       <i class="fa-solid fa-bars"></i>
@@ -41,6 +37,9 @@
     <div id="profile" class="section">
       <div class="content">
         <h1>Profile</h1>
+        <div th:if="${user.isPresent()}">
+          <span th:text="${user.get().email}"></span>
+        </div>
         <p>Here you can edit your profile information</p>
       </div>
       <div class="overlay"></div>
@@ -54,9 +53,10 @@
       <div class="overlay"></div>
     </div>
 
-    <div id="commitment" class="section">
+    <div id="medication" class="section">
       <div class="content">
-        <h1>Our Commitment</h1>
+        <h1><a href="/medication">Your Pet's Medications</a></h1>
+        <p>Here you can manage and learn more about your pet's medications</p>
       </div>
       <div class="overlay"></div>
     </div>
@@ -70,13 +70,14 @@
       </div>
       <div class="overlay"></div>
     </div>
-    
+
     <div id="future" class="section">
       <div class="content">
         <h1>Future Plans</h1>
       </div>
       <div class="overlay"></div>
     </div>
+
     <div id="contact" class="section">
       <div class="content">
         <h1>Contact Us</h1>
@@ -101,6 +102,8 @@
 
     </div>
   </footer>
+
+  <script src="button_switch.js"></script>
 </body>
 
 </html>
