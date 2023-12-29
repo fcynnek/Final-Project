@@ -7,9 +7,11 @@ function getCookie(name) {
 function checkAuthenticationStatus() {
   const accessToken = getCookie('accessToken');
   const refreshToken = getCookie('refreshToken');
+  const isAuthenticated = accessToken && refreshToken;
 
   if (accessToken && refreshToken) {
     updateLoginButton(true);
+    updateDashboardLink(true);
   } else {
     updateLoginButton(false);
   }
@@ -24,6 +26,15 @@ function updateLoginButton(isAuthenticated) {
   } else {
     loginButton.innerText = 'Login | Register';
     loginButton.href = '/register';
+  }
+}
+
+function updateDashboardLink(isAuthenticated) {
+  const dashboardLink = document.getElementById('dashboardLink');
+
+  if (isAuthenticated) {
+    dashboardLink.innerText = 'Dashboard';
+    dashboardLink.href = '/authenticated';
   }
 }
 
@@ -43,6 +54,18 @@ document.addEventListener('DOMContentLoaded', function () {
       window.location.href = '/logout';
     } else {
       window.location.href = '/register';
+    }
+  });
+
+  // Add click event listener to the dashboardLink
+  const dashboardLink = document.getElementById('dashboardLink');
+  dashboardLink.addEventListener('click', function (event) {
+    // Prevent the default behavior of the link
+    event.preventDefault();
+
+    const isAuthenticated = dashboardLink.innerText === 'Dashboard';
+    if (isAuthenticated) {
+      window.location.href = '/authenticated';
     }
   });
 });

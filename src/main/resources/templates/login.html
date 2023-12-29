@@ -21,10 +21,10 @@
     <div class="menu">
       <a href="/home">Home</a>
       <a href="/about">About</a>
-      <a href="/mission">Mission</a>
       <a href="/benefits">Benefits</a>
+      <a href="/mission">Mission</a>
       <a href="/contact">Contact</a>
-      <a href="#">blogs</a>
+      <!-- <a href="" id="dashboardLink"></a> -->
     </div>
 
     <div class="menu-btn">
@@ -82,7 +82,8 @@
           <input type="text" th:field="*{email}" name="registrationEmail" class="required" required>
 
           <label for="password"><b>Password</b></label>
-          <input type="password" th:field="*{password}" name="registrationPassword" id="registrationPassword" class="required" required>
+          <input type="password" th:field="*{password}" name="registrationPassword" id="registrationPassword"
+            class="required" required>
 
           <label for="confirmPassword"><b>Confirm Password</b></label>
           <input type="password" name="confirmPassword" id="confirmPassword" class="required" required>
