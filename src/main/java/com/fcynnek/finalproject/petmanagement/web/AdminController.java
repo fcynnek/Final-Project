@@ -73,7 +73,7 @@ public class AdminController {
     public String getDashboard (ModelMap model) {
     	List<User> users = userService.findAll();
     	model.addAttribute("userList", users);
-    	return "dashboard";
+    	return "admin_dashboard";
     }
     
     @PostMapping("/makeAdmin")
