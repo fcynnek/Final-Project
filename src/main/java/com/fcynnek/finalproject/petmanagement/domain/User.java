@@ -27,10 +27,6 @@ public class User implements UserDetails {
     @JsonIgnoreProperties("user")
     private List<Authority> authorities = new ArrayList<>();
     
-    /*
-     * enable if you want to have the confirm password to be checked in the back end + their corresponding getters and setters
-     * private String confirmPassword;
-     */
     
     
     @Override
