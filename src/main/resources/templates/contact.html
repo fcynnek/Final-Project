@@ -16,7 +16,7 @@
         <header class="navbar">
             <div class="logo">
                 <i class="fa-solid fa-shield-dog"></i>
-                <a href="/">  PET-ME  </a>
+                <a href="/"> PET-ME </a>
                 <i class="fa-solid fa-shield-cat"></i>
             </div>
             <div class="menu">
@@ -27,15 +27,30 @@
                 <!-- <a href="/contact">Contact</a> -->
                 <a href="#">Blogs</a>
             </div>
-            <button class="log-in"><a href="/register">Login / Register</a></button>
+            <button class="log-in" id="loginButton"><a href="">Button</a></button>
         </header>
 
         <section class="content">
             <div class="content-box">
-            <h1>Contact Us</h1>
-            <p>Questions or suggestions? We're here for you! Reach out to us at <a href="mailto:kchengfung@gmail.com">this
-                email</a> and let's collaborate to ensure the best for your beloved pets.</p>
-            <p>Thank you for choosing Pet-Me as your trusted pet care partner!</p>
+                <h1>Contact Us</h1>
+                <p>Questions or suggestions? We're here for you! Reach out to us at <a
+                        href="mailto:kchengfung@gmail.com">this
+                        email</a> and let's collaborate to ensure the best for your beloved pets.</p>
+                <p>Thank you for choosing Pet-Me as your trusted pet care partner!</p>
+                <!-- <div class="contact-form">
+                    <form action="process-form.php" method="post">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" required><br>
+
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required><br>
+
+                        <label for="message">Message:</label>
+                        <textarea id="message" name="message" rows="10" required></textarea><br>
+
+                        <button type="submit">Submit</button>
+                    </form>
+                </div> -->
             </div>
         </section>
     </div>
@@ -52,6 +67,8 @@
 
         </div>
     </footer>
+
+    <script src="button_switch.js"></script>
 </body>
 
 </html>
