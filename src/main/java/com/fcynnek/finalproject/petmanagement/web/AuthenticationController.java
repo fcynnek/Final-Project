@@ -5,6 +5,8 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -52,6 +54,14 @@ public class AuthenticationController {
 		return "login";
 	}
     
+    @PostMapping("/signin")
+    public ResponseEntity<JwtAuthenticationResponse> signin(@RequestBody SignInRequest request, @RequestBody User user) {
+    	Optional<User> existingUser = userService.findUserByEmail(user.getEmail());
+    	String accessToken = jwtService.generateToken(user);
+    	
+    	return ResponseEntity.ok(authenticationService.signin(request));
+    }
+
     @GetMapping("/login-error")
     public String loginError (Model model) {
     	model.addAttribute("loginError", true);
@@ -59,48 +69,55 @@ public class AuthenticationController {
     }
     
     @GetMapping("/authenticated")
-	public String getUserActions (Model model, User user) {
+	public String getUserDashboard (Model model, User user) {
     	Optional<User> authenticatedUser = userService.findUserByEmail(user.getEmail());
     	model.addAttribute("user", authenticatedUser);
     	
-		return "user_actions";
+		return "user_dashboard";
 	}
     
-    
-    @PostMapping("/signin")
-    public ResponseEntity<JwtAuthenticationResponse> signin(@RequestBody SignInRequest request, @RequestBody User user) {
-    	Optional<User> existingUser = userService.findUserByEmail(user.getEmail());
-    	String accessToken = jwtService.generateToken(user);
+    @GetMapping("/status")
+    public ResponseEntity<String> getAuthenticatedStatus() {
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
     	
-        return ResponseEntity.ok(authenticationService.signin(request));
+    	if (auth != null && auth.isAuthenticated()) {
+    		return ResponseEntity.ok("authenticated");
+    	} else {
+    		return ResponseEntity.ok("not_authenticated");
+    	}
     }
-
-    
-	/*
-	 * This code is from Trevor's original implementation which might be helpful for those who are not using server rendering templates
-	 * 
-	 * @PostMapping("/signin") public String authenticateLogin
-	 * (@ModelAttribute("user") User user, SignInRequest request) { 
-	 * Optional<User> existingUser = userService.findUserByEmail(user.getEmail()); 
-	 * User loggedUser = ((User) userService).loadUserByUsername(user.getUsername()); 
-	 * String accessToken = jwtService.generateToken(user);
-	 * 
-	 * return ResponseEntity.ok(authenticationService.signin(request)); }
-	 */
-    
     
     @PostMapping("/refreshtoken")
     public ResponseEntity<?> refreshtoken(@RequestBody RefreshTokenRequest request) {
-      String requestRefreshToken = request.refreshToken();
-
-      return refreshTokenService.findByToken(requestRefreshToken)
-          .map(refreshTokenService::verifyExpiration)
-          .map(RefreshToken::getUser)
-          .map(user -> {
-            String token = jwtService.generateToken(user);
-            return ResponseEntity.ok(new TokenRefreshResponse(token, requestRefreshToken));
-          })
-          .orElseThrow(() -> new IllegalStateException(
-              "Refresh token " + requestRefreshToken + " is not in database!"));
+    	String requestRefreshToken = request.refreshToken();
+    	
+    	return refreshTokenService.findByToken(requestRefreshToken)
+    			.map(refreshTokenService::verifyExpiration)
+    			.map(RefreshToken::getUser)
+    			.map(user -> {
+    				String token = jwtService.generateToken(user);
+    				return ResponseEntity.ok(new TokenRefreshResponse(token, requestRefreshToken));
+    			})
+    			.orElseThrow(() -> new IllegalStateException(
+    					"Refresh token " + requestRefreshToken + " is not in database!"));
     }
+    
+    @GetMapping("/medication") 
+    public String getMedication() {
+    	return "medication";
+    }
+    
+    
+    /*
+     * This code is from Trevor's original implementation which might be helpful for those who are not using server rendering templates
+     * 
+     * @PostMapping("/signin") public String authenticateLogin
+     * (@ModelAttribute("user") User user, SignInRequest request) { 
+     * Optional<User> existingUser = userService.findUserByEmail(user.getEmail()); 
+     * User loggedUser = ((User) userService).loadUserByUsername(user.getUsername()); 
+     * String accessToken = jwtService.generateToken(user);
+     * 
+     * return ResponseEntity.ok(authenticationService.signin(request)); }
+     */
+    
 }

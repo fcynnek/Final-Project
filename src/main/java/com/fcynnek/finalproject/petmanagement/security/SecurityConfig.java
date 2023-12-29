@@ -71,8 +71,6 @@ public class SecurityConfig {
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/admin/**")).hasRole(Role.ADMIN.name())
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/images/**")).permitAll()
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/home")).permitAll()
-//	                .requestMatchers(AntPathRequestMatcher.antMatcher("/about")).permitAll()
-//	                .requestMatchers(AntPathRequestMatcher.antMatcher("/vision")).permitAll()
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/register")).permitAll()
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/authenticated")).authenticated()
 	                
@@ -110,6 +108,9 @@ public class SecurityConfig {
 					    	response.addCookie(accessTokenCookie);
 							response.addCookie(refreshTokenCookie);
 					    	response.sendRedirect("/authenticated");
+					    	
+					    	// This line is used to trigger the updateLoginButton function
+					    	response.getWriter().write("<script>updateLoginButton();</script>");
 						}
 					})
 		        	.failureHandler(new AuthenticationFailureHandler() {
