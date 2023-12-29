@@ -70,13 +70,10 @@ public class SecurityConfig {
         		  	.requestMatchers(AntPathRequestMatcher.antMatcher("/h2-console/**")).permitAll()
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/admin/**")).hasRole(Role.ADMIN.name())
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/images/**")).permitAll()
-	                .requestMatchers(AntPathRequestMatcher.antMatcher("/home")).permitAll()
+	                .requestMatchers(AntPathRequestMatcher.antMatcher("classpath:/static/**")).permitAll()
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/register")).permitAll()
 	                .requestMatchers(AntPathRequestMatcher.antMatcher("/authenticated")).authenticated()
-	                
-
-	                .anyRequest().permitAll()
-                        )
+	                .anyRequest().permitAll())
                 .headers(header -> header.frameOptions(frameOption -> frameOption.disable()))
 //                .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
