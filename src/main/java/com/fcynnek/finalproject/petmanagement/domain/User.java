@@ -15,17 +15,21 @@ import org.springframework.security.core.userdetails.UserDetails;
 @Table(name = "users")
 
 public class User implements UserDetails {
+	
     private static final long serialVersionUID = 2025389852147750927L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String firstName;
     private String lastName;
+    @Column(unique = true, nullable = false)
     private String email;
     private String password;
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JsonIgnoreProperties("user")
     private List<Authority> authorities = new ArrayList<>();
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private List<Animal> animals = new ArrayList<>();
     
     
     
@@ -131,9 +135,16 @@ public class User implements UserDetails {
         return id;
     }
 
-
     public User build () {
         return this;
     }
 
+	public List<Animal> getAnimals() {
+		return animals;
+	}
+
+	public void setAnimals(List<Animal> animals) {
+		this.animals = animals;
+	}
+    
 }
