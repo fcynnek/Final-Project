@@ -36,11 +36,6 @@ public class WelcomeController {
 		return "dashboard";
 	}
 	
-	@GetMapping("/dashboard2")
-	public String getDasboard2 () {
-		return "dashboard2";
-	}
-	
 	
 	@GetMapping("/error")
 	public String getError () {
