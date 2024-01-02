@@ -58,7 +58,7 @@ body {
 }
 
 
-#medication {
+#pet {
   background-image: url("/images/Medication_StockImage.jpeg");
 }
 
@@ -68,7 +68,7 @@ body {
 }
 
 
-#pet {
+#welcome {
   background-image: url("/images/About_StockImage5.jpeg");
 }
 
@@ -94,7 +94,23 @@ body {
 }
 
 a {
+  color: white;
   text-decoration: none;
+}
+
+a:visited {
+  color: white;
+}
+
+a:hover {
+  border: 2px solid;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #0aa5ff;
+}
+
+a:active {
+  background-color: #0aa5ff;
 }
 
 button {

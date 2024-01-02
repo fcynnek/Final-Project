@@ -37,30 +37,34 @@
   <div class="container">
     <div id="profile" class="section">
       <div class="content">
-        <h1>Profile</h1>
-        <p>Here you can edit your profile information</p>
+        <h1>My Profile</h1>
+        <p>Here you can edit your profile information.</p>
+      </div>
+      <div class="overlay"></div>
+    </div>
+
+    <div id="welcome" class="section">
+      <div class="content">
+        <h1>Welcome</h1>
+        <!-- <div th:if="${user.email.isPresent()}"> -->
+        <span th:text="${user.get().email}"></span>
+        <!-- </div> -->
+        <p>We missed you!</p><br>
+        <p><i class="fa-solid fa-left-long"></i> Make sure your profile info is up-to-date</p><br>
+        <p>Check your furry friend's profile and vaccine records <i class="fa-solid fa-right-long"></i></p>
       </div>
       <div class="overlay"></div>
     </div>
 
     <div id="pet" class="section">
       <div class="content">
-        <h1>Your Pet's Profile</h1>
-        <!-- <div th:if="${user.email.isPresent()}"> -->
-          <span th:text="${user.get().email}"></span>
-        <!-- </div> -->
-        <p>Here you can update your pet's profile</p>
-      </div>
-      <div class="overlay"></div>
-    </div>
-
-    <div id="medication" class="section">
-      <div class="content">
-        <h1><a href="/medication">Your Pet's Medications</a></h1>
-        <p>Here you can manage and learn more about your pet's medications</p>
-      </div>
-      <div class="overlay"></div>
-    </div>
+          <a href="/medication">
+          <h1>Your Pet's Profile</h1>
+          <p>Here you can edit your pet's profile and manage their vaccine records.</p>
+        </a>
+        </div>
+    <div class="overlay"></div>
+  </div>
   </div>
 
   <!-- <div class="container">
