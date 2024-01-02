@@ -77,10 +77,8 @@ public class AuthenticationController {
 
 	@GetMapping("/authenticated")
 	public String getUserDashboard(Model model, HttpServletRequest request) {
-//    	User user, Principal principal
 		Principal principal = request.getUserPrincipal();
 
-//    	model.addAttribute("user", authenticatedUser);
 		if (principal != null) {
 			String username = principal.getName();
 			Optional<User> authenticatedUser = userService.findUserByEmail(username);
