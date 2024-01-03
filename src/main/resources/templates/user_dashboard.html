@@ -25,7 +25,7 @@
       <a href="/benefits">Benefits</a>
       <a href="/mission">Mission</a>
       <a href="/contact">Contact</a>
-      <!-- <a href="" id="dashboardLink"></a> -->
+      <a href="" id="dashboardLink"></a>
     </div>
     <button class="log-in" id="loginButton"><a href="">Button</a></button>
 
@@ -35,7 +35,7 @@
   </nav>
 
   <div class="container">
-    <div id="profile" class="section">
+    <div id="user-profile" class="section">
       <div class="content">
         <h1>My Profile</h1>
         <p>Here you can edit your profile information.</p>
@@ -43,12 +43,10 @@
       <div class="overlay"></div>
     </div>
 
-    <div id="welcome" class="section">
+    <div id="user-welcome" class="section">
       <div class="content">
         <h1>Welcome</h1>
-        <!-- <div th:if="${user.email.isPresent()}"> -->
         <span th:text="${user.get().email}"></span>
-        <!-- </div> -->
         <p>We missed you!</p><br>
         <p><i class="fa-solid fa-left-long"></i> Make sure your profile info is up-to-date</p><br>
         <p>Check your furry friend's profile and vaccine records <i class="fa-solid fa-right-long"></i></p>
@@ -56,7 +54,7 @@
       <div class="overlay"></div>
     </div>
 
-    <div id="pet" class="section">
+    <div id="user-pet" class="section">
       <div class="content">
           <a href="/medication">
           <h1>Your Pet's Profile</h1>
@@ -66,33 +64,6 @@
     <div class="overlay"></div>
   </div>
   </div>
-
-  <!-- <div class="container">
-    <div id="benefits" class="section">
-      <div class="content">
-        <h1>Benefits of using PET-ME</h1>
-        <p>content here</p>
-      </div>
-      <div class="overlay"></div>
-    </div>
-
-    <div id="future" class="section">
-      <div class="content">
-        <h1>Future Plans</h1>
-      </div>
-      <div class="overlay"></div>
-    </div>
-
-    <div id="contact" class="section">
-      <div class="content">
-        <h1>Contact Us</h1>
-        <p>Questions or suggestions? We're here for you! Reach out to us at <a href="mailto:kchengfung@gmail.com">this
-            email</a> and let's collaborate to ensure the best for your beloved pets.</p>
-        <p>Thank you for choosing Pet-Me as your trusted pet care partner!</p>
-      </div>
-      <div class="overlay"></div>
-    </div>
-  </div> -->
 
   <!-- Footer -->
   <footer class="footer">

@@ -48,32 +48,32 @@ body {
   background-color: rgba(0, 0, 0, 0.95);
 }
 
-#profile {
+#user-profile {
   background-image: url("/images/About_StockImage.jpeg");
 }
 
 
-#future {
+#admin-welcome {
   background-image: url("/images/Mission_StockImage.jpeg");
 }
 
 
-#pet {
+#user-pet {
   background-image: url("/images/Medication_StockImage.jpeg");
 }
 
 
-#benefits {
+#admin-profile {
   background-image: url("/images/Benefits_StockImage.jpeg");
 }
 
 
-#welcome {
+#user-welcome {
   background-image: url("/images/About_StockImage5.jpeg");
 }
 
 
-#contact {
+#admin-pet {
   background-image: url("/images/Contact_StockImage.jpeg");
 }
 
