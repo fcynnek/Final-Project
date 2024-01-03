@@ -31,7 +31,8 @@ function updateLoginButton(isAuthenticated) {
 
 function updateDashboardLink(isAuthenticated) {
   const dashboardLink = document.getElementById('dashboardLink');
-
+  console.log(dashboardLink);
+  
   if (isAuthenticated) {
     dashboardLink.innerText = 'Dashboard';
     dashboardLink.href = '/authenticated';
