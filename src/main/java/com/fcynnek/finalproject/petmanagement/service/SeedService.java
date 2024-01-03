@@ -50,6 +50,8 @@ public class SeedService {
 				medication.setIllness(values[0]);
 				medication.setDescription(values[1]);
 				medication.setSideEffects(values[2]);
+				
+				medsRepo.save(medication);
 			}
 		}
 	}
