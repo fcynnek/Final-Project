@@ -69,11 +69,11 @@ public class AdminController {
         return ResponseEntity.ok(users);
     }
     
-    @GetMapping("/dashboard")
-    public String getDashboard (ModelMap model) {
+    @GetMapping("/features")
+    public String getUsers (ModelMap model) {
     	List<User> users = userService.findAll();
     	model.addAttribute("userList", users);
-    	return "admin_dashboard";
+    	return "admin_features";
     }
     
     @PostMapping("/makeAdmin")

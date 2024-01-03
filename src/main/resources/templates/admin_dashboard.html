@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PET-ME: Admin Dashboard</title>
-  <link rel="stylesheet" href="/../admin_dashboard.css">
+  <title>PET-ME: User Dashboard</title>
+  <link rel="stylesheet" href="user_dashboard.css">
 
   <script src="https://kit.fontawesome.com/5e7463fc0b.js" crossorigin="anonymous"></script>
 </head>
@@ -25,7 +25,7 @@
       <a href="/benefits">Benefits</a>
       <a href="/mission">Mission</a>
       <a href="/contact">Contact</a>
-      <a href="" id="dashboardLink"></a>
+      <!-- <a href="" id="dashboardLink"></a> -->
     </div>
     <button class="log-in" id="loginButton"><a href="">Button</a></button>
 
@@ -33,49 +33,66 @@
       <i class="fa-solid fa-bars"></i>
     </div>
   </nav>
-  <div class="tabs">
-    <div class="tab-header">
-      <div class="active">
-        <i class="fa fa-code"></i> Make Admin
+
+  <div class="container">
+    <div id="profile" class="section">
+      <div class="content">
+        <h1>My Profile</h1>
+        <p>Here you can edit your profile information.</p>
       </div>
-      <div>
-        <i class="fa fa-pencil-square-o"></i> About
-      </div>
-      <div>
-        <i class="fa fa-bar-chart"></i> Services
-      </div>
-      <div>
-        <i class="fa fa-envelope-o"></i> Contact
-      </div>
+      <div class="overlay"></div>
     </div>
 
-    <div class="tab-indicator"></div>
-
-    <div class="tab-body">
-      <div class="active">
-        <h2>Admins for the Site</h2>
-        <p>Here you can add admin roles to users granting them access to site admin features.</p>
+    <div id="welcome" class="section">
+      <div class="content">
+        <h1>Welcome ADMIN</h1>
+        <!-- <div th:if="${user.email.isPresent()}"> -->
+        <span th:text="${user.get().email}"></span>
+        <!-- </div> -->
+        <p>We missed you!</p><br>
+        <p><i class="fa-solid fa-left-long"></i> Make sure your profile info is up-to-date</p><br>
+        <p>Check your furry friend's profile and vaccine records <i class="fa-solid fa-right-long"></i></p>
       </div>
-      <div>
-        <h2>This is about section</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi minus exercitationem vero, id autem fugit
-          assumenda a molestiae numquam at, quisquam cumque. Labore eligendi perspiciatis quia incidunt quaerat ut
-          ducimus?</p>
-      </div>
-      <div>
-        <h2>This is services section</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi minus exercitationem vero, id autem fugit
-          assumenda a molestiae numquam at, quisquam cumque. Labore eligendi perspiciatis quia incidunt quaerat ut
-          ducimus?</p>
-      </div>
-      <div>
-        <h2>This is contact section</h2>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi minus exercitationem vero, id autem fugit
-          assumenda a molestiae numquam at, quisquam cumque. Labore eligendi perspiciatis quia incidunt quaerat ut
-          ducimus?</p>
-      </div>
+      <div class="overlay"></div>
     </div>
+
+    <div id="pet" class="section">
+      <div class="content">
+          <a href="/medication">
+          <h1>Your Pet's Profile</h1>
+          <p>Here you can edit your pet's profile and manage their vaccine records.</p>
+        </a>
+        </div>
+    <div class="overlay"></div>
   </div>
+  </div>
+
+  <!-- <div class="container">
+    <div id="benefits" class="section">
+      <div class="content">
+        <h1>Benefits of using PET-ME</h1>
+        <p>content here</p>
+      </div>
+      <div class="overlay"></div>
+    </div>
+
+    <div id="future" class="section">
+      <div class="content">
+        <h1>Future Plans</h1>
+      </div>
+      <div class="overlay"></div>
+    </div>
+
+    <div id="contact" class="section">
+      <div class="content">
+        <h1>Contact Us</h1>
+        <p>Questions or suggestions? We're here for you! Reach out to us at <a href="mailto:kchengfung@gmail.com">this
+            email</a> and let's collaborate to ensure the best for your beloved pets.</p>
+        <p>Thank you for choosing Pet-Me as your trusted pet care partner!</p>
+      </div>
+      <div class="overlay"></div>
+    </div>
+  </div> -->
 
   <!-- Footer -->
   <footer class="footer">
@@ -87,11 +104,11 @@
         </div>
         <i class="fa-solid fa-shield-cat"></i>
       </div>
+
     </div>
   </footer>
 
-  <script src="/../admin_dashboard.js"></script>
-  <script src="/../button_switch.js"></script>
+  <script src="button_switch.js"></script>
 </body>
 
 </html>

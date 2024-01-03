@@ -47,5 +47,4 @@ public class WelcomeController {
 		return "error2";
 	}
 
-	// https://sweetalert2.github.io/#examples
 }

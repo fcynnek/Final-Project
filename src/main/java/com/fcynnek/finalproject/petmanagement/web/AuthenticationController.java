@@ -85,7 +85,13 @@ public class AuthenticationController {
 
 			if (authenticatedUser.isPresent()) {
 				model.addAttribute("user", authenticatedUser);
-				return "user_dashboard";
+				
+				if (authenticatedUser.get().getAuthorities().stream().anyMatch(
+						role -> role.getAuthority().equals("ROLE_ADMIN"))) {
+					return "admin_dashboard";
+				} else {
+					return "user_dashboard";					
+				}
 			} else {
 				return "error";
 			}
@@ -121,6 +127,7 @@ public class AuthenticationController {
 	public String getMedication() {
 		return "medication";
 	}
+	
 
 	/*
 	 * This code is from Trevor's original implementation which might be helpful for
