@@ -17,8 +17,8 @@ public class Medication {
 	private String illness;
 	private String description;
 	private String sideEffects;
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Medication meds;
+//	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+//	private Medication meds;
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Animal animal;
 	
@@ -32,13 +32,13 @@ public class Medication {
 		this.id = id;
 	}
 	
-	public Medication getMeds() {
-		return meds;
-	}
-	
-	public void setMeds(Medication meds) {
-		this.meds = meds;
-	}
+//	public Medication getMeds() {
+//		return meds;
+//	}
+//	
+//	public void setMeds(Medication meds) {
+//		this.meds = meds;
+//	}
 	
 	public String getIllness() {
 		return illness;
