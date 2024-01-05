@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -8,15 +8,15 @@
     <link rel="stylesheet" href="secondary.css">
 
     <script src="https://kit.fontawesome.com/5e7463fc0b.js" crossorigin="anonymous"></script>
-    <title>PET-ME: Medication</title>
+    <title>PET-ME: Profile</title>
 </head>
 
-<body class="medication-body">
+<body class="profile-body">
     <div class="page-wrapper">
         <header class="navbar">
             <div class="logo">
                 <i class="fa-solid fa-shield-dog"></i>
-                <a href="/">  PET-ME  </a>
+                <a href="/"> PET-ME </a>
                 <i class="fa-solid fa-shield-cat"></i>
             </div>
             <div class="menu">
@@ -32,8 +32,30 @@
 
         <section class="content">
             <div class="content-box">
-            <h1>Your Pet's Medications</h1>
-            <p>Table</p>
+                <h1>Your Profile</h1>
+                <div class="form">
+                    <form method="post" th:action="@{/profile/update}" th:object="${user}"
+                        enctype="application/x-www-form-urlencoded">
+
+                        <label for="firstName"><b>First Name</b></label>
+                        <input type="text" th:field="*{firstName}" name="firstName" class="required" required>
+
+                        <label for="lastName"><b>Last Name</b></label>
+                        <input type="text" th:field="*{lastName}" name="lastName" class="required" required>
+
+                        <label for="email"><b>Email</b></label>
+                        <input type="text" th:field="*{email}" name="email" class="required" required>
+
+                        <label for="password"><b>Password</b></label>
+                        <input type="password" th:field="*{password}" name="updatePassword" id="updatePassword">
+
+                        <label for="confirmPassword"><b>Confirm Password</b></label>
+                        <input type="password" name="confirmPassword" id="confirmPassword">
+                        <div id="passwordMatchMessage" style="color: red; text-align: center;"></div><br><br>
+
+                        <button type="submit" class="submit">UPDATE</button>
+                    </form>
+                </div>
             </div>
         </section>
     </div>
@@ -50,7 +72,24 @@
 
         </div>
     </footer>
+    <script>
+        document.getElementById('registrationForm').addEventListener('submit', function (event) {
+            var updatePassword = document.getElementById('updatePassword').value;
+            var confirmPassword = document.getElementById('confirmPassword').value;
+            var passwordMatchMessage = document.getElementById('passwordMatchMessage');
 
+            console.log('updatePassword:', password);
+            console.log('Confirm Password:', confirmPassword);
+
+            if (updatePassword !== confirmPassword) {
+                passwordMatchMessage.textContent = 'Passwords do not match!';
+                // alert('Passwords do not match!');
+                event.preventDefault(); // Prevent form submission
+            } else {
+                passwordMatchMessage.textContent = ''; // Clear previous message
+            }
+        });
+    </script>
     <script src="button_switch.js"></script>
 </body>
 

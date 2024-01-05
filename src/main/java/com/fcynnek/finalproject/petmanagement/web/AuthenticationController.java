@@ -9,10 +9,13 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,17 +46,20 @@ public class AuthenticationController {
 	private final JwtService jwtService;
 	private final UserServiceImpl userService;
 	private final UserRepository userRepo;
+	private final PasswordEncoder passwordEncoder;
 
 	public AuthenticationController(AuthenticationServiceImpl authenticationService,
 			RefreshTokenService refreshTokenService, JwtService jwtService, UserServiceImpl userService,
-			UserRepository userRepo) {
+			UserRepository userRepo, PasswordEncoder passwordEncoder) {
 		super();
 		this.authenticationService = authenticationService;
 		this.refreshTokenService = refreshTokenService;
 		this.jwtService = jwtService;
 		this.userService = userService;
 		this.userRepo = userRepo;
+		this.passwordEncoder = passwordEncoder;
 	}
+
 
 	@GetMapping("/signin")
 	public String getLogin(@ModelAttribute("user") User user) {
@@ -61,7 +67,8 @@ public class AuthenticationController {
 	}
 
 	@PostMapping("/signin")
-	public ResponseEntity<JwtAuthenticationResponse> signin(@RequestBody SignInRequest request,
+	public ResponseEntity<JwtAuthenticationResponse> signin(
+			@RequestBody SignInRequest request,
 			@RequestBody User user) {
 		Optional<User> existingUser = userService.findUserByEmail(user.getEmail());
 		String accessToken = jwtService.generateToken(user);
@@ -127,6 +134,35 @@ public class AuthenticationController {
 	public String getMedication() {
 		return "medication";
 	}
+	
+	@GetMapping("/profile")
+	public String getProfile(ModelMap model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+	    String username = auth.getName();
+	    Optional<User> userProfile = userService.findUserByEmail(username);
+
+	    model.addAttribute("user", userProfile);
+		return "profile";
+	}
+	
+	@PostMapping("/profile/update")
+	public String update(@ModelAttribute("user") User user) {
+		Optional<User> existingUser = userService.findUserByEmail(user.getEmail());
+		
+		existingUser.ifPresent(updatedUser -> {
+			updatedUser.setFirstName(user.getFirstName());
+			updatedUser.setLastName(user.getLastName());
+
+	        if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+	        	updatedUser.setPassword(passwordEncoder.encode(user.getPassword()));
+	        }
+
+	        userService.updateUser(updatedUser); // Use a method that updates the user in your service
+	    });
+		
+		return "redirect:/authenticated";
+	}
+	
 	
 
 	/*
