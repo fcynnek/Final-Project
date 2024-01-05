@@ -37,8 +37,10 @@
   <div class="container">
     <div id="user-profile" class="section">
       <div class="content">
+        <a href="/profile">
         <h1>My Profile</h1>
         <p>Here you can edit your profile information.</p>
+        </a>
       </div>
       <div class="overlay"></div>
     </div>
@@ -46,7 +48,7 @@
     <div id="user-welcome" class="section">
       <div class="content">
         <h1>Welcome</h1>
-        <span th:text="${user.get().email}"></span>
+        <h2><span th:text="${user.get().email}"></span></h2>
         <p>We missed you!</p><br>
         <p><i class="fa-solid fa-left-long"></i> Make sure your profile info is up-to-date</p><br>
         <p>Check your furry friend's profile and vaccine records <i class="fa-solid fa-right-long"></i></p>
