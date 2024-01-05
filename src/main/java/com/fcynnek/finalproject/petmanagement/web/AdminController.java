@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -63,26 +64,41 @@ public class AdminController {
 		userRepo.save(adminUser);
 	}
 
-    @GetMapping("/users")
-    public ResponseEntity<List<User>> getAllUsers () {
-        List<User> users = userService.findAll();
-        return ResponseEntity.ok(users);
-    }
+//    @GetMapping("/users")
+//    public ResponseEntity<List<User>> getAllUsers () {
+//        List<User> users = userService.findAll();
+//        return ResponseEntity.ok(users);
+//    }
     
-    @GetMapping("/features")
+//    @GetMapping("/features")
+//    public String getUsers (ModelMap model) {
+//    	List<User> users = userService.findAll();
+//    	model.addAttribute("userList", users);
+//    	return "admin_features";
+//    }
+	
+	@GetMapping("/features")
+	public String getFeatures () {
+		return "admin_features";
+	}
+    
+    @GetMapping("/users")
     public String getUsers (ModelMap model) {
     	List<User> users = userService.findAll();
     	model.addAttribute("userList", users);
-    	return "admin_features";
+    	return "site_users";
     }
     
     @PostMapping("/makeAdmin")
-    public ResponseEntity<String> elevateToAdmin (@RequestParam Integer userId) {
+//    public ResponseEntity<String> elevateToAdmin (@RequestParam Integer userId) {
+    public RedirectView elevateToAdmin (@RequestParam Integer userId) {
     	Optional<User> findUser = userService.findUserById(userId);
     	    	
     	userService.elevateUserToAdmin(userId);
     	logger.info("Processing elevation for user: {}", findUser.get().getEmail());
     	logger.info("Role: {}", findUser.get().getAuthorities());
-    	return ResponseEntity.ok("User elevated to admin");
+//    	return ResponseEntity.ok("redirect:/admin/users");
+    	
+    	return new RedirectView("/admin/users");
     }
 }
