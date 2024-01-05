@@ -4,6 +4,8 @@ import java.security.Principal;
 import java.util.HashMap;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
@@ -32,6 +34,7 @@ import com.fcynnek.finalproject.petmanagement.domain.User;
 import com.fcynnek.finalproject.petmanagement.repository.UserRepository;
 import com.fcynnek.finalproject.petmanagement.security.AuthenticationServiceImpl;
 import com.fcynnek.finalproject.petmanagement.security.JwtService;
+import com.fcynnek.finalproject.petmanagement.security.SecurityConfig;
 import com.fcynnek.finalproject.petmanagement.service.RefreshTokenService;
 import com.fcynnek.finalproject.petmanagement.service.UserServiceImpl;
 
@@ -47,6 +50,7 @@ public class AuthenticationController {
 	private final UserServiceImpl userService;
 	private final UserRepository userRepo;
 	private final PasswordEncoder passwordEncoder;
+	private Logger logger = LoggerFactory.getLogger(AuthenticationController.class);
 
 	public AuthenticationController(AuthenticationServiceImpl authenticationService,
 			RefreshTokenService refreshTokenService, JwtService jwtService, UserServiceImpl userService,
@@ -129,11 +133,6 @@ public class AuthenticationController {
 				}).orElseThrow(() -> new IllegalStateException(
 						"Refresh token " + requestRefreshToken + " is not in database!"));
 	}
-
-	@GetMapping("/medication")
-	public String getMedication() {
-		return "medication";
-	}
 	
 	@GetMapping("/profile")
 	public String getProfile(ModelMap model) {
@@ -148,8 +147,10 @@ public class AuthenticationController {
 	@PostMapping("/profile/update")
 	public String update(@ModelAttribute("user") User user) {
 		Optional<User> existingUser = userService.findUserByEmail(user.getEmail());
+		logger.info("Is existing user present? []", existingUser.isPresent());
 		
 		existingUser.ifPresent(updatedUser -> {
+			logger.info("Updating user with email: []", updatedUser.getEmail());
 			updatedUser.setFirstName(user.getFirstName());
 			updatedUser.setLastName(user.getLastName());
 
