@@ -7,35 +7,42 @@ body {
 .about-body {
   margin: 0;
   padding: 0;
-  background: url("/images/About_StockImage.jpeg") center/cover no-repeat fixed;
+  background: url("/images/About_BackgroundImage.jpg") center/cover no-repeat fixed;
   font-family: 'Ubuntu', sans-serif;
 }
 
 .mission-body {
   margin: 0;
   padding: 0;
-  background: url("/images/Mission_StockImage.jpeg") center/cover no-repeat fixed;
+  background: url("/images/Mission_BackgroundImage.jpg") center/cover no-repeat fixed;
   font-family: 'Ubuntu', sans-serif;
 }
 
 .benefits-body {
   margin: 0;
   padding: 0;
-  background: url("/images/Benefits_StockImage.jpeg") center/cover no-repeat fixed;
+  background: url("/images/Benefits_BackgroundImage.jpg") center/cover no-repeat fixed;
   font-family: 'Ubuntu', sans-serif;
 }
 
 .contact-body {
   margin: 0;
   padding: 0;
-  background: url("/images/Contact_StockImage.jpeg") center/cover no-repeat fixed;
+  background: url("/images/Contact_BackgroundImage.jpg") center/cover no-repeat fixed;
   font-family: 'Ubuntu', sans-serif;
 }
 
 .medication-body {
   margin: 0;
   padding: 0;
-  background: url("/images/Medication_StockImage.jpeg") center/cover no-repeat fixed;
+  background: url("/images/Medication_BackgroundImage.jpg") center/cover no-repeat fixed;
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.profile-body {
+  margin: 0;
+  padding: 0;
+  background: url("/images/Profile_BackgroundImage.jpg") center/cover no-repeat fixed;
   font-family: 'Ubuntu', sans-serif;
 }
 
@@ -69,8 +76,39 @@ body {
   font-size: 18px;
 }
 
+.form {
+  position: center;
+  width: 640px;
+  height: 100%;
+  padding: 50px 30px 0;
+}
+
+label {
+  display: block;
+  width: 260px;
+  margin: 25px auto 0;
+  text-align: center;
+}
+
+label span {
+  font-size: 12px;
+  color: #cfcfcf;
+  text-transform: uppercase;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  padding-bottom: 5px;
+  font-size: 16px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  text-align: center;
+}
+
 /* Need to enable mail server for this */
-.contact-form {
+/* .contact-form {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,23 +118,30 @@ body {
   flex-direction: column;
 }
 
-.contact-form label {
+.form label {
   margin-bottom: 8px;
 }
 
-.contact-form input,
+.form input,
 textarea {
     margin-bottom: 16px;
+    border-radius: 10px;
     padding: 8px;
-}
+} */
 
-.contact-form button {
-  padding: 10px;
-  background-color: #007BFF;
+.submit {
+  display: block;
+  margin: 0 auto;
+  width: 260px;
+  height: 36px;
+  border-radius: 30px;
   color: #fff;
-  border: none;
-  border-radius: 4px;
+  font-size: 15px;
   cursor: pointer;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  background: #d4af7a;
+  text-transform: uppercase;
 }
 
 /* Wrapper for the page content (excluding footer) */

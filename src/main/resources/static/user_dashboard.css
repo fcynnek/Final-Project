@@ -49,32 +49,32 @@ body {
 }
 
 #user-profile {
-  background-image: url("/images/About_StockImage.jpeg");
+  background-image: url("/images/About_BackgroundImage.jpg");
 }
 
 
 #admin-welcome {
-  background-image: url("/images/Mission_StockImage.jpeg");
+  background-image: url("/images/Mission_BackgroundImage.jpg");
 }
 
 
 #user-pet {
-  background-image: url("/images/Medication_StockImage.jpeg");
+  background-image: url("/images/Medication_BackgroundImage.jpg");
 }
 
 
 #admin-profile {
-  background-image: url("/images/Benefits_StockImage.jpeg");
+  background-image: url("/images/Benefits_BackgroundImage.jpg");
 }
 
 
 #user-welcome {
-  background-image: url("/images/About_StockImage5.jpeg");
+  background-image: url("/images/Profile_BackgroundImage.jpg");
 }
 
 
 #admin-pet {
-  background-image: url("/images/Contact_StockImage.jpeg");
+  background-image: url("/images/Contact_BackgroundImage.jpg");
 }
 
 /* Navbar Styling */

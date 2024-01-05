@@ -3,7 +3,7 @@
 body {
   /* background:#ddd; */
   font-family:"Ubuntu";
-  background: url("/images/Dashboard_StockImage.jpg") center/cover no-repeat fixed;
+  background: url("/images/Dashboard_BackgroundImage.jpg") center/cover no-repeat fixed;
 }
 .tabs {
   position:absolute;
