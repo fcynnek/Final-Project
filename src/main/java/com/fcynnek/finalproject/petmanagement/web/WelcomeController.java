@@ -31,15 +31,10 @@ public class WelcomeController {
 		return "contact";
 	}
 	
-	@GetMapping("/dashboard")
-	public String getDashboard () {
-		return "dashboard";
-	}
-	
 	
 	@GetMapping("/error")
 	public String getError () {
-		return "error";
+		return "error2";
 	}
 
 	@GetMapping("/error2")
