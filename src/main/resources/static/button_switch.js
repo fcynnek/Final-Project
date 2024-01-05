@@ -41,6 +41,7 @@ function updateDashboardLink(isAuthenticated) {
 
 // Call the function to check the authentication status when the page loads
 document.addEventListener('DOMContentLoaded', function () {
+  console.log('DOMContentLoaded event executed');
   checkAuthenticationStatus();
 
   // Add click event listener to the loginButton
