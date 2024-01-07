@@ -93,7 +93,7 @@ public class UserServiceImpl implements UserService {
 		return userRepository.save(user);
 	}
     
-    @Transactional
+//    @Transactional
     public Optional<User> findUserByEmail(String email) {
     	return userRepository.findByEmail(email);
     }
@@ -129,7 +129,7 @@ public class UserServiceImpl implements UserService {
 				}
 				
 				userRepository.save(updatedUser);
-				userRepository.flush();
+//				userRepository.flush();
 				logger.info("Email updated successfully. New email: {}", newEmail);
 			});
 	}

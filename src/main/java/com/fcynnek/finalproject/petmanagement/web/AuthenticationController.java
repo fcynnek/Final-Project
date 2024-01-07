@@ -65,15 +65,13 @@ public class AuthenticationController {
 		this.passwordEncoder = passwordEncoder;
 	}
 
-
 	@GetMapping("/signin")
 	public String getLogin(@ModelAttribute("user") User user) {
 		return "login";
 	}
 
 	@PostMapping("/signin")
-	public ResponseEntity<JwtAuthenticationResponse> signin(
-			@RequestBody SignInRequest request,
+	public ResponseEntity<JwtAuthenticationResponse> signin(@RequestBody SignInRequest request,
 			@RequestBody User user) {
 		Optional<User> existingUser = userService.findUserByEmail(user.getEmail());
 		String accessToken = jwtService.generateToken(user);
@@ -97,12 +95,12 @@ public class AuthenticationController {
 
 			if (authenticatedUser.isPresent()) {
 				model.addAttribute("user", authenticatedUser);
-				
-				if (authenticatedUser.get().getAuthorities().stream().anyMatch(
-						role -> role.getAuthority().equals("ROLE_ADMIN"))) {
+
+				if (authenticatedUser.get().getAuthorities().stream()
+						.anyMatch(role -> role.getAuthority().equals("ROLE_ADMIN"))) {
 					return "admin_dashboard";
 				} else {
-					return "user_dashboard";					
+					return "user_dashboard";
 				}
 			} else {
 				return "error";
@@ -134,60 +132,59 @@ public class AuthenticationController {
 				}).orElseThrow(() -> new IllegalStateException(
 						"Refresh token " + requestRefreshToken + " is not in database!"));
 	}
-	
+
 	@GetMapping("/profile")
 	public String getProfile(ModelMap model) {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-	    String username = auth.getName();
-	    Optional<User> userProfile = userService.findUserByEmail(username);
+		String username = auth.getName();
+		Optional<User> userProfile = userService.findUserByEmail(username);
 
-	    model.addAttribute("user", userProfile);
+		model.addAttribute("user", userProfile);
 		return "profile";
 	}
-	
+
 	@Transactional
 	@PostMapping("/profile/update")
 	public String update(@ModelAttribute("user") User user, Model model) {
+		Optional<User> existingUser = userService.findUserByEmail(user.getEmail());
+
 		try {
-			Optional<User> existingUser = userService.findUserByEmail(user.getEmail());
 			if (existingUser.isPresent()) {
-			    User userInDB = existingUser.get();
-			    logger.info("Is existing user present? {}", userInDB.getEmail());
+				User userInDB = existingUser.get();
+				logger.info("Is existing user present? {}", userInDB.getEmail());
 
-			    String emailFromForm = user.getEmail();
-			    logger.info("Received request to update email from: {} to: {}", user.getEmail(), emailFromForm);
-			    
-			    if (!emailFromForm.equals(userInDB.getEmail()) && userService.existsByEmail(emailFromForm)) {
-			        model.addAttribute("updateError", "Email already exists. Please choose another email address.");
-			        return "profile";
-			    }
+				String emailFromForm = user.getEmail();
+				logger.info("Received request to update email from: {} to: {}", user.getEmail(), emailFromForm);
 
-			    // Update user details
-			    userInDB.setFirstName(user.getFirstName());
-			    userInDB.setLastName(user.getLastName());
-			    
-			    userService.updateByEmail(userInDB, emailFromForm);
-			    logger.info("Received request to update email to: {}", emailFromForm);
+				if (!emailFromForm.equals(userInDB.getEmail()) && userService.existsByEmail(emailFromForm)) {
+					model.addAttribute("updateError", "Email already exists. Please choose another email address.");
+					return "profile";
+				}
 
-			    // Update password if provided
-			    if (user.getPassword() != null && !user.getPassword().isEmpty()) {
-			    	userInDB.setPassword(passwordEncoder.encode(user.getPassword()));
-			    }
+				// Update user details
+				userInDB.setFirstName(user.getFirstName());
+				userInDB.setLastName(user.getLastName());
 
-			    userService.updateUser(userInDB);
+				userService.updateByEmail(userInDB, emailFromForm);
+				logger.info("Received request to update email to: {}", emailFromForm);
 
-			    return "redirect:/authenticated";
+				// Update password if provided
+				if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+					userInDB.setPassword(passwordEncoder.encode(user.getPassword()));
+				}
+
+				userService.updateUser(userInDB);
+
+				return "redirect:/authenticated";
 			}
 		} catch (Exception e) {
 			logger.error("Error updating email", e);
-		    model.addAttribute("updateError", "Error updating email. Please try again.");
-		    return "profile";
+			model.addAttribute("updateError", "Error updating email. Please try again.");
+			return "profile";
 		}
 
 		return "redirect:/authenticated";
 	}
-	
-	
 
 	/*
 	 * This code is from Trevor's original implementation which might be helpful for
