@@ -1,12 +1,8 @@
 package com.fcynnek.finalproject.petmanagement.web;
 
-import com.fcynnek.finalproject.petmanagement.domain.Authority;
-import com.fcynnek.finalproject.petmanagement.domain.Role;
-import com.fcynnek.finalproject.petmanagement.domain.User;
 import com.fcynnek.finalproject.petmanagement.repository.MedsAndIllnessRepository;
 import com.fcynnek.finalproject.petmanagement.repository.PetRepository;
 import com.fcynnek.finalproject.petmanagement.repository.UserRepository;
-import com.fcynnek.finalproject.petmanagement.service.UserService;
 import com.fcynnek.finalproject.petmanagement.service.UserServiceImpl;
 
 import jakarta.annotation.PostConstruct;
