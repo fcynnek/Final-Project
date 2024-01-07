@@ -53,6 +53,13 @@ body {
   font-family: 'Ubuntu', sans-serif;
 }
 
+.petprofile-body {
+  margin: 0;
+  padding: 0;
+  background: url("/images/PetProfile_BackgroundImage.jpg") center/cover no-repeat fixed;
+  font-family: 'Ubuntu', sans-serif;
+}
+
 .content {
   text-align: center;
   padding: 50px;
