@@ -35,7 +35,7 @@
                 <h1>Your Profile</h1>
                 <div class="form">
                     <form method="post" th:action="@{/profile/update}" th:object="${user}"
-                        enctype="application/x-www-form-urlencoded">
+                        enctype="application/x-www-form-urlencoded" id="updateProfileForm">
 
                         <label for="firstName"><b>First Name</b></label>
                         <input type="text" th:field="*{firstName}" name="firstName" class="required" required>
@@ -45,6 +45,10 @@
 
                         <label for="email"><b>Email</b></label>
                         <input type="text" th:field="*{email}" name="email" class="required" required>
+
+                        <div th:if="${updateError}" class="error-message">
+                            <p th:text="${updateError}"></p>
+                        </div>
 
                         <label for="password"><b>Password</b></label>
                         <input type="password" th:field="*{password}" name="updatePassword" id="updatePassword">
@@ -73,7 +77,7 @@
         </div>
     </footer>
     <script>
-        document.getElementById('registrationForm').addEventListener('submit', function (event) {
+        document.getElementById('updateProfileForm').addEventListener('submit', function (event) {
             var updatePassword = document.getElementById('updatePassword').value;
             var confirmPassword = document.getElementById('confirmPassword').value;
             var passwordMatchMessage = document.getElementById('passwordMatchMessage');

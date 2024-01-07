@@ -258,6 +258,12 @@
     transform: translate3d(0, 0, 0);
   }
 
+  .error-message {
+    text-align: center; /* Center the text */
+    color: red; /* Set the font color to red */
+    margin-top: 5px; /* Add some top margin for spacing */
+}
+
 /* Navbar Styling */
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
 

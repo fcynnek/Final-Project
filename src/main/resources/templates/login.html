@@ -42,6 +42,10 @@
         <label for="email"><b>Email</b></label>
         <input type="text" th:field="*{email}" name="email" class="required" required>
 
+        <div th:if="${registrationError}" class="error-message">
+          <p th:text="${registrationError}"></p>
+        </div>
+
         <label for="password"><b>Password</b></label>
         <input type="password" th:field="*{password}" name="password" class="required" required>
 
@@ -81,6 +85,10 @@
           <label for="email"><b>Email</b></label>
           <input type="text" th:field="*{email}" name="registrationEmail" class="required" required>
 
+          <div th:if="${registrationError}" class="error-message">
+            <p th:text="${registrationError}"></p>
+          </div>
+
           <label for="password"><b>Password</b></label>
           <input type="password" th:field="*{password}" name="registrationPassword" id="registrationPassword"
             class="required" required>
@@ -92,6 +100,7 @@
           <button type="submit" class="submit">REGISTER</button>
         </form>
       </div>
+
       <script src="login.js"></script>
     </div>
   </div>
