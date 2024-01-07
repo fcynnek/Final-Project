@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -61,15 +62,16 @@ public class RegistrationController {
 	
 	
 	@PostMapping("/register")
-	public String processRegistration(@ModelAttribute("user") User user, SignUpRequest request) {
+	public String processRegistration(@ModelAttribute("user") User user, SignUpRequest request, Model model) {
 	    Optional<User> existingUser = userService.findUserByEmail(user.getEmail());
 	    String encodedPassword = passwordEncoder.encode(request.password());
 	    
 
 	    if (existingUser.isPresent()) {
 	    	logger.error("User already exists. Redirecting to userExists.");
+	    	model.addAttribute("registrationError", "Username already exists. Please choose another email address.");
 	        // Redirect to the userExists page if a user with the same email exists
-	        return "userExists";
+	        return "login";
 	    } else {
 	    	JwtAuthenticationResponse signupResponse = authenticationService.signup(request);
 	    	
@@ -84,7 +86,7 @@ public class RegistrationController {
 	            } else {
 	                // Handle the case where authentication is not successful
 	            	logger.error("User registration failed. Redirecting to error.");
-	                return "error";
+	                return "error2";
 	            }
 	        }
 	    }
