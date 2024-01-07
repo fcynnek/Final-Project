@@ -125,7 +125,7 @@ public class SecurityConfig {
 							logger.info("Raw password during login: " + password);
 					        logger.info("Encoded password during login: " + passwordEncoder().encode(password));
 							
-							response.sendRedirect("/error2");
+							response.sendRedirect("/error");
 						}
 					})
 		        	.permitAll();

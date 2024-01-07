@@ -93,6 +93,7 @@ public class UserServiceImpl implements UserService {
 		return userRepository.save(user);
 	}
     
+    @Transactional
     public Optional<User> findUserByEmail(String email) {
     	return userRepository.findByEmail(email);
     }
@@ -107,6 +108,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public boolean existsByEmail(String email) {
+		logger.debug("Does it exist?", userRepository.existsByEmail(email));
 		return userRepository.existsByEmail(email);
 	}
 	

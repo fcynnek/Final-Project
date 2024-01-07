@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Objects;
+
 @Entity
 public class Authority implements GrantedAuthority {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
