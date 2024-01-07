@@ -15,6 +15,7 @@ import com.fcynnek.finalproject.petmanagement.domain.User;
 import com.fcynnek.finalproject.petmanagement.repository.UserRepository;
 import com.fcynnek.finalproject.petmanagement.web.RegistrationController;
 
+import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
@@ -25,11 +26,15 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 	
     private final UserRepository userRepository;
+    private EntityManager entityManager;
     private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
     
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    public UserServiceImpl(UserRepository userRepository, EntityManager entityManager) {
+		super();
+		this.userRepository = userRepository;
+		this.entityManager = entityManager;
+	}
+
     
     @Override
     public UserDetailsService userDetailsService() {
@@ -111,17 +116,23 @@ public class UserServiceImpl implements UserService {
 	
 	@Transactional
 	public void updateByEmail(User user, String newEmail) {
-		try {
 			Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
 			
 			existingUser.ifPresent(updatedUser -> {
 				logger.info("Updating email for user with ID {}: {} to {}", updatedUser.getId(), updatedUser.getEmail(), newEmail);
 				updatedUser.setEmail(newEmail);
+				
+				for (Authority authority : updatedUser.getAuthorities()) {
+					authority.setUser(updatedUser);
+				}
+				
 				userRepository.save(updatedUser);
+				userRepository.flush();
 				logger.info("Email updated successfully. New email: {}", newEmail);
 			});
-		} catch (Exception e) {
-			logger.error("Error updating email: {}", e.getMessage(), e);
-		}
+	}
+
+	public void detachUser(User user) {
+		entityManager.detach(user);
 	}
 }
