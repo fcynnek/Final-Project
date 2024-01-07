@@ -99,4 +99,29 @@ public class UserServiceImpl implements UserService {
     public User updateUser(User user) {
     	return userRepository.save(user);
     }
+
+	@Override
+	public boolean existsByEmail(String email) {
+		return userRepository.existsByEmail(email);
+	}
+	
+	public void deleteByEmail(Integer userId) {
+		userRepository.deleteById(userId);
+	}
+	
+	@Transactional
+	public void updateByEmail(User user, String newEmail) {
+		try {
+			Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
+			
+			existingUser.ifPresent(updatedUser -> {
+				logger.info("Updating email for user with ID {}: {} to {}", updatedUser.getId(), updatedUser.getEmail(), newEmail);
+				updatedUser.setEmail(newEmail);
+				userRepository.save(updatedUser);
+				logger.info("Email updated successfully. New email: {}", newEmail);
+			});
+		} catch (Exception e) {
+			logger.error("Error updating email: {}", e.getMessage(), e);
+		}
+	}
 }

@@ -39,6 +39,7 @@ import com.fcynnek.finalproject.petmanagement.service.RefreshTokenService;
 import com.fcynnek.finalproject.petmanagement.service.UserServiceImpl;
 
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.transaction.Transactional;
 
 //@RestController
 //@RequestMapping("/api/v1/auth")
@@ -144,23 +145,45 @@ public class AuthenticationController {
 		return "profile";
 	}
 	
+	@Transactional
 	@PostMapping("/profile/update")
-	public String update(@ModelAttribute("user") User user) {
-		Optional<User> existingUser = userService.findUserByEmail(user.getEmail());
-		logger.info("Is existing user present? []", existingUser.isPresent());
-		
-		existingUser.ifPresent(updatedUser -> {
-			logger.info("Updating user with email: []", updatedUser.getEmail());
-			updatedUser.setFirstName(user.getFirstName());
-			updatedUser.setLastName(user.getLastName());
+	public String update(@ModelAttribute("user") User user, Model model) {
+		try {
+			Optional<User> existingUser = userService.findUserByEmail(user.getEmail());
+			if (existingUser.isPresent()) {
+			    User userInDB = existingUser.get();
+			    logger.info("Is existing user present? {}", userInDB.getEmail());
 
-	        if (user.getPassword() != null && !user.getPassword().isEmpty()) {
-	        	updatedUser.setPassword(passwordEncoder.encode(user.getPassword()));
-	        }
+			    String emailFromForm = user.getEmail();
+			    logger.info("Received request to update email from: {} to: {}", user.getEmail(), emailFromForm);
+			    
+			    if (!emailFromForm.equals(userInDB.getEmail()) && userService.existsByEmail(emailFromForm)) {
+			        model.addAttribute("updateError", "Email already exists. Please choose another email address.");
+			        return "profile";
+			    }
 
-	        userService.updateUser(updatedUser); // Use a method that updates the user in your service
-	    });
-		
+			    // Update user details
+			    userInDB.setFirstName(user.getFirstName());
+			    userInDB.setLastName(user.getLastName());
+			    
+			    userService.updateByEmail(userInDB, emailFromForm);
+			    logger.info("Received request to update email to: {}", emailFromForm);
+
+			    // Update password if provided
+			    if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+			    	userInDB.setPassword(passwordEncoder.encode(user.getPassword()));
+			    }
+
+			    userService.updateUser(userInDB);
+
+			    return "redirect:/authenticated";
+			}
+		} catch (Exception e) {
+			logger.error("Error updating email", e);
+		    model.addAttribute("updateError", "Error updating email. Please try again.");
+		    return "profile";
+		}
+
 		return "redirect:/authenticated";
 	}
 	
