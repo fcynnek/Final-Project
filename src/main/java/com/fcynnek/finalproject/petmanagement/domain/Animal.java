@@ -21,7 +21,6 @@ public class Animal {
 	private Integer id;
 	@Column(nullable = false)
 	private String name;
-	private String species;
 	private String breed;
 	private Integer age;
 	private String color;
@@ -29,7 +28,13 @@ public class Animal {
 	private User user;
 	@OneToMany(mappedBy = "animal", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Medication> meds = new ArrayList<>();
-	
+	enum species {
+		DOG,
+		CAT,
+		BIRD,
+		REPTILE,
+		FISH
+	}
 	
 	
 	
@@ -63,14 +68,6 @@ public class Animal {
 	
 	public void setName(String name) {
 		this.name = name;
-	}
-	
-	public String getSpecies() {
-		return species;
-	}
-	
-	public void setSpecies(String species) {
-		this.species = species;
 	}
 	
 	public String getBreed() {
