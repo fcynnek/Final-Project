@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -146,43 +147,46 @@ public class AuthenticationController {
 	@Transactional
 	@PostMapping("/profile/update")
 	public String update(@ModelAttribute("user") User user, Model model) {
+
 		Optional<User> existingUser = userService.findUserByEmail(user.getEmail());
+		if (existingUser.isPresent()) {
+			User userInDB = existingUser.get();
+			logger.info("Is existing user present? {}", userInDB.getEmail());
 
-		try {
-			if (existingUser.isPresent()) {
-				User userInDB = existingUser.get();
-				logger.info("Is existing user present? {}", userInDB.getEmail());
+			String emailFromForm = user.getEmail();
+			logger.info("Received request to update email from: {} to: {}", user.getEmail(), emailFromForm);
 
-				String emailFromForm = user.getEmail();
-				logger.info("Received request to update email from: {} to: {}", user.getEmail(), emailFromForm);
+			if (!emailFromForm.equals(userInDB.getEmail()) && userService.existsByEmail(emailFromForm)) {
+				model.addAttribute("updateError", "Email already exists. Please choose another email address.");
+				return "profile";
+			}
 
-				if (!emailFromForm.equals(userInDB.getEmail()) && userService.existsByEmail(emailFromForm)) {
-					model.addAttribute("updateError", "Email already exists. Please choose another email address.");
-					return "profile";
-				}
+			// Update user details
+			userInDB.setFirstName(user.getFirstName());
+			userInDB.setLastName(user.getLastName());
 
-				// Update user details
-				userInDB.setFirstName(user.getFirstName());
-				userInDB.setLastName(user.getLastName());
-
+			try {
 				userService.updateByEmail(userInDB, emailFromForm);
 				logger.info("Received request to update email to: {}", emailFromForm);
-
-				// Update password if provided
-				if (user.getPassword() != null && !user.getPassword().isEmpty()) {
-					userInDB.setPassword(passwordEncoder.encode(user.getPassword()));
-				}
-
-				userService.updateUser(userInDB);
-
-				return "redirect:/authenticated";
+			} catch (DataIntegrityViolationException e) {
+				logger.error("Error updating email", e);
+				model.addAttribute("updateError", "Email already exists. Please choose another email address.");
+				return "profile";
+			} catch (Exception e) {
+				logger.error("Error updating email", e);
+				model.addAttribute("updateError", "Error updating email. Please try again.");
+				return "profile";
 			}
-		} catch (Exception e) {
-			logger.error("Error updating email", e);
-			model.addAttribute("updateError", "Error updating email. Please try again.");
-			return "profile";
-		}
 
+			// Update password if provided
+			if (user.getPassword() != null && !user.getPassword().isEmpty()) {
+				userInDB.setPassword(passwordEncoder.encode(user.getPassword()));
+			}
+
+			userService.updateUser(userInDB);
+
+			return "redirect:/authenticated";
+		}
 		return "redirect:/authenticated";
 	}
 
