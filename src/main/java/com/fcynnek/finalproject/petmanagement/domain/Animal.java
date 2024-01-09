@@ -6,6 +6,8 @@ import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +21,8 @@ public class Animal {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	@Enumerated(EnumType.STRING)
+	private Species species;
 	@Column(nullable = false)
 	private String name;
 	private String breed;
@@ -28,15 +32,22 @@ public class Animal {
 	private User user;
 	@OneToMany(mappedBy = "animal", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Medication> meds = new ArrayList<>();
-	enum species {
+	
+	
+	public enum Species {
 		DOG,
 		CAT,
 		BIRD,
 		REPTILE,
 		FISH
 	}
+	public Species getSpecies() {
+		return species;
+	}
 	
-	
+	public void setSpecies(Species species) {
+		this.species = species;
+	}
 	
 	public User getUser() {
 		return user;
