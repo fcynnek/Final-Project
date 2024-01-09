@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.fcynnek.finalproject.petmanagement.domain.Animal;
 
 @Repository
-public interface PetRepository extends JpaRepository<Animal, Integer>{
+public interface AnimalRepository extends JpaRepository<Animal, Integer>{
 
 }
