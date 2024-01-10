@@ -59,8 +59,8 @@ public class AnimalController {
 
 	@GetMapping("/profile") 
 	public String getProfile(Model model) {
-		List<Animal> pets = AnimalService.getAllPets();
-		model.addAttribute("pets", pets);
+//		List<Animal> pets = AnimalService.getAllPets();
+//		model.addAttribute("pets", pets);
 		return "pet_profile";
 	}
 	
