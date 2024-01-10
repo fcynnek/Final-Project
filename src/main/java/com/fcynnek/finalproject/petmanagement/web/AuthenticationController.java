@@ -134,7 +134,7 @@ public class AuthenticationController {
 			model.addAttribute("user", userProfile.get());
 			model.addAttribute("email", userProfile.get().getEmail());
 		}
-		return "profile";
+		return "user_profile";
 	}
 
 //	@Transactional
@@ -151,7 +151,7 @@ public class AuthenticationController {
 			logger.info("Received request to update email from: {} to: {}", foundUser.getEmail(), emailFromForm);
 			if (!emailFromForm.equals(userInDB.getEmail()) && userService.existsByEmail(emailFromForm)) {
 				model.addAttribute("updateError", "Email already exists. Please choose another email address.");
-				return "profile";
+				return "user_profile";
 			}
 			
 			// Update user details
@@ -171,11 +171,11 @@ public class AuthenticationController {
 			} catch (DataIntegrityViolationException e) {
 				logger.error("Error updating email", e);
 				model.addAttribute("updateError", "Email already exists. Please choose another email address.");
-				return "profile";
+				return "user_profile";
 			} catch (Exception e) {
 				logger.error("Error updating email", e);
 				model.addAttribute("updateError", "Error updating email. Please try again.");
-				return "profile";
+				return "user_profile";
 			}
 			// Update password if provided
 			if (foundUser.getPassword() != null && !foundUser.getPassword().isEmpty()) {
