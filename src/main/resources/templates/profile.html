@@ -35,7 +35,7 @@
             <div class="content-box">
                 <h1>Your Profile</h1>
                 <div class="form">
-                    <form method="post" th:action="@{/profile/update}" th:object="${user}"
+                    <form method="post" th:action="@{/profile}" th:object="${user}"
                         enctype="application/x-www-form-urlencoded" id="updateProfileForm">
 
                         <label for="firstName"><b>First Name</b></label>
@@ -53,10 +53,6 @@
 
                         <label for="password"><b>Password</b></label>
                         <input type="password" th:field="*{password}" name="updatePassword" id="updatePassword">
-
-                        <label for="confirmPassword"><b>Confirm Password</b></label>
-                        <input type="password" name="confirmPassword" id="confirmPassword">
-                        <div id="passwordMatchMessage" style="color: red; text-align: center;"></div><br><br>
 
                         <button type="submit" class="submit">UPDATE</button>
                     </form>
@@ -77,24 +73,7 @@
 
         </div>
     </footer>
-    <script>
-        document.getElementById('updateProfileForm').addEventListener('submit', function (event) {
-            var updatePassword = document.getElementById('updatePassword').value;
-            var confirmPassword = document.getElementById('confirmPassword').value;
-            var passwordMatchMessage = document.getElementById('passwordMatchMessage');
 
-            console.log('updatePassword:', password);
-            console.log('Confirm Password:', confirmPassword);
-
-            if (updatePassword !== confirmPassword) {
-                passwordMatchMessage.textContent = 'Passwords do not match!';
-                // alert('Passwords do not match!');
-                event.preventDefault(); // Prevent form submission
-            } else {
-                passwordMatchMessage.textContent = ''; // Clear previous message
-            }
-        });
-    </script>
     <script src="button_switch.js"></script>
 </body>
 
