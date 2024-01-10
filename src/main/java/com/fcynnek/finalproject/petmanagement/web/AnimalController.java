@@ -24,16 +24,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/pet")
 public class AnimalController {
-	
-    private UserServiceImpl userService;
-    private UserRepository userRepo;
-    private AnimalService animalService;
-    private AnimalRepository petRepo;
-    private MedsAndIllnessRepository medsAndIllnessRepo;
-    private Logger logger = LoggerFactory.getLogger(AnimalController.class);
-    
-    
-    public AnimalController(UserServiceImpl userService, UserRepository userRepo, AnimalRepository petRepo,
+
+	private UserServiceImpl userService;
+	private UserRepository userRepo;
+	private AnimalService animalService;
+	private AnimalRepository petRepo;
+	private MedsAndIllnessRepository medsAndIllnessRepo;
+	private Logger logger = LoggerFactory.getLogger(AnimalController.class);
+
+	public AnimalController(UserServiceImpl userService, UserRepository userRepo, AnimalRepository petRepo,
 			AnimalService animalService, MedsAndIllnessRepository medsAndIllnessRepo) {
 		super();
 		this.userService = userService;
@@ -43,46 +42,47 @@ public class AnimalController {
 		this.medsAndIllnessRepo = medsAndIllnessRepo;
 	}
 
+	public void test() {
+		// TODO(developer): Uncomment these lines.
+		// import com.google.cloud.translate.*;
+		Translate translate = TranslateOptions.getDefaultInstance().getService();
 
- // TODO(developer): Uncomment these lines.
- // import com.google.cloud.translate.*;
-  Translate translate = TranslateOptions.getDefaultInstance().getService();
+		Translation translation = translate.translate("¡Hola Mundo!");
 
- Translation translation = translate.translate("¡Hola Mundo!");
- 
- System.out.printf("Translated Text:\n\t%s\n", translation.getTranslatedText());
-    
+		System.out.printf("Translated Text:\n\t%s\n", translation.getTranslatedText());
+	}
+
 	@GetMapping("/medication")
 	public String getMedication() {
 		return "medication";
 	}
-	
+
 	@GetMapping("/features")
-	public String getFeatures () {
+	public String getFeatures() {
 		return "pet_features";
 	}
-    
+
 	@ModelAttribute("speciesList")
 	public Animal.Species[] speciesList() {
 		return Animal.Species.values();
 	}
 
-	@GetMapping("/profile") 
+	@GetMapping("/profile")
 	public String getProfile(Model model) {
 //		List<Animal> pets = AnimalService.getAllPets();
 //		model.addAttribute("pets", pets);
 		return "pet_profile";
 	}
-	
+
 	@GetMapping("/create")
 	public String showAnimalForm(Model model) {
 		model.addAttribute("pets", new Animal());
 		return "pet_profile";
 	}
-	
+
 	@PostMapping("/create")
 	public String processAnimalForm(@ModelAttribute("animal") Animal pet, Model model) {
-		
+
 		return "redirect:/pet_profile";
 	}
 }
