@@ -5,6 +5,9 @@ import com.fcynnek.finalproject.petmanagement.repository.MedsAndIllnessRepositor
 import com.fcynnek.finalproject.petmanagement.repository.AnimalRepository;
 import com.fcynnek.finalproject.petmanagement.repository.UserRepository;
 import com.fcynnek.finalproject.petmanagement.service.UserServiceImpl;
+import com.google.cloud.translate.Translate;
+import com.google.cloud.translate.TranslateOptions;
+import com.google.cloud.translate.Translation;
 import com.fcynnek.finalproject.petmanagement.service.AnimalService;
 
 import java.util.List;
@@ -41,6 +44,13 @@ public class AnimalController {
 	}
 
 
+ // TODO(developer): Uncomment these lines.
+ // import com.google.cloud.translate.*;
+  Translate translate = TranslateOptions.getDefaultInstance().getService();
+
+ Translation translation = translate.translate("¡Hola Mundo!");
+ 
+ System.out.printf("Translated Text:\n\t%s\n", translation.getTranslatedText());
     
 	@GetMapping("/medication")
 	public String getMedication() {
