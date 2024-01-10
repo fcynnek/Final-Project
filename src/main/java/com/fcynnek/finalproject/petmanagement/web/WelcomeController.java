@@ -34,7 +34,7 @@ public class WelcomeController {
 	
 	@GetMapping("/error")
 	public String getError () {
-		return "error2";
+		return "error";
 	}
 
 	@GetMapping("/error2")
