@@ -33,17 +33,40 @@
 
         <section class="content">
             <div class="content-box">
+                <h1>Pet List</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <!-- Add more columns if needed -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="pet : ${pets}">
+                            <td th:text="${pet.id}"></td>
+                            <td>
+                                <a th:href="@{/pets/{id}/profile(id=${pet.id})}" th:text="${pet.name}"></a>
+                            </td>
+                            <!-- Add more columns if needed -->
+                        </tr>
+                    </tbody>
+                </table>
+        </section> <br>
+        <section class="content">
+            <div class="content-box">
                 <h1>Your Pet's Profile</h1>
                 <div class="form">
                     <form th:action="@{/pet/create}" th:object="${animal}" method="post">
                         <!-- Your other form fields here -->
-                        
+
                         <label>Species:</label>
                         <select th:field="*{species}">
-                            <option th:each="s : ${T(com.fcynnek.finalproject.petmanagement.domain.Animal.Species).values()}"
-                                    th:value="${s}" th:text="${#strings.capitalize(s.toString())}">
+                            <option
+                                th:each="s : ${T(com.fcynnek.finalproject.petmanagement.domain.Animal.Species).values()}"
+                                th:value="${s}" th:text="${#strings.capitalize(s.toString())}">
                             </option>
-                        </select><br/>
+                        </select><br />
 
                         <button type="submit" class="submit">ADD TO FAMILY</button>
                     </form>
@@ -64,7 +87,7 @@
 
         </div>
     </footer>
-    
+
     <script src="/../button_switch.js"></script>
 </body>
 
