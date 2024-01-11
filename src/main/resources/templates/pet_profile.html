@@ -33,29 +33,31 @@
 
         <section class="content">
             <div class="content-box">
-                <h1>Pet List</h1>
+                <h1>My Pets</h1>
                 <table>
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
-                            <!-- Add more columns if needed -->
+                            <th>Species</th>
+                            <th>Age</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="pet : ${pets}">
-                            <td th:text="${pet.id}"></td>
+                            <td>[[${pets.id}]]</td>
                             <td>
                                 <a th:href="@{/pets/{id}/profile(id=${pet.id})}" th:text="${pet.name}"></a>
                             </td>
-                            <!-- Add more columns if needed -->
+                            <td>[[${pets.species}]]</td>
+                            <td>[[${pets.age}]]</td>
                         </tr>
                     </tbody>
                 </table>
         </section> <br>
         <section class="content">
             <div class="content-box">
-                <h1>Your Pet's Profile</h1>
+                <h1>Add new Member to the Family</h1>
                 <div class="form">
                     <form th:action="@{/pet/create}" th:object="${animal}" method="post">
                         <!-- Your other form fields here -->
