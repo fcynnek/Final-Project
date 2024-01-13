@@ -11,6 +11,7 @@ import com.google.cloud.translate.Translation;
 import com.fcynnek.finalproject.petmanagement.service.AnimalService;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -69,20 +71,34 @@ public class AnimalController {
 
 	@GetMapping("/profile")
 	public String getProfile(Model model) {
-//		List<Animal> pets = AnimalService.getAllPets();
-//		model.addAttribute("pets", pets);
-		return "pet_profile";
-	}
-
-	@GetMapping("/create")
-	public String showAnimalForm(Model model) {
-		model.addAttribute("pets", new Animal());
+		List<Animal> pets = animalService.getAllPets();
+		model.addAttribute("animals", pets);
+		model.addAttribute("animal", new Animal());
 		return "pet_profile";
 	}
 
 	@PostMapping("/create")
-	public String processAnimalForm(@ModelAttribute("animal") Animal pet, Model model) {
-
-		return "redirect:/pet_profile";
+	public String processAnimalForm(@ModelAttribute("animal") Animal animal, Model model) {
+		animalService.save(animal);
+		return "redirect:/pet/profile";
+	}
+	
+	@GetMapping("/update/{id}")
+	public String updateAnimal(Model model, @PathVariable Integer id) {
+		Optional<Animal> pet = animalService.getById(id);
+		model.addAttribute("animal", pet);
+		return "pet_update";
+	}
+	
+	@PostMapping("/update")
+	public String updateAnimal(Animal animal) {
+		animalService.save(animal);
+		return "redirect:/pet/profile";
+	}
+	
+	@PostMapping("/delete")
+	public String deleteAnimal(Animal animal) {
+		animalService.delete(animal);
+		return "redirect:/pet/profile";
 	}
 }
