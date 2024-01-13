@@ -1,6 +1,7 @@
 package com.fcynnek.finalproject.petmanagement.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -24,4 +25,19 @@ public class AnimalService {
 		return petRepo.findAll();
 	}
 
+	public Animal save(Animal pet) {
+		return petRepo.save(pet);
+	}
+
+	public Animal getByName(String name) {
+		return petRepo.findByName(name);
+	}
+	
+	public Optional<Animal> getById(Integer id) {
+		return petRepo.findById(id);
+	}
+	
+	public void delete(Animal animal) {
+		petRepo.delete(animal);
+	}
 }
