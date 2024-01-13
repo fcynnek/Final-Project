@@ -8,4 +8,6 @@ import com.fcynnek.finalproject.petmanagement.domain.Animal;
 @Repository
 public interface AnimalRepository extends JpaRepository<Animal, Integer>{
 
+	Animal findByName(String name);
+
 }
