@@ -44,14 +44,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="pet : ${pets}">
-                            <td>[[${pets.id}]]</td>
-                            <td>
-                                <a th:href="@{/pets/{id}/profile(id=${pet.id})}" th:text="${pet.name}"></a>
-                            </td>
-                            <td>[[${pets.species}]]</td>
-                            <td>[[${pets.age}]]</td>
+                        <tr th:each="animal : ${animals}">
+                            <!-- <td>
+                                <a th:href="@{/pet/{id}/profile(id=${animal.id})}" th:text="${animal.name}"></a>
+                            </td> -->
+                            <td>[[${animal.id}]]</td>
+                            <td>[[${animal.name}]]</td>
+                            <td>[[${animal.species}]]</td>
+                            <td>[[${animal.age}]]</td>
                         </tr>
+                    <!-- </th:block> -->
                     </tbody>
                 </table>
         </section> <br>
@@ -60,15 +62,24 @@
                 <h1>Add new Member to the Family</h1>
                 <div class="form">
                     <form th:action="@{/pet/create}" th:object="${animal}" method="post">
-                        <!-- Your other form fields here -->
 
                         <label>Species:</label>
                         <select th:field="*{species}">
-                            <option
-                                th:each="s : ${T(com.fcynnek.finalproject.petmanagement.domain.Animal.Species).values()}"
-                                th:value="${s}" th:text="${#strings.capitalize(s.toString())}">
+                            <option th:each="s : ${speciesList}" th:value="${s}" th:text="${#strings.capitalize(s.toString())}">
                             </option>
                         </select><br />
+
+                        <label for="name"><b>Pet's Name</b></label>
+                        <input type="text" th:field="*{name}" name="name" class="required" required>
+
+                        <label for="breed"><b>Pet's Breed</b></label>
+                        <input type="text" th:field="*{breed}" name="breed">
+
+                        <label for="age"><b>Pet's Age</b></label>
+                        <input type="number" th:field="*{age}" name="age">
+
+                        <label for="color"><b>Pet's Color(s)</b></label>
+                        <input type="text" th:field="*{color}" name="color">
 
                         <button type="submit" class="submit">ADD TO FAMILY</button>
                     </form>
