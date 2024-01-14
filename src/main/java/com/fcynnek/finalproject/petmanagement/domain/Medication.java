@@ -1,5 +1,8 @@
 package com.fcynnek.finalproject.petmanagement.domain;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -17,8 +20,8 @@ public class Medication {
 	private String illness;
 	private String description;
 	private String sideEffects;
-//	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-//	private Medication meds;
+	private LocalDate medicationGiven;
+	private LocalDate medicationDue;
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Animal animal;
 	
@@ -31,14 +34,6 @@ public class Medication {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	
-//	public Medication getMeds() {
-//		return meds;
-//	}
-//	
-//	public void setMeds(Medication meds) {
-//		this.meds = meds;
-//	}
 	
 	public String getIllness() {
 		return illness;
@@ -62,6 +57,30 @@ public class Medication {
 	
 	public void setSideEffects(String sideEffects) {
 		this.sideEffects = sideEffects;
+	}
+
+	public LocalDate getMedicationGiven() {
+		return medicationGiven;
+	}
+
+	public void setMedicationGiven(LocalDate medicationGiven) {
+		this.medicationGiven = medicationGiven;
+	}
+
+	public LocalDate getMedicationDue() {
+		return medicationDue;
+	}
+
+	public void setMedicationDue(LocalDate medicationDue) {
+		this.medicationDue = medicationDue;
+	}
+
+	public Animal getAnimal() {
+		return animal;
+	}
+
+	public void setAnimal(Animal animal) {
+		this.animal = animal;
 	}
 	
 }
