@@ -27,18 +27,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/pet")
 public class AnimalController {
 
-	private UserServiceImpl userService;
-	private UserRepository userRepo;
 	private AnimalService animalService;
 	private AnimalRepository petRepo;
 	private MedsAndIllnessRepository medsAndIllnessRepo;
 	private Logger logger = LoggerFactory.getLogger(AnimalController.class);
 
-	public AnimalController(UserServiceImpl userService, UserRepository userRepo, AnimalRepository petRepo,
-			AnimalService animalService, MedsAndIllnessRepository medsAndIllnessRepo) {
+	public AnimalController(AnimalRepository petRepo, AnimalService animalService, MedsAndIllnessRepository medsAndIllnessRepo) {
 		super();
-		this.userService = userService;
-		this.userRepo = userRepo;
 		this.petRepo = petRepo;
 		this.animalService = animalService;
 		this.medsAndIllnessRepo = medsAndIllnessRepo;
@@ -52,11 +47,6 @@ public class AnimalController {
 		Translation translation = translate.translate("¡Hola Mundo!");
 
 		System.out.printf("Translated Text:\n\t%s\n", translation.getTranslatedText());
-	}
-
-	@GetMapping("/medication")
-	public String getMedication() {
-		return "medication";
 	}
 
 	@GetMapping("/features")
