@@ -53,7 +53,6 @@
                             <td>[[${animal.species}]]</td>
                             <td>[[${animal.age}]]</td>
                         </tr>
-                    <!-- </th:block> -->
                     </tbody>
                 </table>
         </section> <br>
@@ -63,7 +62,7 @@
                 <div class="form">
                     <form th:action="@{/pet/create}" th:object="${animal}" method="post">
 
-                        <label>Species:</label>
+                        <label><b>Species:</b></label>
                         <select th:field="*{species}">
                             <option th:each="s : ${speciesList}" th:value="${s}" th:text="${#strings.capitalize(s.toString())}">
                             </option>

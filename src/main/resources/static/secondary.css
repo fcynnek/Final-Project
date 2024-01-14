@@ -66,14 +66,10 @@ body {
 }
 
 .content-box {
-  background-color: rgba(245, 245, 245, 0.8);
-  /* Semi-translucent light background color */
-  padding: 20px;
-  /* Adjust the padding as needed */
-  border-radius: 10px;
-  /* Add rounded corners if desired */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Optional: Add a subtle box shadow */
+  background-color: rgba(245, 245, 245, 0.8); /* Semi-translucent light background color */
+  padding: 20px; /* Adjust the padding as needed */
+  border-radius: 10px; /* Add rounded corners if desired */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
 }
 
 .content h1 {
@@ -115,6 +111,7 @@ label {
   width: 260px;
   margin: 25px auto 0;
   text-align: center;
+  border-radius: 10px;
 }
 
 label span {
@@ -123,7 +120,7 @@ label span {
   text-transform: uppercase;
 }
 
-input {
+input, option {
   display: block;
   width: 100%;
   margin-top: 5px;
