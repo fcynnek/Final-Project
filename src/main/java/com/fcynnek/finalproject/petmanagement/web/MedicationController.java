@@ -1,6 +1,7 @@
 package com.fcynnek.finalproject.petmanagement.web;
 
 import com.fcynnek.finalproject.petmanagement.domain.Animal;
+import com.fcynnek.finalproject.petmanagement.domain.Medication;
 import com.fcynnek.finalproject.petmanagement.repository.MedsAndIllnessRepository;
 import com.fcynnek.finalproject.petmanagement.repository.AnimalRepository;
 import com.fcynnek.finalproject.petmanagement.repository.UserRepository;
@@ -8,7 +9,11 @@ import com.fcynnek.finalproject.petmanagement.service.UserServiceImpl;
 import com.google.cloud.translate.Translate;
 import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
+
+import jakarta.annotation.PostConstruct;
+
 import com.fcynnek.finalproject.petmanagement.service.AnimalService;
+import com.fcynnek.finalproject.petmanagement.service.MedicationService;
 
 import java.util.List;
 import java.util.Optional;
@@ -24,33 +29,31 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/pet")
+@RequestMapping("/medication")
 public class MedicationController {
 
 	private AnimalService animalService;
 	private AnimalRepository petRepo;
+	private MedicationService medicationService;
 	private MedsAndIllnessRepository medsAndIllnessRepo;
 	private Logger logger = LoggerFactory.getLogger(MedicationController.class);
-
-	public MedicationController(AnimalRepository petRepo, AnimalService animalService, MedsAndIllnessRepository medsAndIllnessRepo) {
+	
+	public MedicationController(AnimalService animalService, AnimalRepository petRepo,
+			MedicationService medicationService, MedsAndIllnessRepository medsAndIllnessRepo) {
 		super();
-		this.petRepo = petRepo;
 		this.animalService = animalService;
+		this.petRepo = petRepo;
+		this.medicationService = medicationService;
 		this.medsAndIllnessRepo = medsAndIllnessRepo;
 	}
 
 
-	@GetMapping("/medication")
-	public String getMedication() {
+	@GetMapping("/")
+	public String getMedication(Model model) {
+		List<Medication> meds = medicationService.getAllMeds();
+		model.addAttribute("meds", meds);
+		model.addAttribute("med", new Medication());
 		return "medication";
-	}
-
-	@GetMapping("/profile")
-	public String getProfile(Model model) {
-		List<Animal> pets = animalService.getAllPets();
-		model.addAttribute("animals", pets);
-		model.addAttribute("animal", new Animal());
-		return "pet_profile";
 	}
 
 	@PostMapping("/create")
