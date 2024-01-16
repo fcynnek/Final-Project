@@ -51,33 +51,33 @@ public class MedicationController {
 	@GetMapping("/")
 	public String getMedication(Model model) {
 		List<Medication> meds = medicationService.getAllMeds();
-		model.addAttribute("meds", meds);
-		model.addAttribute("med", new Medication());
+		model.addAttribute("medications", meds);
+		model.addAttribute("medication", new Medication());
 		return "medication";
 	}
 
 	@PostMapping("/create")
-	public String processAnimalForm(@ModelAttribute("animal") Animal animal, Model model) {
-		animalService.save(animal);
+	public String processAnimalForm(@ModelAttribute("medication") Medication medication, Model model) {
+		medicationService.save(medication);
 		return "redirect:/pet/profile";
 	}
 	
 	@GetMapping("/update/{id}")
 	public String updateAnimal(Model model, @PathVariable Integer id) {
-		Optional<Animal> pet = animalService.getById(id);
-		model.addAttribute("animal", pet);
+		Medication med = medicationService.getById(id);
+		model.addAttribute("medication", med);
 		return "pet_update";
 	}
 	
 	@PostMapping("/update")
-	public String updateAnimal(Animal animal) {
-		animalService.save(animal);
+	public String updateAnimal(Medication medication) {
+		medicationService.save(medication);
 		return "redirect:/pet/profile";
 	}
 	
 	@PostMapping("/delete")
-	public String deleteAnimal(Animal animal) {
-		animalService.delete(animal);
+	public String deleteAnimal(Medication medication) {
+		medicationService.delete(medication);
 		return "redirect:/pet/profile";
 	}
 }
