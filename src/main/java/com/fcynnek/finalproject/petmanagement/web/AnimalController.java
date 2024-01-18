@@ -1,6 +1,7 @@
 package com.fcynnek.finalproject.petmanagement.web;
 
 import com.fcynnek.finalproject.petmanagement.domain.Animal;
+import com.fcynnek.finalproject.petmanagement.domain.User;
 import com.fcynnek.finalproject.petmanagement.repository.MedsAndIllnessRepository;
 import com.fcynnek.finalproject.petmanagement.repository.AnimalRepository;
 import com.fcynnek.finalproject.petmanagement.repository.UserRepository;
@@ -17,14 +18,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequestMapping("/pet")
+@SessionAttributes("id")
 public class AnimalController {
 
 	private AnimalService animalService;
@@ -77,13 +81,26 @@ public class AnimalController {
 	public String updateAnimal(Model model, @PathVariable Integer id) {
 		Optional<Animal> pet = animalService.getById(id);
 		model.addAttribute("animal", pet);
+		model.addAttribute("id", pet.get().getId());
 		return "pet_update";
 	}
 	
 	@PostMapping("/update")
-	public String updateAnimal(Animal animal) {
-		animalService.save(animal);
-		return "redirect:/pet/profile";
+	public String updateAnimal(@ModelAttribute("id") Animal animal, ModelMap model) {
+		Optional<Animal> existingPetOpt = animalService.getById((Integer) model.getAttribute("id"));
+		
+		if (existingPetOpt.isPresent()) {
+			Animal existingPet = existingPetOpt.get();
+			existingPet.setName(animal.getName());
+			existingPet.setAge(animal.getAge());
+			existingPet.setBreed(animal.getBreed());
+			existingPet.setColor(animal.getColor());
+
+			animalService.save(animal);
+			return "redirect:/pet/profile";
+		} else {
+			return "error";
+		}
 	}
 	
 	@PostMapping("/delete")
