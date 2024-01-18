@@ -31,8 +31,8 @@ public class MedicationService {
 		return medsRepo.save(meds);
 	}
 
-	public Medication getByName(String name) {
-		return medsRepo.findByName(name);
+	public Medication getByIllness(String name) {
+		return medsRepo.findByIllness(name);
 	}
 	
 	public void delete(Medication meds) {

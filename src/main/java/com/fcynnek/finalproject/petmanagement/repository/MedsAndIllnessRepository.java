@@ -8,6 +8,6 @@ import com.fcynnek.finalproject.petmanagement.domain.Medication;
 @Repository
 public interface MedsAndIllnessRepository extends JpaRepository<Medication, Integer> {
 
-	Medication findByName(String name);
+	Medication findByIllness(String name);
 
 }
