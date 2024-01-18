@@ -62,12 +62,12 @@ public class MedicationController {
 		return "redirect:/pet/profile";
 	}
 	
-	@GetMapping("/update/{id}")
-	public String updateAnimal(Model model, @PathVariable Integer id) {
-		Medication med = medicationService.getById(id);
-		model.addAttribute("medication", med);
-		return "pet_update";
-	}
+//	@GetMapping("/update/{id}")
+//	public String updateAnimal(Model model, @PathVariable Integer id) {
+//		Medication med = medicationService.getById(id);
+//		model.addAttribute("medication", med);
+//		return "pet_update";
+//	}
 	
 	@PostMapping("/update")
 	public String updateAnimal(Medication medication) {
