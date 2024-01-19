@@ -86,8 +86,9 @@ public class AnimalController {
 	}
 	
 	@PostMapping("/update")
-	public String updateAnimal(@ModelAttribute("id") Animal animal, ModelMap model) {
-		Optional<Animal> existingPetOpt = animalService.getById((Integer) model.getAttribute("id"));
+//	public String updateAnimal(@ModelAttribute("id") Animal animal, ModelMap model) {
+	public String updateAnimal(Animal animal, @ModelAttribute("id") Integer id) {
+		Optional<Animal> existingPetOpt = animalService.getById(id);
 		
 		if (existingPetOpt.isPresent()) {
 			Animal existingPet = existingPetOpt.get();
@@ -96,7 +97,7 @@ public class AnimalController {
 			existingPet.setBreed(animal.getBreed());
 			existingPet.setColor(animal.getColor());
 
-			animalService.save(animal);
+			animalService.save(existingPet);
 			return "redirect:/pet/profile";
 		} else {
 			return "error";
