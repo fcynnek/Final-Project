@@ -17,7 +17,7 @@
         <header class="navbar">
             <div class="logo">
                 <i class="fa-solid fa-shield-dog"></i>
-                <a href="/">  PET-ME  </a>
+                <a href="/"> PET-ME </a>
                 <i class="fa-solid fa-shield-cat"></i>
             </div>
             <div class="menu">
@@ -33,10 +33,61 @@
 
         <section class="content">
             <div class="content-box">
-            <h1>Your Pet's Medications</h1>
-            <p>Table</p>
+                <h1>Your Pet's Medications</h1>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Species</th>
+                            <th>See Medications</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="animal : ${animals}">
+                            <td>[[${animal.id}]]</td>
+                            <td>[[${animal.name}]]</td>
+                            <td>[[${animal.species}]]</td>
+                            <td>
+                                <a th:href="@{/pet/update/{id}(id=${animal.id})}"><i class="fa-solid fa-file-prescription"></i> Update</a>
+                                <!-- th:text="${animal.name}" -->
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+        </section> <br>
+        <section class="content">
+            <div class="content-box">
+                <h1>Add new Member to the Family</h1>
+                <div class="form">
+                    <form th:action="@{/pet/create}" th:object="${animal}" method="post">
+
+                        <label><b>Species:</b></label>
+                        <select th:field="*{species}">
+                            <option th:each="s : ${speciesList}" th:value="${s}"
+                                th:text="${#strings.capitalize(s.toString())}">
+                            </option>
+                        </select><br />
+
+                        <label for="name"><b>Pet's Name</b></label>
+                        <input type="text" th:field="*{name}" name="name" class="required" required>
+
+                        <label for="breed"><b>Pet's Breed</b></label>
+                        <input type="text" th:field="*{breed}" name="breed">
+
+                        <label for="age"><b>Pet's Age</b></label>
+                        <input type="number" th:field="*{age}" name="age">
+
+                        <label for="color"><b>Pet's Color(s)</b></label>
+                        <input type="text" th:field="*{color}" name="color">
+
+                        <button type="submit" class="submit">ADD TO FAMILY</button>
+                    </form>
+                </div>
             </div>
         </section>
+    </div>
+    </section>
     </div>
     <!-- Footer -->
     <footer class="footer">
