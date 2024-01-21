@@ -29,7 +29,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/medication")
+@RequestMapping("/pet/medication")
 public class MedicationController {
 
 	private AnimalService animalService;
@@ -49,35 +49,37 @@ public class MedicationController {
 
 
 	@GetMapping("/")
-	public String getMedication(Model model) {
+	public String getPets(Model model) {
+		List<Animal> pets = animalService.getAllPets();
 		List<Medication> meds = medicationService.getAllMeds();
+		model.addAttribute("animals", pets);
 		model.addAttribute("medications", meds);
-		model.addAttribute("medication", new Medication());
 		return "medication";
 	}
 
 	@PostMapping("/create")
-	public String processAnimalForm(@ModelAttribute("medication") Medication medication, Model model) {
+	public String processMedsForm(@ModelAttribute("medication") Medication medication, Model model) {
 		medicationService.save(medication);
-		return "redirect:/pet/profile";
+		return "redirect:/pet/medication/{id}";
 	}
 	
-//	@GetMapping("/update/{id}")
-//	public String updateAnimal(Model model, @PathVariable Integer id) {
-//		Medication med = medicationService.getById(id);
-//		model.addAttribute("medication", med);
-//		return "pet_update";
+	@GetMapping("/{id}")
+	public String updateAnimal(Model model, @PathVariable Integer id) {
+		List<Medication> meds = medicationService.getAllMeds();
+		model.addAttribute("medications", meds);
+		model.addAttribute("medication", new Medication());
+		return "medication_create";
+	}
+	
+//	@PostMapping("/update")
+//	public String updateAnimal(Medication medication) {
+//		medicationService.save(medication);
+//		return "redirect:/pet/profile";
 //	}
-	
-	@PostMapping("/update")
-	public String updateAnimal(Medication medication) {
-		medicationService.save(medication);
-		return "redirect:/pet/profile";
-	}
 	
 	@PostMapping("/delete")
 	public String deleteAnimal(Medication medication) {
 		medicationService.delete(medication);
-		return "redirect:/pet/profile";
+		return "redirect:/medication";
 	}
 }
