@@ -15,6 +15,7 @@ import jakarta.annotation.PostConstruct;
 import com.fcynnek.finalproject.petmanagement.service.AnimalService;
 import com.fcynnek.finalproject.petmanagement.service.MedicationService;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,7 +49,7 @@ public class MedicationController {
 	}
 
 
-	@GetMapping("/")
+	@GetMapping("")
 	public String getPets(Model model) {
 		List<Animal> pets = animalService.getAllPets();
 		List<Medication> meds = medicationService.getAllMeds();
@@ -66,16 +67,12 @@ public class MedicationController {
 	@GetMapping("/{id}")
 	public String updateAnimal(Model model, @PathVariable Integer id) {
 		List<Medication> meds = medicationService.getAllMeds();
+		List<String> illnessList = medicationService.getIllnessList();
 		model.addAttribute("medications", meds);
 		model.addAttribute("medication", new Medication());
+		model.addAttribute("illnessList", illnessList);
 		return "medication_create";
 	}
-	
-//	@PostMapping("/update")
-//	public String updateAnimal(Medication medication) {
-//		medicationService.save(medication);
-//		return "redirect:/pet/profile";
-//	}
 	
 	@PostMapping("/delete")
 	public String deleteAnimal(Medication medication) {

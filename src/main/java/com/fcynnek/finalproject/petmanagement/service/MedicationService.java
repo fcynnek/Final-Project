@@ -4,6 +4,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -39,6 +40,18 @@ public class MedicationService {
 		medsRepo.delete(meds);
 	}
 	
+	public List<String> getIllnessList() {
+		seedDataMeds();
+		
+		List<Medication> medications = medsRepo.findAll();
+		List<String> illnessList = medications.stream()
+				.map(Medication::getIllness)
+				.distinct()
+				.collect(Collectors.toList());
+		
+		return illnessList;
+	}
+	
 	
 	private String[] getData (String filepath) {
 		List<String> data;
@@ -64,14 +77,15 @@ public class MedicationService {
 		if (medications.size() < 10) {
 			String[] meds = getData("src/main/resources/data/SeedData.txt");
 			
-			for (int i = 0; i < 100; i++) {
+//			for (int i = 0; i < 100; i++) {
+			for (String line : meds) {
+				String[] values = line.split("\\s*\\|\\s*");
 				Medication medication = new Medication();
 				
-				String line = meds[(meds.length - 1)];
-				String[] values = line.split("|");
-				medication.setIllness(values[0]);
-				medication.setDescription(values[1]);
-				medication.setSideEffects(values[2]);
+//				String line = meds[(meds.length - 1)];
+				medication.setIllness(values[0].trim());
+				medication.setDescription(values[1].trim());
+				medication.setSideEffects(values[2].trim());
 				
 				medsRepo.save(medication);
 			}

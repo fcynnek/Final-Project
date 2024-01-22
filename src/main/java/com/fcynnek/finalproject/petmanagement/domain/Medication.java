@@ -26,7 +26,6 @@ public class Medication {
 	private Animal animal;
 	
 	
-	
 	public Integer getId() {
 		return id;
 	}
