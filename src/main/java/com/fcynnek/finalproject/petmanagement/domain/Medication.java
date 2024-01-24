@@ -2,6 +2,7 @@ package com.fcynnek.finalproject.petmanagement.domain;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -26,6 +27,37 @@ public class Medication {
 	private Animal animal;
 	
 	
+	@Override
+	public String toString() {
+		return "Medication [id=" + id + ", illness=" + illness + ", description=" + description + ", sideEffects="
+				+ sideEffects + ", medicationGiven=" + medicationGiven + ", medicationDue=" + medicationDue
+				+ ", animal=" + (animal != null ? animal.getId() : "null") + "]";
+	}
+
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(animal, description, id, illness, medicationDue, medicationGiven, sideEffects);
+	}
+
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Medication other = (Medication) obj;
+		return Objects.equals(animal, other.animal) && Objects.equals(description, other.description)
+				&& Objects.equals(id, other.id) && Objects.equals(illness, other.illness)
+				&& Objects.equals(medicationDue, other.medicationDue)
+				&& Objects.equals(medicationGiven, other.medicationGiven)
+				&& Objects.equals(sideEffects, other.sideEffects);
+	}
+
+
 	public Integer getId() {
 		return id;
 	}
