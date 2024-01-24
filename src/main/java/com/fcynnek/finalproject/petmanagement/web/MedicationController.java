@@ -15,12 +15,15 @@ import jakarta.annotation.PostConstruct;
 import com.fcynnek.finalproject.petmanagement.service.AnimalService;
 import com.fcynnek.finalproject.petmanagement.service.MedicationService;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,6 +31,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/pet/medication")
@@ -52,7 +57,10 @@ public class MedicationController {
 	@GetMapping("")
 	public String getPets(Model model) {
 		List<Animal> pets = animalService.getAllPets();
+		logger.info("Inside getPets method");
+		
 		List<Medication> meds = medicationService.getAllMeds();
+		
 		model.addAttribute("animals", pets);
 		model.addAttribute("medications", meds);
 		return "medication";
@@ -60,12 +68,24 @@ public class MedicationController {
 
 	@PostMapping("/create")
 	public String processMedsForm(@ModelAttribute("medication") Medication medication, Model model) {
+		List<Medication> fetchMedication =  medicationService.getByIllness(medication);
+		logger.info("Received medication: {}", medication);
+		
+		LocalDate medicationGiven = medication.getMedicationGiven();
+		LocalDate medicationDue = medicationGiven.plusYears(1);
+		
+		if (!fetchMedication.isEmpty()) {
+		    Medication firstMedication = fetchMedication.get(0);
+		    medication.setDescription(firstMedication.getDescription());
+		    medication.setSideEffects(firstMedication.getSideEffects());
+		    medication.setMedicationDue(medicationDue);
+		}
 		medicationService.save(medication);
-		return "redirect:/pet/medication/{id}";
+		return "medication_create";
 	}
 	
 	@GetMapping("/{id}")
-	public String updateAnimal(Model model, @PathVariable Integer id) {
+	public String showMedications(Model model, @PathVariable Integer id) {
 		List<Medication> meds = medicationService.getAllMeds();
 		List<String> illnessList = medicationService.getIllnessList();
 		model.addAttribute("medications", meds);
@@ -74,9 +94,21 @@ public class MedicationController {
 		return "medication_create";
 	}
 	
+//	@GetMapping("/details")
+//	@ResponseBody
+//	public ResponseEntity<Medication> getMedicationDetails(@RequestParam String illness) {
+//		Medication medication = medicationService.getByIllness(illness);
+//		
+//		if (medication != null) {
+//			return ResponseEntity.ok(medication);
+//		} else {
+//			return ResponseEntity.notFound().build();
+//		}
+//	}
+	
 	@PostMapping("/delete")
-	public String deleteAnimal(Medication medication) {
+	public String deleteMedication(Medication medication) {
 		medicationService.delete(medication);
-		return "redirect:/medication";
+		return "redirect:/pet/medication";
 	}
 }
