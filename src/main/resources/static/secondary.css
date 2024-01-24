@@ -67,9 +67,9 @@ body {
 
 .content-box {
   background-color: rgba(245, 245, 245, 0.8); /* Semi-translucent light background color */
-  padding: 20px; /* Adjust the padding as needed */
-  border-radius: 10px; /* Add rounded corners if desired */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle box shadow */
+  padding: 20px; 
+  border-radius: 10px; /* Add rounded corners */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .content h1 {
@@ -153,7 +153,7 @@ textarea {
     padding: 8px;
 } */
 
-.submit {
+.submit, button {
   display: block;
   margin: 0 auto;
   width: 260px;

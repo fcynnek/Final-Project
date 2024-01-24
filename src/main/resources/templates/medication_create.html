@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PET-ME: Medication</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    <link rel="stylesheet" href="/../secondary.css">
+    <link rel="stylesheet" href="/../../secondary.css">
 
     <script src="https://kit.fontawesome.com/5e7463fc0b.js" crossorigin="anonymous"></script>
 </head>
@@ -46,12 +46,12 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="med : ${medications}">
-                            <td>[[${med.illness}]]</td>
-                            <td>[[${med.description}]]</td>
-                            <td>[[${med.sideEffects}]]</td>
-                            <td>[[${med.medicationGiven}]]</td>
-                            <td>[[${med.medicationDue}]]</td>
+                        <tr>
+                            <td><span th:text="${medication.illness}"></span></td>
+                            <td><span th:text="${medication.description}"></span></td>
+                            <td><span th:text="${medication.sideEffects}"></span></td>
+                            <td><span th:text="${medication.medicationGiven}"></span></td>
+                            <td><span th:text="${medication.medicationDue}"></span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -64,12 +64,12 @@
 
                         <label><b>Medication:</b></label>
                         <select th:field="*{illness}">
-                            <option th:each="s : ${illnessList}" th:value="${s}"
-                                th:text="${#strings.capitalize(s.toString())}">
+                            <option th:each="illness : ${illnessList}" th:value="${illness}"
+                                th:text="${illness}">
                             </option>
                         </select><br />
 
-                        <label for="date"><b>Medication Given on</b></label>
+                        <label for="medicationGiven"><b>Medication Given on</b></label>
                         <input type="date" th:field="*{medicationGiven}" name="medicationGiven" class="required" required>
 
                         <button type="submit" class="submit">ADD MEDICATION</button>
