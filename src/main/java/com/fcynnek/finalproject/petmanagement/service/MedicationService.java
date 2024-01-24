@@ -32,8 +32,12 @@ public class MedicationService {
 		return medsRepo.save(meds);
 	}
 
-	public Medication getByIllness(String name) {
-		return medsRepo.findByIllness(name);
+	public List<Medication> getByIllness(Medication medication) {
+		return medsRepo.findByIllness(medication);
+	}
+	
+	public List<Medication> getByIllness(String illness) {
+		return medsRepo.findByIllness(illness);
 	}
 	
 	public void delete(Medication meds) {
@@ -72,17 +76,15 @@ public class MedicationService {
 	
 	
 	private void seedDataMeds () {
-		
 		List<Medication> medications = medsRepo.findAll();
 		if (medications.size() < 10) {
 			String[] meds = getData("src/main/resources/data/SeedData.txt");
 			
-//			for (int i = 0; i < 100; i++) {
+			
 			for (String line : meds) {
 				String[] values = line.split("\\s*\\|\\s*");
-				Medication medication = new Medication();
 				
-//				String line = meds[(meds.length - 1)];
+				Medication medication = new Medication();
 				medication.setIllness(values[0].trim());
 				medication.setDescription(values[1].trim());
 				medication.setSideEffects(values[2].trim());
@@ -91,4 +93,5 @@ public class MedicationService {
 			}
 		}
 	}
+
 }
