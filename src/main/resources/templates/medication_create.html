@@ -65,7 +65,7 @@
                         <label><b>Medication:</b></label>
                         <select th:field="*{illness}">
                             <option th:each="illness : ${illnessList}" th:value="${illness}"
-                                th:text="${illness}">
+                                th:text="${illness}" type="text">
                             </option>
                         </select><br />
 
