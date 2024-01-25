@@ -68,7 +68,7 @@ public class MedicationController {
 
 	@PostMapping("/create")
 	public String processMedsForm(@ModelAttribute("medication") Medication medication, Model model) {
-		List<Medication> fetchMedication =  medicationService.getByIllness(medication);
+		Medication fetchMedication =  medicationService.getByIllness(medication);
 		logger.info("Received medication: {}", medication);
 		
 		LocalDate medicationGiven = medication.getMedicationGiven();
