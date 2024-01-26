@@ -2,6 +2,7 @@ package com.fcynnek.finalproject.petmanagement.web;
 
 import com.fcynnek.finalproject.petmanagement.domain.Animal;
 import com.fcynnek.finalproject.petmanagement.domain.Medication;
+import com.fcynnek.finalproject.petmanagement.dto.MedicationDTO;
 import com.fcynnek.finalproject.petmanagement.repository.MedsAndIllnessRepository;
 import com.fcynnek.finalproject.petmanagement.repository.AnimalRepository;
 import com.fcynnek.finalproject.petmanagement.repository.UserRepository;
@@ -67,11 +68,11 @@ public class MedicationController {
 	}
 
 	@PostMapping("/create")
-	public String processMedsForm(@ModelAttribute("medication") Medication medication, Model model) {
-		Medication fetchMedication =  medicationService.getByIllness(medication);
-		logger.info("Received medication: {}", medication);
+	public String processMedsForm(@ModelAttribute("medication") MedicationDTO medicationDTO, Model model) {
+		Medication fetchMedication =  medicationService.convertDTOTOEntity(medicationDTO);
+		logger.info("Received medication: {}", medicationDTO);
 		
-		LocalDate medicationGiven = medication.getMedicationGiven();
+		LocalDate medicationGiven = fetchMedication.getMedicationGiven();
 		LocalDate medicationDue = medicationGiven.plusYears(1);
 		
 		if (!fetchMedication.equals(null)) {
