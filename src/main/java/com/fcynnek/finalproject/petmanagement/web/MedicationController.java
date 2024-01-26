@@ -74,8 +74,8 @@ public class MedicationController {
 		LocalDate medicationGiven = medication.getMedicationGiven();
 		LocalDate medicationDue = medicationGiven.plusYears(1);
 		
-		if (!fetchMedication.isEmpty()) {
-		    Medication firstMedication = fetchMedication.get(0);
+		if (!fetchMedication.equals(null)) {
+		    Medication firstMedication = fetchMedication.getIllness();
 		    medication.setDescription(firstMedication.getDescription());
 		    medication.setSideEffects(firstMedication.getSideEffects());
 		    medication.setMedicationDue(medicationDue);
