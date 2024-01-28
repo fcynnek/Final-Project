@@ -24,6 +24,7 @@ import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,9 +35,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequestMapping("/pet/medication")
+@SessionAttributes("id")
 public class MedicationController {
 
 	private AnimalService animalService;
@@ -68,44 +71,37 @@ public class MedicationController {
 	}
 
 	@PostMapping("/create")
-	public String processMedsForm(@ModelAttribute("medication") MedicationDTO medicationDTO, Model model) {
-		Medication fetchMedication =  medicationService.convertDTOTOEntity(medicationDTO);
+	public String processMedsForm(@ModelAttribute("medicationDTO") MedicationDTO medicationDTO, 
+			@RequestParam("medicationGiven") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate medicationGiven, Model model) {
+		Medication medication =  medicationService.convertDTOTOEntity(medicationDTO);
 		logger.info("Received medication: {}", medicationDTO);
 		
-		LocalDate medicationGiven = fetchMedication.getMedicationGiven();
 		LocalDate medicationDue = medicationGiven.plusYears(1);
 		
-		if (!fetchMedication.equals(null)) {
-		    Medication firstMedication = fetchMedication.getIllness();
-		    medication.setDescription(firstMedication.getDescription());
-		    medication.setSideEffects(firstMedication.getSideEffects());
+		String illness = medication.getIllness();
+		Medication fetchMedication = medicationService.getByIllness(illness);
+		
+		if (fetchMedication != null) {
+		    medication.setDescription(medication.getDescription());
+		    medication.setSideEffects(medication.getSideEffects());
+		    medication.setMedicationGiven(medicationGiven);
 		    medication.setMedicationDue(medicationDue);
 		}
 		medicationService.save(medication);
-		return "medication_create";
+		return "redirect:/pet/medication";
 	}
 	
 	@GetMapping("/{id}")
 	public String showMedications(Model model, @PathVariable Integer id) {
-		List<Medication> meds = medicationService.getAllMeds();
+		Animal pet = animalService.getByPetId(id);
+		List<Medication> meds = medicationService.getAllMedsForPet(pet);
 		List<String> illnessList = medicationService.getIllnessList();
+		
 		model.addAttribute("medications", meds);
-		model.addAttribute("medication", new Medication());
+		model.addAttribute("medicationDTO", new Medication());
 		model.addAttribute("illnessList", illnessList);
 		return "medication_create";
 	}
-	
-//	@GetMapping("/details")
-//	@ResponseBody
-//	public ResponseEntity<Medication> getMedicationDetails(@RequestParam String illness) {
-//		Medication medication = medicationService.getByIllness(illness);
-//		
-//		if (medication != null) {
-//			return ResponseEntity.ok(medication);
-//		} else {
-//			return ResponseEntity.notFound().build();
-//		}
-//	}
 	
 	@PostMapping("/delete")
 	public String deleteMedication(Medication medication) {
