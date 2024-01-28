@@ -10,11 +10,7 @@ import com.fcynnek.finalproject.petmanagement.domain.Medication;
 @Repository
 public interface MedsAndIllnessRepository extends JpaRepository<Medication, Integer> {
 
-	List<Medication> getAllIllnesses(String name);
-
-	List<Medication> getAllIllnesses(Medication medication);
-
-	Medication findByIllness(Medication medication);
+	Medication findByIllness(String medication);
 	
 	
 
