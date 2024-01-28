@@ -32,21 +32,18 @@ public class MedicationService {
 	public Medication save(Medication meds) {
 		return medsRepo.save(meds);
 	}
-
-	public List<Medication> getAllIllnesses(Medication medication) {
-		return medsRepo.getAllIllnesses(medication);
-	}
 	
-	public List<Medication> getAllIllnesses(String illness) {
-		return medsRepo.getAllIllnesses(illness);
-	}
-	
-	public Medication getByIllness(Medication medication) {
+	public Medication getByIllness(String medication) {
 		return medsRepo.findByIllness(medication);
 	}
 	
 	public void delete(Medication meds) {
 		medsRepo.delete(meds);
+	}
+	
+	public List<Medication> getAllMedsForPet(Animal pet) {
+		List<Medication> petIllness = pet.getMeds();
+		return petIllness;
 	}
 	
 	public List<String> getIllnessList() {
