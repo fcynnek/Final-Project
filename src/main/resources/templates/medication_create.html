@@ -46,7 +46,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <tr th:each="medication : ${medications}">
                             <td><span th:text="${medication.illness}"></span></td>
                             <td><span th:text="${medication.description}"></span></td>
                             <td><span th:text="${medication.sideEffects}"></span></td>
@@ -60,7 +60,7 @@
             <div class="content-box">
                 <h1>Add New Medication</h1>
                 <div class="form">
-                    <form th:action="@{/pet/medication/create}" th:object="${medication}" method="post">
+                    <form th:action="@{/pet/medication/create}" th:object="${medicationDTO}" method="post">
 
                         <label><b>Medication:</b></label>
                         <select th:field="*{illness}">
