@@ -131,6 +131,21 @@ input, option, select {
   text-align: center;
 }
 
+.back {
+  display: block;
+  margin: 0 auto;
+  width: 260px;
+  height: 36px;
+  border-radius: 30px;
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  background: #d4af7a;
+  text-transform: uppercase;
+}
+
 /* Need to enable mail server for this */
 /* .contact-form {
   display: flex;
@@ -153,7 +168,7 @@ textarea {
     padding: 8px;
 } */
 
-.submit, button {
+.submit {
   display: block;
   margin: 0 auto;
   width: 260px;
