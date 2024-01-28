@@ -37,6 +37,11 @@ public class AnimalService {
 		return petRepo.findById(id);
 	}
 	
+	public Animal getByPetId(Integer petId) {
+		Optional<Animal> pet = petRepo.findById(petId);
+		return pet.orElse(null);
+	}
+	
 	public void delete(Animal animal) {
 		petRepo.delete(animal);
 	}
