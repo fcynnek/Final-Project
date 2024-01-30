@@ -47,7 +47,7 @@
                     </thead>
                     <tbody>
                         <tr th:each="medication : ${medications}">
-                            <td><span th:text="${medication.illness}"></span></td>
+                            <td>[[${medication.illness}]]</td>
                             <td><span th:text="${medication.description}"></span></td>
                             <td><span th:text="${medication.sideEffects}"></span></td>
                             <td><span th:text="${medication.medicationGiven}"></span></td>
