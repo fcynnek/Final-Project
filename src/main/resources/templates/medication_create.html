@@ -62,7 +62,7 @@
                 <div class="form">
                     <form th:action="@{/pet/medication/create}" th:object="${medicationDTO}" method="post">
 
-                        <input type="hidden" th:field="*{id}" th:value="${id}"/>
+                        <input type="text" th:field="*{id}" th:value="${id}"/>
                         <!-- <input type="hidden" th:field="*{id}" /> -->
                         <!-- <input type="hidden" name="id" value="1" /> -->
 

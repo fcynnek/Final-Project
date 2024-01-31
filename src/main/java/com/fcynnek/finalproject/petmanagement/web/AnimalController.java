@@ -100,4 +100,12 @@ public class AnimalController {
 		animalService.delete(animal);
 		return "redirect:/pet/profile";
 	}
+	
+	@GetMapping("/medication/{id}")
+	public String showMedications(@PathVariable Integer id, Model model) {
+		Animal pet = animalService.getByPetId(id);
+		model.addAttribute("animal", pet);
+		model.addAttribute("id", id);
+		return "redirect:/pet/medication";
+	}
 }

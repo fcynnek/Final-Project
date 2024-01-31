@@ -77,10 +77,14 @@ public class MedicationController {
 			Model model) {
 		Medication medication = medicationService.convertDTOTOEntity(medicationDTO);
 		logger.info("Received medication: {}", medicationDTO);
+		logger.info("Received ID from DTO: {}", medicationDTO.getId());
 
-		Integer petId = (Integer) model.getAttribute("id");
-		Animal animal = animalService.getByPetId(petId);
-//		Animal animal = animalService.getByPetId(animalId);
+//		Integer petId = (Integer) model.getAttribute("id");
+//		logger.info("ID received from Model: {}", petId);
+//		Animal animal = animalService.getByPetId(petId);
+//		logger.info("Animal received from Model and AnimalService: {}", animal);
+		Animal animal = animalService.getByPetId(animalId);
+		logger.info("ID received from Param: {}", animalId);
 		if (animal == null) {
 
 			return "redirect:/error";
