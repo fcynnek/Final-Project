@@ -73,19 +73,17 @@ public class MedicationController {
 	@PostMapping("/create")
 	public String processMedsForm(@ModelAttribute("medicationDTO") MedicationDTO medicationDTO,
 			@RequestParam("medicationGiven") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate medicationGiven,
+			@RequestParam("id") Integer animalId,
 			Model model) {
 		Medication medication = medicationService.convertDTOTOEntity(medicationDTO);
 		logger.info("Received medication: {}", medicationDTO);
 
-		Animal animal = medication.getAnimal();
+		Integer petId = (Integer) model.getAttribute("id");
+		Animal animal = animalService.getByPetId(petId);
+//		Animal animal = animalService.getByPetId(animalId);
 		if (animal == null) {
 
-			animal = new Animal();
-			List<String> illnesses = new ArrayList<>();
-			illnesses.add(medicationDTO.getIllness());
-			animal.setIllnesses(illnesses);
-
-			medication.setAnimal(animal);
+			return "redirect:/error";
 		} else {
 			List<String> illnesses = animal.getIllnesses();
 			if (illnesses == null) {
@@ -118,7 +116,8 @@ public class MedicationController {
 		Animal pet = animalService.getByPetId(id);
 		List<Medication> meds = medicationService.getAllMedsForPet(pet);
 		List<String> illnessList = medicationService.getIllnessList();
-
+		
+		model.addAttribute("id", id);
 		model.addAttribute("medications", meds);
 		model.addAttribute("medicationDTO", new Medication());
 		model.addAttribute("illnessList", illnessList);
