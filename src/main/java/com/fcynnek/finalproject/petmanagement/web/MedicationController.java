@@ -112,10 +112,10 @@ public class MedicationController {
 		animalRepo.save(animal);
 		medicationService.save(medication);
 
-		return "redirect:/pet/medication";
+		return "medication";
 	}
 
-	@GetMapping("/{id}")
+	@GetMapping("/create/{id}")
 	public String showMedications(Model model, @PathVariable Integer id) {
 		Animal pet = animalService.getByPetId(id);
 		List<Medication> meds = medicationService.getAllMedsForPet(pet);

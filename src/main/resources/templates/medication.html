@@ -49,7 +49,7 @@
                             <td>[[${animal.name}]]</td>
                             <td>[[${animal.species}]]</td>
                             <td>
-                                <a th:href="@{/pet/medication/{id}(id=${animal.id})}"><i class="fa-solid fa-file-prescription"></i> See medications for [[${animal.name}]]</a>
+                                <a th:href="@{/pet/medication/create/{id}(id=${animal.id})}"><i class="fa-solid fa-file-prescription"></i> See medications for ID: [[${animal.id}]] [[${animal.name}]]</a>
                             </td>
                         </tr>
                     </tbody>

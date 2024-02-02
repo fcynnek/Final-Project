@@ -104,8 +104,8 @@ public class AnimalController {
 	@GetMapping("/medication/{id}")
 	public String showMedications(@PathVariable Integer id, Model model) {
 		Animal pet = animalService.getByPetId(id);
-		model.addAttribute("animal", pet);
-		model.addAttribute("id", id);
-		return "redirect:/pet/medication";
+	    model.addAttribute("animal", pet);
+	    model.addAttribute("id", id);
+	    return "medication";
 	}
 }
