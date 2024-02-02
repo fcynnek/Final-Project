@@ -28,7 +28,7 @@ public class DefaultController {
 	
 	@GetMapping("/contact")
 	public String getContact () {
-		return "contact";
+		return "contact_form";
 	}
 	
 	
