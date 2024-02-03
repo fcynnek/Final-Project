@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 
 import com.fcynnek.finalproject.petmanagement.domain.Authority;
 import com.fcynnek.finalproject.petmanagement.domain.User;
+import com.fcynnek.finalproject.petmanagement.domain.ContactForm;
+import com.fcynnek.finalproject.petmanagement.repository.ContactFormRepository;
 import com.fcynnek.finalproject.petmanagement.repository.UserRepository;
 import com.fcynnek.finalproject.petmanagement.web.RegistrationController;
 
@@ -26,17 +28,21 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 	
     private final UserRepository userRepository;
+    private final ContactFormRepository contactFormRepository;
     private EntityManager entityManager;
     private Logger logger = LoggerFactory.getLogger(UserServiceImpl.class);
+
     
-    public UserServiceImpl(UserRepository userRepository, EntityManager entityManager) {
+    public UserServiceImpl(UserRepository userRepository, ContactFormRepository contactFormRepository,
+			EntityManager entityManager) {
 		super();
 		this.userRepository = userRepository;
+		this.contactFormRepository = contactFormRepository;
 		this.entityManager = entityManager;
 	}
 
-    
-    @Override
+
+	@Override
     public UserDetailsService userDetailsService() {
         return new UserDetailsService() {
             @Override
@@ -136,5 +142,14 @@ public class UserServiceImpl implements UserService {
 
 	public void detachUser(User user) {
 		entityManager.detach(user);
+	}
+
+
+	public void saveContactFormData(ContactForm contact) {
+		contact.setName(contact.getName());
+		contact.setEmail(contact.getEmail());
+		contact.setMessage(contact.getEmail());
+		contact.setDate(contact.getDate());
+		contactFormRepository.save(contact);
 	}
 }

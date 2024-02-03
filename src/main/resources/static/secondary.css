@@ -131,6 +131,12 @@ input, option, select {
   text-align: center;
 }
 
+textarea {
+  margin-bottom: 16px;
+  border-radius: 10px;
+  padding: 8px;
+}
+
 .back {
   display: block;
   margin: 0 auto;
@@ -211,9 +217,15 @@ tr:hover {
 }
 
 .error-message {
-  text-align: center; /* Center the text */
-  color: red; /* Set the font color to red */
-  margin-top: 5px; /* Add some top margin for spacing */
+  text-align: center; 
+  color: red; 
+  margin-top: 5px; 
+}
+
+.message-success {
+  text-align: center; 
+  color: #d4af7a; 
+  margin-top: 5px; 
 }
 
 /* Navbar Styling */
