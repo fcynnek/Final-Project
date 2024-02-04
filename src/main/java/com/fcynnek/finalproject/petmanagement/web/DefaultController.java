@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -48,13 +49,14 @@ public class DefaultController {
 	}
 	
 	@GetMapping("/contact")
-	public String getContact () {
+	public String getContact (Model model) {
+		model.addAttribute("contactForm", new ContactForm());
 		return "contact_form";
 	}
 	
 	@PostMapping("/contact")
-	public String submitContactUs (@RequestParam("contactForm") ContactForm contact,
-			@RequestParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date,
+	public String submitContactUs (@ModelAttribute("contactForm") ContactForm contact,
+//			@RequestParam("contactForm") ContactForm contact, @RequestParam("date") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date,
 			RedirectAttributes redirectAttributes) {
 		userService.saveContactFormData(contact);
 		redirectAttributes.addFlashAttribute("formSubmitted", "Your message has been received");

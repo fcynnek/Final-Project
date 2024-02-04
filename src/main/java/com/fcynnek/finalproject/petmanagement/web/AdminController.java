@@ -90,15 +90,15 @@ public class AdminController {
     }
     
     @PostMapping("/makeAdmin")
-//    public ResponseEntity<String> elevateToAdmin (@RequestParam Integer userId) {
     public RedirectView elevateToAdmin (@RequestParam Integer userId) {
     	Optional<User> findUser = userService.findUserById(userId);
     	    	
     	userService.elevateUserToAdmin(userId);
     	logger.info("Processing elevation for user: {}", findUser.get().getEmail());
     	logger.info("Role: {}", findUser.get().getAuthorities());
-//    	return ResponseEntity.ok("redirect:/admin/users");
     	
     	return new RedirectView("/admin/users");
     }
+//    public ResponseEntity<String> elevateToAdmin (@RequestParam Integer userId) {
+//    	return ResponseEntity.ok("redirect:/admin/users");
 }

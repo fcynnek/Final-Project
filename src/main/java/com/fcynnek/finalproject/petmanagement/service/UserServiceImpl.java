@@ -148,8 +148,8 @@ public class UserServiceImpl implements UserService {
 	public void saveContactFormData(ContactForm contact) {
 		contact.setName(contact.getName());
 		contact.setEmail(contact.getEmail());
-		contact.setMessage(contact.getEmail());
-		contact.setDate(contact.getDate());
+		contact.setMessage(contact.getMessage());
+		contact.setDate(contact.getDate().now());
 		contactFormRepository.save(contact);
 	}
 }
