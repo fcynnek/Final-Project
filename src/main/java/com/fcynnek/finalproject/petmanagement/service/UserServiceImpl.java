@@ -20,6 +20,7 @@ import com.fcynnek.finalproject.petmanagement.web.RegistrationController;
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -144,12 +145,25 @@ public class UserServiceImpl implements UserService {
 		entityManager.detach(user);
 	}
 
-
 	public void saveContactFormData(ContactForm contact) {
 		contact.setName(contact.getName());
 		contact.setEmail(contact.getEmail());
 		contact.setMessage(contact.getMessage());
-		contact.setDate(contact.getDate().now());
+		contact.getDate();
+		contact.setDate(LocalDate.now());
 		contactFormRepository.save(contact);
+	}
+
+
+	public List<ContactForm> getMessages() {
+		return contactFormRepository.findAll();
+	}
+
+	public Optional<ContactForm> getMessageById(Integer messageId) {
+		return contactFormRepository.findById(messageId);
+	}
+
+	public void deleteMessage(Integer messageId) {
+		contactFormRepository.deleteById(messageId);
 	}
 }

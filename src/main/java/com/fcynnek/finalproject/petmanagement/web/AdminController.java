@@ -1,8 +1,10 @@
 package com.fcynnek.finalproject.petmanagement.web;
 
 import com.fcynnek.finalproject.petmanagement.domain.Authority;
+import com.fcynnek.finalproject.petmanagement.domain.ContactForm;
 import com.fcynnek.finalproject.petmanagement.domain.Role;
 import com.fcynnek.finalproject.petmanagement.domain.User;
+import com.fcynnek.finalproject.petmanagement.repository.ContactFormRepository;
 import com.fcynnek.finalproject.petmanagement.repository.UserRepository;
 import com.fcynnek.finalproject.petmanagement.service.UserService;
 import com.fcynnek.finalproject.petmanagement.service.UserServiceImpl;
@@ -33,6 +35,7 @@ import java.util.Optional;
 public class AdminController {
     private UserServiceImpl userService;
     private UserRepository userRepo;
+    private ContactFormRepository formRepository;
     private PasswordEncoder passwordEncoder;
     private Logger logger = LoggerFactory.getLogger(AdminController.class);
     
@@ -101,4 +104,18 @@ public class AdminController {
     }
 //    public ResponseEntity<String> elevateToAdmin (@RequestParam Integer userId) {
 //    	return ResponseEntity.ok("redirect:/admin/users");
+
+    @GetMapping("/messages")
+    public String getMessages (ModelMap model) {
+    	List<ContactForm> messages = userService.getMessages();
+    	model.addAttribute("messages", messages);
+    	return "contact";
+    }
+    
+    @PostMapping("/deleteMessage")
+    public RedirectView deleteMessage (@RequestParam Integer messageId) {
+    	Optional<ContactForm> getMessage = userService.getMessageById(messageId);
+    	userService.deleteMessage(messageId);
+    	return new RedirectView("/admin/messages");
+    }
 }
