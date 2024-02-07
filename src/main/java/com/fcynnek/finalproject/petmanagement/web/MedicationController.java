@@ -29,6 +29,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -116,7 +117,7 @@ public class MedicationController {
 	}
 
 	@GetMapping("/create/{id}")
-	public String showMedications(Model model, @PathVariable Integer id) {
+	public String showMedications(ModelMap model, @PathVariable Integer id) {
 		Animal pet = animalService.getByPetId(id);
 		List<Medication> meds = medicationService.getAllMedsForPet(pet);
 		List<String> illnessList = medicationService.getIllnessList();

@@ -102,7 +102,7 @@ public class AnimalController {
 	}
 	
 	@GetMapping("/medication/{id}")
-	public String showMedications(@PathVariable Integer id, Model model) {
+	public String showMedications(@PathVariable Integer id, ModelMap model) {
 		Animal pet = animalService.getByPetId(id);
 	    model.addAttribute("animal", pet);
 	    model.addAttribute("id", id);
