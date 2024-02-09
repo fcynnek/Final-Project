@@ -18,13 +18,16 @@ import com.fcynnek.finalproject.petmanagement.repository.MedsAndIllnessRepositor
 public class MedicationService {
 
 	private MedsAndIllnessRepository medsRepo;
+	private AnimalService animalService;
 
 
-	public MedicationService(MedsAndIllnessRepository medsRepo) {
+	public MedicationService(MedsAndIllnessRepository medsRepo, AnimalService animalService) {
 		super();
 		this.medsRepo = medsRepo;
+		this.animalService = animalService;
 	}
 
+	
 	public List<Medication> getAllMeds() {
 		return medsRepo.findAll();
 	}
@@ -33,7 +36,7 @@ public class MedicationService {
 		return medsRepo.save(meds);
 	}
 	
-	public Medication getByIllness(String medication) {
+	public Medication findByIllness(String medication) {
 		return medsRepo.findByIllness(medication);
 	}
 	
@@ -103,9 +106,29 @@ public class MedicationService {
 		medication.setMedicationGiven(medicationDTO.getMedicationGiven());
 		return medication;
 	}
+	
+	public String getDescriptionByIllness(String illness) {
+		Medication getIllnessData = findByIllness(illness);
+		return getIllnessData.getDescription();
+	}
+	
+	public String getSideEffectsByIllness(String illness) {
+		Medication getIllnessData = findByIllness(illness);
+		return getIllnessData.getSideEffects();
+	}
 
 	public void saveMedication(MedicationDTO medicationDTO, Integer id) {
-		// TODO Auto-generated method stub
+		Medication medication = new Medication();
 		
+		medication.setIllness(medicationDTO.getIllness());
+		medication.setDescription(getDescriptionByIllness(medicationDTO.getIllness()));
+		medication.setSideEffects(getSideEffectsByIllness(medicationDTO.getIllness()));
+		medication.setMedicationGiven(medicationDTO.getMedicationGiven());
+		medication.setMedicationDue(medicationDTO.getMedicationGiven().plusYears(1));
+		
+		Animal animal = animalService.getByPetId(id);
+		medication.setAnimal(animal);
+		
+		medsRepo.save(medication);
 	}
 }

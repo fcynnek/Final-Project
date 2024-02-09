@@ -60,10 +60,10 @@
             <div class="content-box">
                 <h1>Add New Medication</h1>
                 <div class="form">
-                    <form th:action="@{/pet/medication/create}" th:object="${medicationDTO}" method="post">
+                    <form th:action="@{/pet/medication/create/{id}(id=${animal.id})}" th:object="${medicationDTO}" method="post">
 
-                        <input type="text" th:field="*{id}" th:value="${id}" th:text="${id}"/>
-                        <!-- <input type="hidden" th:field="*{id}" /> -->
+                        <!-- <input type="text" th:field="*{id}" th:value="${id}" th:text="${id}"/> -->
+                        <input type="hidden" th:field="*{id}" th:value="${id}"/>
                         <!-- <input type="hidden" name="id" value="1" /> -->
 
                         <label><b>Medication:</b></label>

@@ -134,7 +134,7 @@ public class MedicationController {
 		logger.info("Animal ID: ", id);
 		
 		medicationService.saveMedication(medicationDTO, id);
-		return "medication";
+		return "redirect:/pet/medication/create/{id}";
 	}
 
 
