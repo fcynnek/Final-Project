@@ -103,4 +103,9 @@ public class MedicationService {
 		medication.setMedicationGiven(medicationDTO.getMedicationGiven());
 		return medication;
 	}
+
+	public void saveMedication(MedicationDTO medicationDTO, Integer id) {
+		// TODO Auto-generated method stub
+		
+	}
 }
