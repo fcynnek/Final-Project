@@ -73,61 +73,18 @@ public class MedicationController {
 
 	@GetMapping("/create/{id}")
 	public String showMedications(ModelMap model, @PathVariable Integer id) {
-		Animal pet = animalService.getByPetId(id);
-		List<Medication> meds = medicationService.getAllMedsForPet(pet);
+		System.out.println("About to fetch Animal ID#: " + id);
+		Animal animal = animalService.getByPetId(id);
+		List<Medication> medications = medicationService.getAllMedsForPet(animal);
 		List<String> illnessList = medicationService.getIllnessList();
 		
 		model.addAttribute("id", id);
-		model.addAttribute("medications", meds);
+		model.addAttribute("animal", animal);
+		model.addAttribute("medications", medications);
 		model.addAttribute("medicationDTO", new Medication());
 		model.addAttribute("illnessList", illnessList);
 		return "medication_create";
 	}
-	
-//	@PostMapping("/create")
-//	public String processMedsForm(@ModelAttribute("medicationDTO") MedicationDTO medicationDTO,
-//			@RequestParam("medicationGiven") @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate medicationGiven,
-//			@RequestParam("id") Integer animalId,
-//			Model model) {
-//		Medication medication = medicationService.convertDTOTOEntity(medicationDTO);
-//		logger.info("Received medication: {}", medicationDTO);
-//		logger.info("Received ID from DTO: {}", medicationDTO.getId());
-//
-////		Integer petId = (Integer) model.getAttribute("id");
-////		logger.info("ID received from Model: {}", petId);
-////		Animal animal = animalService.getByPetId(petId);
-////		logger.info("Animal received from Model and AnimalService: {}", animal);
-//		Animal animal = animalService.getByPetId(animalId);
-//		logger.info("ID received from Param: {}", animalId);
-//		if (animal == null) {
-//
-//			return "redirect:/error";
-//		} else {
-//			List<String> illnesses = animal.getIllnesses();
-//			if (illnesses == null) {
-//				illnesses = new ArrayList<>();
-//			}
-//			illnesses.add(medicationDTO.getIllness());
-//			animal.setIllnesses(illnesses);
-//		}
-//
-//		LocalDate medicationDue = medicationGiven.plusYears(1);
-//		String illness = medication.getIllness();
-//		Medication fetchMedication = medicationService.getByIllness(illness);
-//
-//		if (fetchMedication != null && animal != null) {
-//			medication.setIllness(illness);
-//			medication.setDescription(medication.getDescription());
-//			medication.setSideEffects(medication.getSideEffects());
-//			medication.setMedicationGiven(medicationGiven);
-//			medication.setMedicationDue(medicationDue);
-//			medication.setAnimal(animal);
-//		}
-//		animalRepo.save(animal);
-//		medicationService.save(medication);
-//
-//		return "medication";
-//	}
 	
 	@PostMapping("/create/{id}")
 	public String processMedsForm(@PathVariable("id") Integer id, @ModelAttribute("medicationDTO") MedicationDTO medicationDTO) {
