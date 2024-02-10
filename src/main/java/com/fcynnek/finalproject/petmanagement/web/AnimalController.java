@@ -77,7 +77,6 @@ public class AnimalController {
 	}
 	
 	@PostMapping("/update")
-//	public String updateAnimal(@ModelAttribute("id") Animal animal, ModelMap model) {
 	public String updateAnimal(Animal animal, @ModelAttribute("id") Integer id) {
 		Optional<Animal> existingPetOpt = animalService.getById(id);
 		
