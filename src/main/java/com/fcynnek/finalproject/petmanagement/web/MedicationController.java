@@ -81,7 +81,7 @@ public class MedicationController {
 		model.addAttribute("id", id);
 		model.addAttribute("animal", animal);
 		model.addAttribute("medications", medications);
-		model.addAttribute("medicationDTO", new Medication());
+//		model.addAttribute("medicationDTO", new Medication());
 		model.addAttribute("illnessList", illnessList);
 		return "medication_create";
 	}
