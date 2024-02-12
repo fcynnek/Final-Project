@@ -29,9 +29,9 @@ public class AnimalService {
 		return petRepo.save(pet);
 	}
 
-	public Animal getByName(String name) {
-		return petRepo.findByName(name);
-	}
+//	public Animal getByName(String name) {
+//		return petRepo.findByName(name);
+//	}
 	
 	public Optional<Animal> getById(Integer id) {
 		return petRepo.findById(id);
@@ -44,5 +44,10 @@ public class AnimalService {
 	
 	public void delete(Animal animal) {
 		petRepo.delete(animal);
+	}
+
+	public List<Animal> getAnimalByUsername(String username) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

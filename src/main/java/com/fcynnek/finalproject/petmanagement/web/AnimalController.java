@@ -11,6 +11,7 @@ import com.google.cloud.translate.TranslateOptions;
 import com.google.cloud.translate.Translation;
 import com.fcynnek.finalproject.petmanagement.service.AnimalService;
 
+import java.security.Principal;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,9 +55,18 @@ public class AnimalController {
 		return Animal.Species.values();
 	}
 
+//	@GetMapping("/profile")
+//	public String getProfile(Model model) {
+//		List<Animal> pets = animalService.getAllPets();
+//		model.addAttribute("animals", pets);
+//		model.addAttribute("animal", new Animal());
+//		return "pet_profile";
+//	}
+	
 	@GetMapping("/profile")
-	public String getProfile(Model model) {
-		List<Animal> pets = animalService.getAllPets();
+	public String getProfile(Model model, Principal principal) {
+		String username = principal.getName();
+		List<Animal> pets = animalService.getAnimalByUsername(username);
 		model.addAttribute("animals", pets);
 		model.addAttribute("animal", new Animal());
 		return "pet_profile";
