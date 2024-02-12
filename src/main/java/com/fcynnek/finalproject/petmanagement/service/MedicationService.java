@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.fcynnek.finalproject.petmanagement.domain.Animal;
 import com.fcynnek.finalproject.petmanagement.domain.Medication;
-import com.fcynnek.finalproject.petmanagement.dto.MedicationDTO;
 import com.fcynnek.finalproject.petmanagement.repository.AnimalRepository;
 import com.fcynnek.finalproject.petmanagement.repository.MedsAndIllnessRepository;
 

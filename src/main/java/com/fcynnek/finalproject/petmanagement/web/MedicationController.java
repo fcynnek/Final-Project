@@ -2,14 +2,10 @@ package com.fcynnek.finalproject.petmanagement.web;
 
 import com.fcynnek.finalproject.petmanagement.domain.Animal;
 import com.fcynnek.finalproject.petmanagement.domain.Medication;
-import com.fcynnek.finalproject.petmanagement.dto.MedicationDTO;
 import com.fcynnek.finalproject.petmanagement.repository.MedsAndIllnessRepository;
 import com.fcynnek.finalproject.petmanagement.repository.AnimalRepository;
 import com.fcynnek.finalproject.petmanagement.repository.UserRepository;
 import com.fcynnek.finalproject.petmanagement.service.UserServiceImpl;
-import com.google.cloud.translate.Translate;
-import com.google.cloud.translate.TranslateOptions;
-import com.google.cloud.translate.Translation;
 
 import jakarta.annotation.PostConstruct;
 
@@ -73,7 +69,7 @@ public class MedicationController {
 
 	@GetMapping("/create/{id}")
 	public String showMedications(ModelMap model, @PathVariable Integer id) {
-		System.out.println("About to fetch Animal ID#: " + id);
+		logger.info("About to fetch Animal ID#: " + id);
 		Animal animal = animalService.getByPetId(id);
 		List<Medication> medications = medicationService.getAllMedsForPet(animal);
 		List<String> illnessList = medicationService.getIllnessList();
