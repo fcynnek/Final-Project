@@ -100,12 +100,12 @@ public class MedicationService {
 	}
 
 	
-	public Medication convertDTOTOEntity(MedicationDTO medicationDTO) {
-		Medication medication = new Medication();
-		medication.setIllness(medicationDTO.getIllness());
-		medication.setMedicationGiven(medicationDTO.getMedicationGiven());
-		return medication;
-	}
+//	public Medication convertDTOTOEntity(MedicationDTO medicationDTO) {
+//		Medication medication = new Medication();
+//		medication.setIllness(medicationDTO.getIllness());
+//		medication.setMedicationGiven(medicationDTO.getMedicationGiven());
+//		return medication;
+//	}
 	
 	public String getDescriptionByIllness(String illness) {
 		Medication getIllnessData = findByIllness(illness);
@@ -117,18 +117,20 @@ public class MedicationService {
 		return getIllnessData.getSideEffects();
 	}
 
-	public void saveMedication(MedicationDTO medicationDTO, Integer id) {
-		Medication medication = new Medication();
+
+	public void saveMedication(Medication newMedication, Integer id) {
+Medication medication = new Medication();
 		
-		medication.setIllness(medicationDTO.getIllness());
-		medication.setDescription(getDescriptionByIllness(medicationDTO.getIllness()));
-		medication.setSideEffects(getSideEffectsByIllness(medicationDTO.getIllness()));
-		medication.setMedicationGiven(medicationDTO.getMedicationGiven());
-		medication.setMedicationDue(medicationDTO.getMedicationGiven().plusYears(1));
+		medication.setIllness(newMedication.getIllness());
+		medication.setDescription(getDescriptionByIllness(newMedication.getIllness()));
+		medication.setSideEffects(getSideEffectsByIllness(newMedication.getIllness()));
+		medication.setMedicationGiven(newMedication.getMedicationGiven());
+		medication.setMedicationDue(newMedication.getMedicationGiven().plusYears(1));
 		
 		Animal animal = animalService.getByPetId(id);
 		medication.setAnimal(animal);
 		
 		medsRepo.save(medication);
+		
 	}
 }

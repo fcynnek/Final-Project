@@ -81,16 +81,16 @@ public class MedicationController {
 		model.addAttribute("id", id);
 		model.addAttribute("animal", animal);
 		model.addAttribute("medications", medications);
-//		model.addAttribute("medicationDTO", new Medication());
+		model.addAttribute("newMedication", new Medication());
 		model.addAttribute("illnessList", illnessList);
 		return "medication_create";
 	}
 	
 	@PostMapping("/create/{id}")
-	public String processMedsForm(@PathVariable("id") Integer id, @ModelAttribute("medicationDTO") MedicationDTO medicationDTO) {
+	public String processMedsForm(@PathVariable("id") Integer id, @ModelAttribute("newMedication") Medication newMedication) {
 		logger.info("Animal ID: ", id);
 		
-		medicationService.saveMedication(medicationDTO, id);
+		medicationService.saveMedication(newMedication, id);
 		return "redirect:/pet/medication/create/{id}";
 	}
 
