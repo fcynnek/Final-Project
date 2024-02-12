@@ -32,6 +32,7 @@ public class Animal {
 	private Integer age;
 	private String color;
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "user_id")
 	private User user;
 	@OneToMany(mappedBy = "animal", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Medication> meds = new ArrayList<>();
