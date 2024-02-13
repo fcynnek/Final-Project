@@ -34,8 +34,6 @@ import com.fcynnek.finalproject.petmanagement.service.RefreshTokenService;
 import com.fcynnek.finalproject.petmanagement.service.UserServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 
-//@RestController
-//@RequestMapping("/api/v1/auth")
 @Controller
 @SessionAttributes("email")
 public class AuthenticationController {
@@ -129,7 +127,7 @@ public class AuthenticationController {
 		String username = auth.getName();
 		Optional<User> userProfile = userService.findUserByEmail(username);
 		logger.info("User (getmapping) email: " + userProfile.get().getEmail());
-		
+
 		if (userProfile.isPresent()) {
 			model.addAttribute("user", userProfile.get());
 			model.addAttribute("email", userProfile.get().getEmail());
@@ -137,13 +135,12 @@ public class AuthenticationController {
 		return "user_profile";
 	}
 
-//	@Transactional
 	@PostMapping("/profile")
 	public String update(@ModelAttribute("user") User foundUser, ModelMap model) {
 		logger.info("Old email: ", (String) model.getAttribute("email"));
 		logger.info("foundUser in postmapping email: " + foundUser);
 		Optional<User> existingUser = userService.findUserByEmail((String) model.getAttribute("email"));
-		
+
 		if (existingUser.isPresent()) {
 			User userInDB = existingUser.get();
 			logger.info("Is existing user present? {}", userInDB.getEmail());
@@ -153,7 +150,7 @@ public class AuthenticationController {
 				model.addAttribute("updateError", "Email already exists. Please choose another email address.");
 				return "user_profile";
 			}
-			
+
 			// Update user details
 			logger.info("Updating user details now");
 			userInDB.setFirstName(foundUser.getFirstName());
@@ -186,16 +183,4 @@ public class AuthenticationController {
 		}
 		return "redirect:/authenticated";
 	}
-	/*
-	 * This code is from Trevor's original implementation which might be helpful for
-	 * those who are not using server rendering templates
-	 * 
-	 * @PostMapping("/signin") public String authenticateLogin
-	 * (@ModelAttribute("user") User user, SignInRequest request) { Optional<User>
-	 * existingUser = userService.findUserByEmail(user.getEmail()); User loggedUser
-	 * = ((User) userService).loadUserByUsername(user.getUsername()); String
-	 * accessToken = jwtService.generateToken(user);
-	 * 
-	 * return ResponseEntity.ok(authenticationService.signin(request)); }
-	 */
 }

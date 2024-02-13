@@ -66,19 +66,6 @@ public class AdminController {
 		
 		userRepo.save(adminUser);
 	}
-
-//    @GetMapping("/users")
-//    public ResponseEntity<List<User>> getAllUsers () {
-//        List<User> users = userService.findAll();
-//        return ResponseEntity.ok(users);
-//    }
-    
-//    @GetMapping("/features")
-//    public String getUsers (ModelMap model) {
-//    	List<User> users = userService.findAll();
-//    	model.addAttribute("userList", users);
-//    	return "admin_features";
-//    }
 	
 	@GetMapping("/features")
 	public String getFeatures () {
@@ -102,8 +89,6 @@ public class AdminController {
     	
     	return new RedirectView("/admin/users");
     }
-//    public ResponseEntity<String> elevateToAdmin (@RequestParam Integer userId) {
-//    	return ResponseEntity.ok("redirect:/admin/users");
 
     @GetMapping("/messages")
     public String getMessages (ModelMap model) {

@@ -75,7 +75,7 @@ public class MedicationController {
 		Animal animal = animalService.getByPetId(id);
 		List<Medication> medications = medicationService.getAllMedsForPet(animal);
 		List<String> illnessList = medicationService.getIllnessList();
-		
+
 		model.addAttribute("id", id);
 		model.addAttribute("animal", animal);
 		model.addAttribute("medications", medications);
@@ -83,15 +83,15 @@ public class MedicationController {
 		model.addAttribute("illnessList", illnessList);
 		return "medication_create";
 	}
-	
+
 	@PostMapping("/create/{id}")
-	public String processMedsForm(@PathVariable("id") Integer id, @ModelAttribute("newMedication") Medication newMedication) {
+	public String processMedsForm(@PathVariable("id") Integer id,
+			@ModelAttribute("newMedication") Medication newMedication) {
 		logger.info("Animal ID: ", id);
-		
+
 		medicationService.saveMedication(newMedication, id);
 		return "redirect:/pet/medication/create/{id}";
 	}
-
 
 	@PostMapping("/delete")
 	public String deleteMedication(Medication medication) {

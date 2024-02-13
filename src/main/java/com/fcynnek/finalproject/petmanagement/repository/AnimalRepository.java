@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import com.fcynnek.finalproject.petmanagement.domain.Animal;
 
 @Repository
-public interface AnimalRepository extends JpaRepository<Animal, Integer>{
+public interface AnimalRepository extends JpaRepository<Animal, Integer> {
 
 	@Query("SELECT a FROM Animal a WHERE a.id = :petId")
 	Animal findPetById(@Param("petId") Integer petId);

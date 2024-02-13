@@ -37,13 +37,13 @@ public class AnimalController {
 	private MedsAndIllnessRepository medsAndIllnessRepo;
 	private Logger logger = LoggerFactory.getLogger(AnimalController.class);
 
-	public AnimalController(AnimalRepository petRepo, AnimalService animalService, MedsAndIllnessRepository medsAndIllnessRepo) {
+	public AnimalController(AnimalRepository petRepo, AnimalService animalService,
+			MedsAndIllnessRepository medsAndIllnessRepo) {
 		super();
 		this.petRepo = petRepo;
 		this.animalService = animalService;
 		this.medsAndIllnessRepo = medsAndIllnessRepo;
 	}
-
 
 	@GetMapping("/features")
 	public String getFeatures() {
@@ -55,14 +55,6 @@ public class AnimalController {
 		return Animal.Species.values();
 	}
 
-//	@GetMapping("/profile")
-//	public String getProfile(Model model) {
-//		List<Animal> pets = animalService.getAllPets();
-//		model.addAttribute("animals", pets);
-//		model.addAttribute("animal", new Animal());
-//		return "pet_profile";
-//	}
-	
 	@GetMapping("/profile")
 	public String getProfile(Model model, Principal principal) {
 		String username = principal.getName();
@@ -78,7 +70,7 @@ public class AnimalController {
 		animalService.save(animal, email);
 		return "redirect:/pet/profile";
 	}
-	
+
 	@GetMapping("/update/{id}")
 	public String updateAnimal(Model model, @PathVariable Integer id) {
 		Optional<Animal> pet = animalService.getById(id);
@@ -86,12 +78,12 @@ public class AnimalController {
 		model.addAttribute("id", pet.get().getId());
 		return "pet_update";
 	}
-	
+
 	@PostMapping("/update")
 	public String updateAnimal(Animal animal, @ModelAttribute("id") Integer id, Principal principal) {
 		Optional<Animal> existingPetOpt = animalService.getById(id);
 		String email = principal.getName();
-		
+
 		if (existingPetOpt.isPresent()) {
 			Animal existingPet = existingPetOpt.get();
 			existingPet.setName(animal.getName());
@@ -105,18 +97,18 @@ public class AnimalController {
 			return "error";
 		}
 	}
-	
+
 	@PostMapping("/delete")
 	public String deleteAnimal(Animal animal) {
 		animalService.delete(animal);
 		return "redirect:/pet/profile";
 	}
-	
+
 	@GetMapping("/medication/{id}")
 	public String showMedications(@PathVariable Integer id, ModelMap model) {
 		Animal pet = animalService.getByPetId(id);
-	    model.addAttribute("animal", pet);
-	    model.addAttribute("id", id);
-	    return "medication";
+		model.addAttribute("animal", pet);
+		model.addAttribute("id", id);
+		return "medication";
 	}
 }
