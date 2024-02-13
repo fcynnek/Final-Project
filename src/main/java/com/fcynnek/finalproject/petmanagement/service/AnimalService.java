@@ -6,32 +6,33 @@ import java.util.Optional;
 import org.springframework.stereotype.Service;
 
 import com.fcynnek.finalproject.petmanagement.domain.Animal;
+import com.fcynnek.finalproject.petmanagement.domain.User;
 import com.fcynnek.finalproject.petmanagement.repository.AnimalRepository;
 
 @Service
 public class AnimalService {
 
 	private AnimalRepository petRepo;
+	private UserServiceImpl userService;
 	
 	
-	public AnimalService(AnimalRepository petRepo) {
+	public AnimalService(AnimalRepository petRepo, UserServiceImpl userService) {
 		super();
 		this.petRepo = petRepo;
+		this.userService = userService;
 	}
-
-
+	
 
 	public List<Animal> getAllPets() {
 		return petRepo.findAll();
 	}
 
-	public Animal save(Animal pet) {
+	public Animal save(Animal pet, String username) {
+		Optional<User> user = userService.findUserByEmail(username);
+		user.ifPresent(pet::setUser);
+//		pet.setUser(user);
 		return petRepo.save(pet);
 	}
-
-//	public Animal getByName(String name) {
-//		return petRepo.findByName(name);
-//	}
 	
 	public Optional<Animal> getById(Integer id) {
 		return petRepo.findById(id);
@@ -47,7 +48,7 @@ public class AnimalService {
 	}
 
 	public List<Animal> getAnimalByUsername(String username) {
-		// TODO Auto-generated method stub
-		return null;
+
+		return petRepo.findByUsername(username);
 	}
 }
