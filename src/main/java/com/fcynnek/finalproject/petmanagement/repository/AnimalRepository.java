@@ -15,6 +15,6 @@ public interface AnimalRepository extends JpaRepository<Animal, Integer>{
 	@Query("SELECT a FROM Animal a WHERE a.id = :petId")
 	Animal findPetById(@Param("petId") Integer petId);
 
-	List<Animal> findByUsername(String username);
+	List<Animal> findByUserEmail(String email);
 
 }

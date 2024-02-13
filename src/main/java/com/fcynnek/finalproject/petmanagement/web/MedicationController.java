@@ -12,6 +12,7 @@ import jakarta.annotation.PostConstruct;
 import com.fcynnek.finalproject.petmanagement.service.AnimalService;
 import com.fcynnek.finalproject.petmanagement.service.MedicationService;
 
+import java.security.Principal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -56,8 +57,9 @@ public class MedicationController {
 	}
 
 	@GetMapping("")
-	public String getPets(Model model) {
-		List<Animal> pets = animalService.getAllPets();
+	public String getPets(Model model, Principal principal) {
+		String username = principal.getName();
+		List<Animal> pets = animalService.getAnimalByUsername(username);
 		logger.info("Inside getPets method");
 
 		List<Medication> meds = medicationService.getAllMeds();

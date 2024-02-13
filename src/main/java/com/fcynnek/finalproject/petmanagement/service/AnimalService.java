@@ -27,8 +27,8 @@ public class AnimalService {
 		return petRepo.findAll();
 	}
 
-	public Animal save(Animal pet, String username) {
-		Optional<User> user = userService.findUserByEmail(username);
+	public Animal save(Animal pet, String email) {
+		Optional<User> user = userService.findUserByEmail(email);
 		user.ifPresent(pet::setUser);
 //		pet.setUser(user);
 		return petRepo.save(pet);
@@ -47,8 +47,8 @@ public class AnimalService {
 		petRepo.delete(animal);
 	}
 
-	public List<Animal> getAnimalByUsername(String username) {
+	public List<Animal> getAnimalByUsername(String email) {
 
-		return petRepo.findByUsername(username);
+		return petRepo.findByUserEmail(email);
 	}
 }

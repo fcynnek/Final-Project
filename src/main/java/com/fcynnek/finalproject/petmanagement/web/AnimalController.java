@@ -74,8 +74,8 @@ public class AnimalController {
 
 	@PostMapping("/create")
 	public String processAnimalForm(@ModelAttribute("animal") Animal animal, Model model, Principal principal) {
-		String username = principal.getName();
-		animalService.save(animal, username);
+		String email = principal.getName();
+		animalService.save(animal, email);
 		return "redirect:/pet/profile";
 	}
 	
@@ -90,7 +90,7 @@ public class AnimalController {
 	@PostMapping("/update")
 	public String updateAnimal(Animal animal, @ModelAttribute("id") Integer id, Principal principal) {
 		Optional<Animal> existingPetOpt = animalService.getById(id);
-		String username = principal.getName();
+		String email = principal.getName();
 		
 		if (existingPetOpt.isPresent()) {
 			Animal existingPet = existingPetOpt.get();
@@ -99,7 +99,7 @@ public class AnimalController {
 			existingPet.setBreed(animal.getBreed());
 			existingPet.setColor(animal.getColor());
 
-			animalService.save(existingPet, username);
+			animalService.save(existingPet, email);
 			return "redirect:/pet/profile";
 		} else {
 			return "error";
