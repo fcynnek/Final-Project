@@ -8,7 +8,9 @@
     <title>PET-ME: Contact</title>
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
     <link rel="stylesheet" href="secondary.css">
+    <link rel="stylesheet" href="@sweetalert2/theme-bootstrap-4/bootstrap-4.css">
 
+<script src="sweetalert2/dist/sweetalert2.min.js"></script>
     <script src="https://kit.fontawesome.com/5e7463fc0b.js" crossorigin="anonymous"></script>
 </head>
 
@@ -51,6 +53,7 @@
                             <p th:text="${flash.formSubmitted}"> <i class="fa-solid fa-envelope-circle-check"></i></p>
                           </div>
                     </form>
+                    Swal.fire("SweetAlert2 is working!");
                 </div>
             </div>
         </section>
