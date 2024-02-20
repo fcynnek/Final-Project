@@ -46,10 +46,10 @@ public class AdminController {
 		this.passwordEncoder = passwordEncoder;
 	}
 
-    @PostConstruct // This annotation is used to create an admin user during application startup
-    public void init() {
-    	createAdminUser();
-    }
+//    @PostConstruct // This annotation is used to create an admin user during application startup
+//    public void init() {
+//    	createAdminUser();
+//    }
     
 	List<User> allAdmins = new ArrayList<>();
 
